@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */; };
-		34C3F0C220EDDFEB002DAF24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0C120EDDFEB002DAF24 /* ViewController.swift */; };
 		34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C320EDDFEB002DAF24 /* Main.storyboard */; };
 		34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C620EDDFED002DAF24 /* Assets.xcassets */; };
 		34C3F0CA20EDDFED002DAF24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */; };
+		34C3F0D420EE55FD002DAF24 /* SimpleDietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */; };
+		34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D920EED2FB002DAF24 /* Model.swift */; };
+		34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0DB20EED58B002DAF24 /* ModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		34C3F0C120EDDFEB002DAF24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34C3F0C420EDDFEB002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34C3F0C620EDDFED002DAF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34C3F0C920EDDFED002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34C3F0CB20EDDFED002DAF24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietViewController.swift; sourceTree = "<group>"; };
+		34C3F0D920EED2FB002DAF24 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		34C3F0DB20EED58B002DAF24 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		34C3F0BE20EDDFEB002DAF24 /* SimpleDieting */ = {
 			isa = PBXGroup;
 			children = (
-				34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */,
-				34C3F0C120EDDFEB002DAF24 /* ViewController.swift */,
 				34C3F0C320EDDFEB002DAF24 /* Main.storyboard */,
-				34C3F0C620EDDFED002DAF24 /* Assets.xcassets */,
-				34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */,
+				34C3F0D920EED2FB002DAF24 /* Model.swift */,
+				34C3F0DB20EED58B002DAF24 /* ModelController.swift */,
+				34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */,
+				34C3F0D220EDE134002DAF24 /* Supporting Files */,
 				34C3F0CB20EDDFED002DAF24 /* Info.plist */,
 			);
 			path = SimpleDieting;
+			sourceTree = "<group>";
+		};
+		34C3F0D220EDE134002DAF24 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */,
+				34C3F0C620EDDFED002DAF24 /* Assets.xcassets */,
+				34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C3F0C220EDDFEB002DAF24 /* ViewController.swift in Sources */,
+				34C3F0D420EE55FD002DAF24 /* SimpleDietViewController.swift in Sources */,
+				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
+				34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
