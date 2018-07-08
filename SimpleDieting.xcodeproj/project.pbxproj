@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */; };
 		34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C320EDDFEB002DAF24 /* Main.storyboard */; };
 		34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C620EDDFED002DAF24 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C3F0C420EDDFEB002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */,
 				34C3F0D220EDE134002DAF24 /* Supporting Files */,
 				34C3F0CB20EDDFED002DAF24 /* Info.plist */,
+				349A300220F291DB00037E08 /* GoogleService-Info.plist */,
 			);
 			path = SimpleDieting;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C3F0CA20EDDFED002DAF24 /* LaunchScreen.storyboard in Resources */,
+				349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */,
 				34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */,
 				34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */,
 			);

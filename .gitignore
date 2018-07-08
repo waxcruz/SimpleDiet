@@ -84,7 +84,8 @@ Example/Auth/ApiTests/AuthCredentials.h
 Example/Database/App/GoogleService-Info.plist
 
 Example/Storage/App/GoogleService-Info.plist
-
+#Wax Firebase plist
+/Users/waxcruz/Developer/SimpleDietingApp/SimpleDieting/SimpleDieting/GoogleService-Info.plist
 # OS X
 .DS_Store
 
