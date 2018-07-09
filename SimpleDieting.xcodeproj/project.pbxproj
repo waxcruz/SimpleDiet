@@ -15,9 +15,11 @@
 		34C3F0D420EE55FD002DAF24 /* SimpleDietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */; };
 		34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D920EED2FB002DAF24 /* Model.swift */; };
 		34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0DB20EED58B002DAF24 /* ModelController.swift */; };
+		AD51FE5B84DF79ABAB57685C /* Pods_SimpleDieting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleDieting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietViewController.swift; sourceTree = "<group>"; };
 		34C3F0D920EED2FB002DAF24 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		34C3F0DB20EED58B002DAF24 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		7CAB072E57E9C86E1522FA7D /* Pods-SimpleDieting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDieting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting.debug.xcconfig"; sourceTree = "<group>"; };
+		D611EFB165B81750A699D268 /* Pods-SimpleDieting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDieting.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD51FE5B84DF79ABAB57685C /* Pods_SimpleDieting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		187D4B8F6DCA3C5AEC565F15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
 				34C3F0BE20EDDFEB002DAF24 /* SimpleDieting */,
 				34C3F0BD20EDDFEB002DAF24 /* Products */,
+				88CA09FC5A018E6B3305693D /* Pods */,
+				187D4B8F6DCA3C5AEC565F15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +96,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		88CA09FC5A018E6B3305693D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CAB072E57E9C86E1522FA7D /* Pods-SimpleDieting.debug.xcconfig */,
+				D611EFB165B81750A699D268 /* Pods-SimpleDieting.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34C3F0CE20EDDFED002DAF24 /* Build configuration list for PBXNativeTarget "SimpleDieting" */;
 			buildPhases = (
+				98ED5302E4CC96863FBB4AED /* [CP] Check Pods Manifest.lock */,
 				34C3F0B820EDDFEB002DAF24 /* Sources */,
 				34C3F0B920EDDFEB002DAF24 /* Frameworks */,
 				34C3F0BA20EDDFEB002DAF24 /* Resources */,
+				3013BBCA5C2825C09D151A08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +173,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3013BBCA5C2825C09D151A08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98ED5302E4CC96863FBB4AED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleDieting-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		34C3F0B820EDDFEB002DAF24 /* Sources */ = {
@@ -298,6 +365,7 @@
 		};
 		34C3F0CF20EDDFED002DAF24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CAB072E57E9C86E1522FA7D /* Pods-SimpleDieting.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -316,6 +384,7 @@
 		};
 		34C3F0D020EDDFED002DAF24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D611EFB165B81750A699D268 /* Pods-SimpleDieting.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
