@@ -11,7 +11,8 @@ import Foundation
 enum FoodComponent {
     case protein
     case fat
-    case strach
+    case starch
+    case fruit
     case veggies
     case free
 }
@@ -28,6 +29,22 @@ enum Meal{
 struct Goal {
     let targetWeight : Double
     let targetDate: Date
+}
+
+struct Limits {
+    var protein : Int
+    var fat : Int
+    var fruit : Int
+    var starch : Int
+    var veggies : Int
+    
+    init() {
+        protein = 0
+        fat = 0
+        fruit = 0
+        starch = 0
+        veggies = 0
+    }
 }
 
 struct Consumed {

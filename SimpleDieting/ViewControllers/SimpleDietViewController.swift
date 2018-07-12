@@ -37,20 +37,20 @@ class SimpleDietViewController: UIViewController {
         targetDate.inputView = datePicker
         targetDate.inputAccessoryView = toolBar
         targetWeight.inputAccessoryView = toolBarNumber
-        targetWeight.text = modelController.weigthString()
-        targetDate.text = modelController.dateString()
+        targetWeight.text = modelController.targetWeigthString()
+        targetDate.text = modelController.targetDateString()
         
     }
 
     func createDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.date = modelController.date!
+        datePicker.date = modelController.targetDate!
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
         
     }
     
     func createWeight()  -> Void {
-        targetWeight.text = modelController.weigthString()
+        targetWeight.text = modelController.targetWeigthString()
         targetWeight.addTarget(self, action: #selector(weightTextFieldDidEnd(_:)),
                                for: UIControlEvents.editingDidEnd)
     }
@@ -79,12 +79,12 @@ class SimpleDietViewController: UIViewController {
 
     @objc func doneWeightButtonPressed(sender: UIBarButtonItem) {
         if let weight = Double(targetWeight.text!) {
-            modelController.weight = weight
+            modelController.targetWeight = weight
         }
         targetWeight.resignFirstResponder()
     }
     @objc func doneButtonPressed(sender: UIBarButtonItem) {
-        modelController.date = datePicker.date
+        modelController.targetDate = datePicker.date
         showTargetDate(targetDate: datePicker.date)
         targetDate.resignFirstResponder()
     }
@@ -95,7 +95,7 @@ class SimpleDietViewController: UIViewController {
     }
  
     @objc func clearButtonPressed(sender: UIBarButtonItem) {
-        modelController.weight = 0.0
+        modelController.targetWeight = 0.0
         targetWeight.text = ""
     }
 
@@ -109,12 +109,12 @@ class SimpleDietViewController: UIViewController {
     
     @objc func weightTextFieldDidEnd(_ textField: UITextField) {
         if let weight = Double(textField.text!) {
-            modelController.weight = weight
+            modelController.targetWeight = weight
         }
     }
     
     @objc func datePickerValueChanged(datePicker: UIDatePicker) {
-        modelController.date = datePicker.date
+        modelController.targetDate = datePicker.date
     }
 
 

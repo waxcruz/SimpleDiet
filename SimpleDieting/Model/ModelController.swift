@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import UIKit
-import Firebase
-
 
 class ModelController
 {
@@ -42,7 +39,7 @@ class ModelController
         })
     }
     
-    var date : Date? {
+    var targetDate : Date? {
         get {
             if let target_date_string = settings?[KeysForUserDefaults.TARGET_DATE] {
                 var myDate = Date()
@@ -63,14 +60,14 @@ class ModelController
             let target_date_string = newValue?.makeShortStringDate()
             ref.child("Settings/\(KeysForUserDefaults.TARGET_DATE)").setValue(target_date_string)
             if settings == nil {
-                NSLog("settings doesn't exist because of a timing error")
+                NSLog("settings doesn't exist set targetDate")
             } else {
                 settings![KeysForUserDefaults.TARGET_DATE] = target_date_string
             }
          }
     }
     
-    var weight : Double? {
+    var targetWeight : Double? {
         get {
             if let target_weight = settings?[KeysForUserDefaults.TARGET_WEIGHT]  {
                 return target_weight as? Double
@@ -83,7 +80,7 @@ class ModelController
 
             ref.child("Settings/\(KeysForUserDefaults.TARGET_WEIGHT)").setValue(newValue)
             if settings == nil {
-                NSLog("settings doesn't exist because of a timing error")
+                NSLog("settings doesn't exist in set of targetWeight")
             } else {
                 settings![KeysForUserDefaults.TARGET_WEIGHT] = newValue
             }
@@ -91,25 +88,67 @@ class ModelController
         
     }
     
-    func weigthString() -> String {
-        if weight != nil {
-            return String(format:"%.1f", weight!)
+    func targetWeigthString() -> String {
+        if targetWeight != nil {
+            return String(format:"%.1f", targetWeight!)
         }
             return "0.0"
     }
 
-    func dateString() -> String {
-        return (date?.makeShortStringDate())!
-//        let dateFormat = DateFormatter()
-//        if date != nil {
-//            dateFormat.dateStyle = DateFormatter.Style.short
-//            dateFormat.timeStyle = DateFormatter.Style.none
-//            return dateFormat.string(from: date!)
-//        } else {
-//            return dateFormat.string(from: Date())
-//        }
+    func targetDateString() -> String {
+        return (targetDate?.makeShortStringDate())!
     }
     
+    var dailyLimits : Limits {
+        get {
+            var limits = Limits()
+            if let protein = settings?[KeysForUserDefaults.LIMIT_PROTEIN] {
+                limits.protein = protein
+            } else {
+                limits.protein = 0
+            }
+            if let fat = settings?[KeysForUserDefaults.LIMIT_FAT] {
+                limits.fat = fat
+            } else {
+                limits.fat = 0
+            }
+            if fruit = settings?[KeysForUserDefaults.LIMIT_FRUIT] {
+                limits.fruit = fruit
+            } else {
+                limits.fruit = 0
+            }
+            if let starch = settings?[KeysForUserDefaults.LIMIT_STARCH] {
+                limits.starch = starch
+            } else {
+                limits.starch = 0
+            }
+            if let veggies = settings?[KeysForUserDefaults.LIMIT_VEGGIES] {
+                limits.veggies = veggies
+            } else {
+                limits.veggies = 0
+            }
+        }
+        
+        set {
+            ref.child("Settings/\(KeysForUserDefaults.TARGET_WEIGHT)").setValue(newValue)
+            if settings == nil {
+                NSLog("settings doesn't exist in set dailyLimits")
+            } else {
+                settings?[KeysForUserDefaults.LIMIT_PROTEIN] = newValue.protein
+                settings?[KeysForUserDefaults.LIMIT_FAT] = newValue.fat
+                settings?[KeysForUserDefaults.LIMIT_STARCH] = newValue.starch
+                settings?[KeysForUserDefaults.LIMIT_FRUIT] = newValue.fruit
+                settings?[KeysForUserDefaults.LIMIT_VEGGIES] = newValue.veggies
+                ref.child("Settings/\(KeysForUserDefaults.LIMIT_PROTEIN)").setValue(newValue.protein)
+                ref.child("Settings/\(KeysForUserDefaults.LIMIT_FAT)").setValue(newValue.fat)
+                ref.child("Settings/\(KeysForUserDefaults.LIMIT_FRUIT)").setValue(newValue.fruit)
+                ref.child("Settings/\(KeysForUserDefaults.LIMIT_STARCH)").setValue(newValue.starch)
+                ref.child("Settings/\(KeysForUserDefaults.LIMIT_VEGGIES)").setValue(newValue.veggies)
+            
+            }
+
+        }
+    }
     
     
 }
