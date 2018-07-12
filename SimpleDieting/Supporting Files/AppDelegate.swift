@@ -14,17 +14,47 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var model = ModelController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
-        if let SimpleDietViewController = window?.rootViewController as? SimpleDietViewController {
-            SimpleDietViewController.modelController = ModelController()
-        }
+        model.startModel()
+        
+        let settingsRef = model.ref.child("Settings")
+        model.refHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
+            self.model.settings = snapshot.value as? [String : AnyObject] ?? [:]
+            self.showFirstViewController()
+        })
+
         return true
     }
 
+    func showFirstViewController(){
+        // Set the window to the dimensions of the device
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Grab a reference to whichever storyboard you have the ViewController within
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // Grab a reference to the ViewController you want to show 1st.
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SimpleDietViewControllerID")
+        
+        // Set that ViewController as the rootViewController
+        self.window?.rootViewController = initialViewController
+        
+        // Make sure correct view controller loaded
+        if let SimpleDietViewController = window?.rootViewController as? SimpleDietViewController {
+            SimpleDietViewController.modelController = model
+        }
+
+        // Sets our window up in front
+        self.window?.makeKeyAndVisible()
+
+    }
+    
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -45,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        model.stopModel()
     }
 
 

@@ -23,17 +23,20 @@ class SimpleDietViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if modelController.settings?.count == 0 {
+            NSLog("model not ready. Fix it")
+        }
         createToolBarForDatePicker()
         createToolBarForNumber()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         createWeight()
         createDatePicker()
         targetDate.inputView = datePicker
         targetDate.inputAccessoryView = toolBar
         targetWeight.inputAccessoryView = toolBarNumber
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         targetWeight.text = modelController.weigthString()
         targetDate.text = modelController.dateString()
         

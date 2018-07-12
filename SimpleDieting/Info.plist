@@ -22,7 +22,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>com.googleusercontent.apps.109921257690-7r4gmdbbclfu8vjse3cc725tgit0ovmu</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
