@@ -1,22 +1,22 @@
 //
-//  LoadingPleaseWaitViewController.swift
+//  MealsViewController.swift
 //  SimpleDieting
 //
-//  Created by Bill Weatherwax on 7/12/18.
+//  Created by Bill Weatherwax on 7/14/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
 //
 
 import UIKit
 
-class LoadingPleaseWaitViewController: UIViewController {
+class SettingsViewController: UIViewController {
+    // MARK: - global model controller
+    var modelController : ModelController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        modelController = (self.parent as! SimpleDietTabBarController).getModel()
         // Do any additional setup after loading the view.
     }
-
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

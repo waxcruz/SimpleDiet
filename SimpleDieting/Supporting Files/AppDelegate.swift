@@ -38,14 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SimpleDietViewControllerID")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SimpleDietTabBarControllerID")
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
         
         // Make sure correct view controller loaded
-        if let SimpleDietViewController = window?.rootViewController as? SimpleDietViewController {
-            SimpleDietViewController.modelController = model
+        if let vc = window?.rootViewController as? SimpleDietTabBarController {
+            vc.modelController = model
         }
 
         // Sets our window up in front

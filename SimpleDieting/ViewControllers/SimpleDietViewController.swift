@@ -23,7 +23,8 @@ class SimpleDietViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if modelController.settings?.count == 0 {
+        modelController = (self.parent as! SimpleDietTabBarController).getModel()
+        if modelController?.settings?.count == 0 {
             NSLog("model not ready. Fix it")
         }
         createToolBarForDatePicker()

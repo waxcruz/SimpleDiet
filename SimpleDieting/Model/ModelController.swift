@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class ModelController
 {
@@ -103,30 +104,31 @@ class ModelController
         get {
             var limits = Limits()
             if let protein = settings?[KeysForUserDefaults.LIMIT_PROTEIN] {
-                limits.protein = protein
+                limits.protein = protein as! Int
             } else {
                 limits.protein = 0
             }
             if let fat = settings?[KeysForUserDefaults.LIMIT_FAT] {
-                limits.fat = fat
+                limits.fat = fat as! Int
             } else {
                 limits.fat = 0
             }
-            if fruit = settings?[KeysForUserDefaults.LIMIT_FRUIT] {
-                limits.fruit = fruit
+            if let fruit = settings?[KeysForUserDefaults.LIMIT_FRUIT] {
+                limits.fruit = fruit as! Int
             } else {
                 limits.fruit = 0
             }
             if let starch = settings?[KeysForUserDefaults.LIMIT_STARCH] {
-                limits.starch = starch
+                limits.starch = starch as! Int
             } else {
                 limits.starch = 0
             }
             if let veggies = settings?[KeysForUserDefaults.LIMIT_VEGGIES] {
-                limits.veggies = veggies
+                limits.veggies = veggies as! Int
             } else {
                 limits.veggies = 0
             }
+            return limits
         }
         
         set {
