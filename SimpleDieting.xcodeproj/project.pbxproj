@@ -17,6 +17,9 @@
 		344B1C1420F9024A00BADBDA /* journalOutlinedTab2@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */; };
 		344B1C1520F9024A00BADBDA /* journalOutlinedTab3@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */; };
 		344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B1C1620FA46F500BADBDA /* SettingsViewController.swift */; };
+		344B1C1B20FB613400BADBDA /* settingsTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1820FB613400BADBDA /* settingsTab.png */; };
+		344B1C1C20FB613400BADBDA /* settingsTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1920FB613400BADBDA /* settingsTab@2x.png */; };
+		344B1C1D20FB613400BADBDA /* settingsTab@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1A20FB613400BADBDA /* settingsTab@3x.png */; };
 		347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
@@ -43,6 +46,9 @@
 		344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab2@X.png"; sourceTree = "<group>"; };
 		344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab3@X.png"; sourceTree = "<group>"; };
 		344B1C1620FA46F500BADBDA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		344B1C1820FB613400BADBDA /* settingsTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsTab.png; sourceTree = "<group>"; };
+		344B1C1920FB613400BADBDA /* settingsTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsTab@2x.png"; sourceTree = "<group>"; };
+		344B1C1A20FB613400BADBDA /* settingsTab@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsTab@3x.png"; sourceTree = "<group>"; };
 		347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietTabBarController.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 			children = (
 				344B1C1020F9024900BADBDA /* journalOutlinedTab.png */,
 				344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */,
+				344B1C1820FB613400BADBDA /* settingsTab.png */,
+				344B1C1920FB613400BADBDA /* settingsTab@2x.png */,
+				344B1C1A20FB613400BADBDA /* settingsTab@3x.png */,
 				344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */,
 				344B1C0420F8EAC200BADBDA /* mealsOutlined.png */,
 				344B1C0620F8EAC200BADBDA /* resultsFilleded.png */,
@@ -242,9 +251,12 @@
 				344B1C1320F9024A00BADBDA /* journalOutlinedTab.png in Resources */,
 				344B1C1520F9024A00BADBDA /* journalOutlinedTab3@X.png in Resources */,
 				349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */,
+				344B1C1B20FB613400BADBDA /* settingsTab.png in Resources */,
 				344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */,
+				344B1C1D20FB613400BADBDA /* settingsTab@3x.png in Resources */,
 				344B1C0F20F8EAC300BADBDA /* resultsOutlined.png in Resources */,
 				34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */,
+				344B1C1C20FB613400BADBDA /* settingsTab@2x.png in Resources */,
 				34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */,
 				344B1C0C20F8EAC300BADBDA /* resultsFilleded.png in Resources */,
 				344B1C0D20F8EAC300BADBDA /* journalFilled.png in Resources */,
