@@ -80,6 +80,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		347C302F20FC055500FFC8AB /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				344B1C1020F9024900BADBDA /* journalOutlinedTab.png */,
+				344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */,
+				344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */,
+				344B1C0420F8EAC200BADBDA /* mealsOutlined.png */,
+				344B1C0620F8EAC200BADBDA /* resultsFilleded.png */,
+				344B1C0720F8EAC200BADBDA /* journalFilled.png */,
+				344B1C0820F8EAC200BADBDA /* mealsFilled.png */,
+				344B1C0920F8EAC200BADBDA /* resultsOutlined.png */,
+				344B1C0520F8EAC200BADBDA /* journalOutlined.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
@@ -117,15 +133,7 @@
 			children = (
 				34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */,
 				34C3F0C620EDDFED002DAF24 /* Assets.xcassets */,
-				344B1C1020F9024900BADBDA /* journalOutlinedTab.png */,
-				344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */,
-				344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */,
-				344B1C0420F8EAC200BADBDA /* mealsOutlined.png */,
-				344B1C0620F8EAC200BADBDA /* resultsFilleded.png */,
-				344B1C0720F8EAC200BADBDA /* journalFilled.png */,
-				344B1C0820F8EAC200BADBDA /* mealsFilled.png */,
-				344B1C0920F8EAC200BADBDA /* resultsOutlined.png */,
-				344B1C0520F8EAC200BADBDA /* journalOutlined.png */,
+				347C302F20FC055500FFC8AB /* Icons */,
 				34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
