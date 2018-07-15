@@ -80,13 +80,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		344B1C0320F8EAC200BADBDA /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Icons;
-			sourceTree = "<group>";
-		};
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +107,6 @@
 				34C3F0D220EDE134002DAF24 /* Supporting Files */,
 				34C3F0CB20EDDFED002DAF24 /* Info.plist */,
 				349A300220F291DB00037E08 /* GoogleService-Info.plist */,
-				344B1C0320F8EAC200BADBDA /* Icons */,
 				34DDD5F220F3A94B00D4A110 /* Utilities */,
 			);
 			path = SimpleDieting;
