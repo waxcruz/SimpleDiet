@@ -368,7 +368,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Meals" image="mealTab" selectedImage="mealTab" id="Ntw-ZW-PfB"/>
+                    <tabBarItem key="tabBarItem" title="Meals" image="mealTab" id="Ntw-ZW-PfB"/>
                     <connections>
                         <outlet property="targetDate" destination="VHg-gP-Ccf" id="iae-fS-Ica"/>
                         <outlet property="targetWeight" destination="6pP-XD-beF" id="qWY-qP-FSK"/>
