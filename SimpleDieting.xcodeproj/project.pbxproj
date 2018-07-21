@@ -21,6 +21,8 @@
 		347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		34B35B7221021C8C00D3E90B /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B7121021C8C00D3E90B /* TransitionViewController.swift */; };
+		34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */; };
+		34B35B782103B1AD00D3E90B /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B772103B1AD00D3E90B /* JournalViewController.swift */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
 		34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */; };
 		34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C320EDDFEB002DAF24 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietTabBarController.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34B35B7121021C8C00D3E90B /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
+		34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartViewController.swift; sourceTree = "<group>"; };
+		34B35B772103B1AD00D3E90B /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
 		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				344B1C1620FA46F500BADBDA /* SettingsViewController.swift */,
 				340F883320FCC788007F91B8 /* MealsViewController.swift */,
 				34B35B7121021C8C00D3E90B /* TransitionViewController.swift */,
+				34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */,
+				34B35B772103B1AD00D3E90B /* JournalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
+				34B35B782103B1AD00D3E90B /* JournalViewController.swift in Sources */,
+				34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */,
 				34B35B7221021C8C00D3E90B /* TransitionViewController.swift in Sources */,
 				34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */,
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
