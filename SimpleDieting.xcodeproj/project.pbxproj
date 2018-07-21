@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340F883420FCC788007F91B8 /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F883320FCC788007F91B8 /* MealsViewController.swift */; };
 		344B1C0A20F8EAC300BADBDA /* mealsOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0420F8EAC200BADBDA /* mealsOutlined.png */; };
 		344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0520F8EAC200BADBDA /* journalOutlined.png */; };
 		344B1C0C20F8EAC300BADBDA /* resultsFilleded.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0620F8EAC200BADBDA /* resultsFilleded.png */; };
@@ -19,12 +20,12 @@
 		344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B1C1620FA46F500BADBDA /* SettingsViewController.swift */; };
 		347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
+		34B35B7221021C8C00D3E90B /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B7121021C8C00D3E90B /* TransitionViewController.swift */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
 		34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */; };
 		34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C320EDDFEB002DAF24 /* Main.storyboard */; };
 		34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C620EDDFED002DAF24 /* Assets.xcassets */; };
 		34C3F0CA20EDDFED002DAF24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */; };
-		34C3F0D420EE55FD002DAF24 /* SimpleDietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */; };
 		34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D920EED2FB002DAF24 /* Model.swift */; };
 		34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0DB20EED58B002DAF24 /* ModelController.swift */; };
 		34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDD5F320F3A98300D4A110 /* ExtendDate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleDieting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		340F883320FCC788007F91B8 /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		344B1C0420F8EAC200BADBDA /* mealsOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealsOutlined.png; sourceTree = "<group>"; };
 		344B1C0520F8EAC200BADBDA /* journalOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalOutlined.png; sourceTree = "<group>"; };
 		344B1C0620F8EAC200BADBDA /* resultsFilleded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsFilleded.png; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		344B1C1620FA46F500BADBDA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietTabBarController.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		34B35B7121021C8C00D3E90B /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
 		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		34C3F0C620EDDFED002DAF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34C3F0C920EDDFED002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34C3F0CB20EDDFED002DAF24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietViewController.swift; sourceTree = "<group>"; };
 		34C3F0D920EED2FB002DAF24 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		34C3F0DB20EED58B002DAF24 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		34DDD5F320F3A98300D4A110 /* ExtendDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDate.swift; sourceTree = "<group>"; };
@@ -160,9 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */,
-				34C3F0D320EE55FD002DAF24 /* SimpleDietViewController.swift */,
 				34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */,
 				344B1C1620FA46F500BADBDA /* SettingsViewController.swift */,
+				340F883320FCC788007F91B8 /* MealsViewController.swift */,
+				34B35B7121021C8C00D3E90B /* TransitionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -303,12 +306,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
+				34B35B7221021C8C00D3E90B /* TransitionViewController.swift in Sources */,
 				34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */,
-				34C3F0D420EE55FD002DAF24 /* SimpleDietViewController.swift in Sources */,
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
 				347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */,
 				344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */,
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
+				340F883420FCC788007F91B8 /* MealsViewController.swift in Sources */,
 				34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

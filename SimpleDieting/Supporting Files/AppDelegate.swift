@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settingsRef = model.ref.child("Settings")
         model.refHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
-            self.model.settings = snapshot.value as? [String : AnyObject] ?? [:]
+            self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
+            self.model.breakConnectionToFirebase()
             self.showFirstViewController()
+            self.model.makeConnectionToFirebase()
         })
 
         return true
@@ -38,18 +40,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SimpleDietTabBarControllerID")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "TransitionVC") // SimpleDietTabBarControllerID
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
         
         // Make sure correct view controller loaded
-        if let vc = window?.rootViewController as? SimpleDietTabBarController {
+        if let vc = window?.rootViewController as? TransitionViewController { // SimpleDietTabBarController
             vc.modelController = model
         }
 
+
         // Sets our window up in front
         self.window?.makeKeyAndVisible()
+
 
     }
     
