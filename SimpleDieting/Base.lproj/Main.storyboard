@@ -740,7 +740,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HxY-4s-lRO" userLabel="Counts Left Stack View">
-                                                <rect key="frame" x="8" y="140" width="92.5" height="90"/>
+                                                <rect key="frame" x="8" y="140" width="92.5" height="60"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSu-CE-afp" userLabel="Protein Stack View">
                                                         <rect key="frame" x="0.0" y="0.0" width="92.5" height="30"/>
@@ -776,44 +776,26 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLa-My-k87" userLabel="Starch Stack View">
-                                                        <rect key="frame" x="0.0" y="60" width="92.5" height="30"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starch" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9M-eK-WdE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="51.5" height="30"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8AD-Vi-C3V" userLabel="Today Starch Consumption">
-                                                                <rect key="frame" x="51.5" y="0.0" width="41" height="30"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="7z9-Ai-Pz0" firstAttribute="width" secondItem="e8f-mY-lYz" secondAttribute="width" id="1A0-SN-AEf"/>
-                                                    <constraint firstAttribute="height" constant="90" id="TZn-p6-NS3"/>
-                                                    <constraint firstItem="N9M-eK-WdE" firstAttribute="width" secondItem="e8f-mY-lYz" secondAttribute="width" id="rRt-Nl-2Nx"/>
+                                                    <constraint firstAttribute="height" constant="60" id="TZn-p6-NS3"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BjV-qM-QWY" userLabel="Counts Right Stack View">
-                                                <rect key="frame" x="108" y="140" width="99" height="60"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BjV-qM-QWY" userLabel="Counts Middle Stack View">
+                                                <rect key="frame" x="108" y="140" width="88.5" height="60"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGQ-7c-lot" userLabel="Fruits Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNy-dh-Hal">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58" height="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starch" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNy-dh-Hal">
+                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Fruit Consumption">
-                                                                <rect key="frame" x="58" y="0.0" width="41" height="30"/>
+                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Fruit Consumption">
+                                                                <rect key="frame" x="47.5" y="0.0" width="41" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
@@ -821,16 +803,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4e-pa-FQa" userLabel="Veggies Stack View">
-                                                        <rect key="frame" x="0.0" y="30" width="99" height="30"/>
+                                                        <rect key="frame" x="0.0" y="30" width="88.5" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veggies" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ex-Wv-8s6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58" height="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ex-Wv-8s6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Veggie Consumption">
-                                                                <rect key="frame" x="58" y="0.0" width="41" height="30"/>
+                                                            <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Veggie Consumption">
+                                                                <rect key="frame" x="47.5" y="0.0" width="41" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
@@ -843,6 +825,31 @@
                                                     <constraint firstItem="JNy-dh-Hal" firstAttribute="width" secondItem="5Ex-Wv-8s6" secondAttribute="width" id="8vy-sF-dYc"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="102-Xb-5ah" userLabel="Counts Right Stack View">
+                                                <rect key="frame" x="198.5" y="140" width="99" height="30"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRe-Bf-6uE" userLabel="Veggies Stack View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veggies" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFS-tR-aMs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="58" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncY-FP-Iiz" userLabel="Today Veggie Consumption">
+                                                                <rect key="frame" x="58" y="0.0" width="41" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="7w9-DO-inz"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -852,10 +859,12 @@
                                             <constraint firstItem="Qc8-nk-ztc" firstAttribute="width" secondItem="gyU-at-o00" secondAttribute="width" id="Jdg-Ha-60K"/>
                                             <constraint firstItem="Qc8-nk-ztc" firstAttribute="centerX" secondItem="qIm-cG-guK" secondAttribute="centerX" id="Pes-Zn-4il"/>
                                             <constraint firstAttribute="trailing" secondItem="gyU-at-o00" secondAttribute="trailing" constant="8" id="QQO-SS-riv"/>
+                                            <constraint firstItem="102-Xb-5ah" firstAttribute="top" secondItem="Qc8-nk-ztc" secondAttribute="bottom" constant="2" id="QvB-Ay-ZHH"/>
                                             <constraint firstItem="gyU-at-o00" firstAttribute="top" secondItem="qIm-cG-guK" secondAttribute="top" constant="8" id="a8B-3Y-nYm"/>
                                             <constraint firstItem="HxY-4s-lRO" firstAttribute="leading" secondItem="Qc8-nk-ztc" secondAttribute="leading" id="gQS-78-qtv"/>
                                             <constraint firstItem="gyU-at-o00" firstAttribute="leading" secondItem="qIm-cG-guK" secondAttribute="leading" constant="8" id="kYi-ub-en0"/>
                                             <constraint firstItem="HxY-4s-lRO" firstAttribute="top" secondItem="Qc8-nk-ztc" secondAttribute="bottom" constant="2" id="nS1-DG-rp7"/>
+                                            <constraint firstItem="102-Xb-5ah" firstAttribute="leading" secondItem="BjV-qM-QWY" secondAttribute="trailing" constant="2" id="vA3-He-N3W"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1168,9 +1177,13 @@
                         <outletCollection property="dataEntryNumbers" destination="CWs-ad-k4O" collectionClass="NSMutableArray" id="fOL-jF-x6K"/>
                         <outletCollection property="dataEntryNumbers" destination="tgE-QN-6uS" collectionClass="NSMutableArray" id="NcI-Rj-XVW"/>
                         <outletCollection property="dataEntryNumbers" destination="919-Zb-5lP" collectionClass="NSMutableArray" id="ZIA-48-aTj"/>
-                        <outletCollection property="dataEntryNumbers" destination="8AD-Vi-C3V" collectionClass="NSMutableArray" id="xON-uI-6tG"/>
                         <outletCollection property="dataEntryNumbers" destination="hDL-j5-oD1" collectionClass="NSMutableArray" id="M3N-ez-aSq"/>
                         <outletCollection property="dataEntryNumbers" destination="PK2-pA-iq5" collectionClass="NSMutableArray" id="Ety-3J-zc1"/>
+                        <outletCollection property="dataEntryNumbers" destination="tgE-QN-6uS" collectionClass="NSMutableArray" id="p03-Fl-vgO"/>
+                        <outletCollection property="dataEntryNumbers" destination="919-Zb-5lP" collectionClass="NSMutableArray" id="VFE-Ff-odA"/>
+                        <outletCollection property="dataEntryNumbers" destination="hDL-j5-oD1" collectionClass="NSMutableArray" id="Jhp-bP-fPz"/>
+                        <outletCollection property="dataEntryNumbers" destination="PK2-pA-iq5" collectionClass="NSMutableArray" id="rDE-4O-DIO"/>
+                        <outletCollection property="dataEntryNumbers" destination="ncY-FP-Iiz" collectionClass="NSMutableArray" id="A9Y-Ro-lYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

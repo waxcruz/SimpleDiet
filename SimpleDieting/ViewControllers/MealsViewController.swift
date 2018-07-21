@@ -20,6 +20,9 @@ class MealsViewController: UIViewController {
     @IBOutlet var balanceConsumptionTotals: [UILabel]!
     @IBOutlet var dataEntryNumbers: [UITextField]!
     
+    
+  
+    
     // MARK: - date picker
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
