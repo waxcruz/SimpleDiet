@@ -12,78 +12,42 @@ import Firebase
 class ModelController
 {
     //MARK - Firebase keys
-    enum KeysForFirebase {
-        //MARK: - Firebase NONSQL Segment Names
-        static let TABLE_CONSUME = "Consume"
-        static let TABLE_STATS = "Stats"
-        static let TABLE_MEAL_CONTENTS = "MealContents"
-        static let TABLE_SETTINGS = "Settings"
-        //MARK: - Settings fields
-        static let TARGET_DATE = "TARGET_DATE_KEY"
-        static let TARGET_WEIGHT = "TARGET_WEIGHT_KEY"
-        static let LIMIT_FAT = "LIMIT_FAT"
-        static let LIMIT_FRUIT = "LIMIT_FRUIT"
-        static let LIMIT_PROTEIN = "LIMIT_PROTEIN"
-        static let LIMIT_STARCH = "LIMIT_STARCH"
-        static let LIMIT_VEGGIES = "LIMIT_VEGGIES"
-        //MARK: - Stats fields
-        static let GLASSES_OF_WATER = "GLASSES_OF_WATER"
-        static let MINUTES_EXERCISED = "MINUTES_EXERCISED"
-        static let WEIGHED = "WEIGHED"
-        //MARK: - Consume fields
-        static let MEAL_DESCRIPTION = "MEAL_DATE"
-        static let BREAKFAST_MEAL_KEY = "MEAL_DESCRIPTION"
-        static let MORNING_SNACK_MEAL_KEY = "MORNING_SNACK_MEAL_KEY"
-        static let LUNCH_MEAL_KEY = "LUNCH_MEAL_KEY"
-        static let AFTERNOON_SNACK_MEAL_KEY = "AFTERNOON_SNACK_MEAL_KEY"
-        static let DINNER_MEAL_KEY = "DINNER_MEAL_KEY"
-        static let EVENING_SNACK_MEAL_KEY = "EVENING_SNACK_MEAL_KEY"
-        //MARK: - MealContents fields
-        static let MEAL_PROTEIN_QUANTITY = "MEAL_PROTEIN_QUANTITY"
-        static let MEAL_FAT_QUANTITY = "MEAL_FAT_QUANTITY"
-        static let MEAL_STARCH_QUANTITY = "MEAL_STARCH_QUANTITY"
-        static let MEAL_FRUIT_QUANTITY = "MEAL_FRUIT_QUANTITY"
-        static let MEAL_VEGGIES_QUANTITY = "MEAL_VEGGIES_QUANTITY"
-        
-    }
     var ref = DatabaseReference()
     var refHandle = DatabaseHandle()
     var settingsHandle  = DatabaseHandle()
-    var consumeHandle = DatabaseHandle()
+    var journalHandle = DatabaseHandle()
     var statsHandle = DatabaseHandle()
     var mealContentsHandle = DatabaseHandle()
     var settingsInFirebase : Dictionary? = [:]
     var firebaseDateKey : String = "YYYY-MM-DD"
     var statsInFirebase : Dictionary? = [:]
-    var consumeInFirebase : Dictionary? = [:]
+    var journalInFirebase : Dictionary? = [:]
     var mealContentsInFirebase : Dictionary? = [:]
+
     
-    // MARK: - structures
-    var myGoal : Goal {
-        get {
-            return Goal()
-        }
-        
-        set {
-            NSLog("Test")
-        }
-    }
     // MARK: - methods
     
     func startModel(){
         ref = Database.database().reference()
-        myGoal = Goal()
-        var testGoal = myGoal
-        testGoal.targetDate = Date().makeShortStringDate()
-        NSLog(testGoal.targetDate)
     }
     
     func stopModel(){
         ref.removeObserver(withHandle: refHandle)
     }
     
-    func breakConnectionToFirebase() {
-        ref.removeObserver(withHandle: refHandle)
+    func breakConnectionToFirebase(typeOfHandle handle : FirebaseHandleIdentifiers) {
+        var closeHandle = DatabaseHandle()
+        switch (handle) {
+        case FirebaseHandleIdentifiers.settings:
+            closeHandle = settingsHandle
+        case FirebaseHandleIdentifiers.stats:
+            closeHandle = statsHandle
+        case FirebaseHandleIdentifiers.consume:
+            closeHandle = journalHandle
+        case FirebaseHandleIdentifiers.mealContents:
+            closeHandle = mealContentsHandle
+        }
+        ref.removeObserver(withHandle: closeHandle)
     }
     
     func makeConnectionToFirebase() {
@@ -94,8 +58,8 @@ class ModelController
         })
 
         let consumeRef = ref.child("Consume")
-        consumeHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
-            self.consumeInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
+        journalHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
+            self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
         let statsRef = ref.child("Stats")
         statsHandle = statsRef.observe(DataEventType.value, with: { (snapshot) in
@@ -116,21 +80,21 @@ class ModelController
     }
 
     
-    func getStats(recordedOnDateKey date : String)-> Stats {
-        // date must be of the form YYYY-MM-DD or no match will be found
-        let statsForDate = Stats(
-            recordForDate: date,
-            glassesOfWaterConsumed: statsInFirebase![KeysForFirebase.GLASSES_OF_WATER] as! Int,
-            weightOnDate: statsInFirebase![KeysForFirebase.WEIGHED] as! Double,
-            minutesExercising: statsInFirebase![KeysForFirebase.MINUTES_EXERCISED] as! Int)
-        return statsForDate
-    }
-    
+//    func getStats(recordedOnDateKey date : String)-> Stats {
+//        // date must be of the form YYYY-MM-DD or no match will be found
+//        let statsForDate = Stats(
+//            recordForDate: date,
+//            glassesOfWaterConsumed: statsInFirebase![KeysForFirebase.GLASSES_OF_WATER] as! Int,
+//            weightOnDate: statsInFirebase![KeysForFirebase.WEIGHED] as! Double,
+//            minutesExercising: statsInFirebase![KeysForFirebase.MINUTES_EXERCISED] as! Int)
+//        return statsForDate
+//    }
+//    
     func getConsume(mealConsumedOnDateKey date: String) {
         // date must be of the form YYYY-MM-DD or no match will be found
         let consumeRef = self.ref.child("Consume")
         self.refHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
-            self.consumeInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
+            self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
     }
 
@@ -148,8 +112,7 @@ class ModelController
     var targetDate : Date? {
         get {
             if let target_date_string = settingsInFirebase?[KeysForFirebase.TARGET_DATE] {
-                var myDate = Date()
-                myDate.makeDateFromString(dateAsString: target_date_string as! String)
+                let myDate = makeDateFromString(dateAsString: target_date_string as! String)
                 if myDate.description == Date(timeIntervalSince1970: 0).description {
                     NSLog("date Bad")
                     return Date()
@@ -302,7 +265,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set statsWaterConsumed")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
                 statsInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
             }
         }
@@ -321,7 +284,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set statsWeight")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
                 statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
@@ -340,12 +303,21 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set statsExercise")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
                 statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
     }
 
+     // MARK - Meal management
+    
+    func newDay() {
+        
+    }
+    
+    func oldDay(dateOfmeal mealDate : String) {
+        
+    }
     
      // MARK - Convenience methods for displaying properties in views
     
@@ -381,7 +353,26 @@ class ModelController
         
     }
     
-    
+    func updateSettings(newSettings settings : Dictionary<String, Any?>) {
+        for (newSettingsKey, newSettingsValue) in settings {
+            switch (newSettingsKey) {
+            case KeysForFirebase.TARGET_WEIGHT:
+                targetWeight = newSettingsValue as? Double
+            case KeysForFirebase.LIMIT_PROTEIN:
+                limitsProtein = newSettingsValue as? Int
+            case  KeysForFirebase.LIMIT_FAT:
+                limitsFat = newSettingsValue as? Int
+            case KeysForFirebase.LIMIT_STARCH:
+                limitsStarch = newSettingsValue as? Int
+            case KeysForFirebase.LIMIT_FRUIT:
+                limitsFruit = newSettingsValue as? Int
+            case KeysForFirebase.LIMIT_VEGGIES:
+                limitsVeggies = newSettingsValue as? Int
+            default:
+                NSLog("Bad key in updateSettings")
+            }
+        }
+    }
     
     
 }

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TransitionViewController: UIViewController {
+class LoginViewController: UIViewController {
     // MARK: - global model controller
     var modelController : ModelController!
     

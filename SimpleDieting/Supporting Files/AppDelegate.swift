@@ -22,12 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.startModel()
         
         let settingsRef = model.ref.child("Settings")
-        model.refHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
+        settingsRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-            self.model.breakConnectionToFirebase()
+            self.model.breakConnectionToFirebase(typeOfHandle: FirebaseHandleIdentifiers.settings)
             self.showFirstViewController()
             self.model.makeConnectionToFirebase()
         })
+//        model.refHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
+//            self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
+//            self.model.breakConnectionToFirebase()
+//            self.showFirstViewController()
+//            self.model.makeConnectionToFirebase()
+//        })
 
         return true
     }
@@ -46,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         
         // Make sure correct view controller loaded
-        if let vc = window?.rootViewController as? TransitionViewController { // SimpleDietTabBarController
+        if let vc = window?.rootViewController as? LoginViewController { // SimpleDietTabBarController
             vc.modelController = model
         }
 
