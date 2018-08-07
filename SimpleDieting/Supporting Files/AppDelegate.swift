@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "TransitionVC") // SimpleDietTabBarControllerID
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") // SimpleDietTabBarControllerID
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
