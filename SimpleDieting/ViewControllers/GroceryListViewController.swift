@@ -126,9 +126,6 @@ class GroceryListViewController: UIViewController, UIGestureRecognizerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeGroceryList(_ sender: Any) {
-        dismiss(animated: false, completion:nil)
-    }
     
     /*
     // MARK: - Navigation

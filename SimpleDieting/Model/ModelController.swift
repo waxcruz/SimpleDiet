@@ -109,53 +109,53 @@ class ModelController
     
     // MARK: - properties
     
-    var targetDate : Date? {
-        get {
-            if let target_date_string = settingsInFirebase?[KeysForFirebase.TARGET_DATE] {
-                let myDate = makeDateFromString(dateAsString: target_date_string as! String)
-                if myDate.description == Date(timeIntervalSince1970: 0).description {
-                    NSLog("date Bad")
-                    return Date()
-                } else {
-                    return myDate
-                }
-            } else {
-                let dateToday = Date()
-                return dateToday
-            }
-        }
-        
-        set {
-            let target_date_string = newValue?.makeShortStringDate()
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist set targetDate")
-            } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_DATE, value: target_date_string!)
-                settingsInFirebase![KeysForFirebase.TARGET_DATE] = target_date_string
-            }
-         }
-    }
-    
-    var targetWeight : Double? {
-        get {
-            if let target_weight = settingsInFirebase?[KeysForFirebase.TARGET_WEIGHT]  {
-                return target_weight as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-             if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set of targetWeight")
-            } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_WEIGHT, value: newValue!)
-                settingsInFirebase![KeysForFirebase.TARGET_WEIGHT] = newValue
-            }
-        }
-        
-    }
-    
+//    var targetDate : Date? {
+//        get {
+//            if let target_date_string = settingsInFirebase?[KeysForFirebase.TARGET_DATE] {
+//                let myDate = makeDateFromString(dateAsString: target_date_string as! String)
+//                if myDate.description == Date(timeIntervalSince1970: 0).description {
+//                    NSLog("date Bad")
+//                    return Date()
+//                } else {
+//                    return myDate
+//                }
+//            } else {
+//                let dateToday = Date()
+//                return dateToday
+//            }
+//        }
+//
+//        set {
+//            let target_date_string = newValue?.makeShortStringDate()
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist set targetDate")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_DATE, value: target_date_string!)
+//                settingsInFirebase![KeysForFirebase.TARGET_DATE] = target_date_string
+//            }
+//         }
+//    }
+//
+//    var targetWeight : Double? {
+//        get {
+//            if let target_weight = settingsInFirebase?[KeysForFirebase.TARGET_WEIGHT]  {
+//                return target_weight as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//             if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set of targetWeight")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_WEIGHT, value: newValue!)
+//                settingsInFirebase![KeysForFirebase.TARGET_WEIGHT] = newValue
+//            }
+//        }
+//
+//    }
+//
     var limitsProtein : Int? {
         get {
             if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN] {
@@ -321,17 +321,17 @@ class ModelController
     
      // MARK - Convenience methods for displaying properties in views
     
-    func targetWeigthString() -> String {
-        if targetWeight != nil {
-            return String(format:"%.1f", targetWeight!)
-        }
-            return "0.0"
-    }
-
-    func targetDateString() -> String {
-        return (targetDate?.makeShortStringDate())!
-    }
-    
+//    func targetWeigthString() -> String {
+//        if targetWeight != nil {
+//            return String(format:"%.1f", targetWeight!)
+//        }
+//            return "0.0"
+//    }
+//
+//    func targetDateString() -> String {
+//        return (targetDate?.makeShortStringDate())!
+//    }
+//
     // MARK - Helper methods for Firebase
     
     func updateChildInFirebase(fireBaseTable table : String, fireBaseChildPath path : String, value : Any) {
@@ -356,8 +356,6 @@ class ModelController
     func updateSettings(newSettings settings : Dictionary<String, Any?>) {
         for (newSettingsKey, newSettingsValue) in settings {
             switch (newSettingsKey) {
-            case KeysForFirebase.TARGET_WEIGHT:
-                targetWeight = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_PROTEIN:
                 limitsProtein = newSettingsValue as? Int
             case  KeysForFirebase.LIMIT_FAT:

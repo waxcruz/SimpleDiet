@@ -19,10 +19,12 @@
 		344B1C1420F9024A00BADBDA /* journalOutlinedTab2@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */; };
 		344B1C1520F9024A00BADBDA /* journalOutlinedTab3@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */; };
 		344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B1C1620FA46F500BADBDA /* SettingsViewController.swift */; };
+		3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3460F688211F33780075DA50 /* HandoutsViewController.swift */; };
 		3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */; };
 		3479962221152B4F00BDF6BF /* GroceryList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3479962121152B4F00BDF6BF /* GroceryList.pdf */; };
 		347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
+		349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */; };
 		34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B7121021C8C00D3E90B /* LoginViewController.swift */; };
 		34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
@@ -50,10 +52,12 @@
 		344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab2@X.png"; sourceTree = "<group>"; };
 		344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab3@X.png"; sourceTree = "<group>"; };
 		344B1C1620FA46F500BADBDA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3460F688211F33780075DA50 /* HandoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandoutsViewController.swift; sourceTree = "<group>"; };
 		3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		3479962121152B4F00BDF6BF /* GroceryList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GroceryList.pdf; sourceTree = "<group>"; };
 		347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietTabBarController.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
 		34B35B7121021C8C00D3E90B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				34B35B7121021C8C00D3E90B /* LoginViewController.swift */,
 				34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */,
 				3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */,
+				349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */,
+				3460F688211F33780075DA50 /* HandoutsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */,
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
 				34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */,
 				34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */,
@@ -333,6 +340,7 @@
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
 				347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */,
 				344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */,
+				349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */,
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
 				3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */,
 				340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */,
