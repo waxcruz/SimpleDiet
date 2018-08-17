@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SettingsViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SettingsViewController: UIViewController{
     // MARK: - global model controller
     var modelController : ModelController!
     // MARK: - outlets
@@ -49,18 +49,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bindNumberFieldsToModel()
-//        bindTargetDateToModel()
-//        targetDate.inputView = datePicker
-//        targetDate.inputAccessoryView = toolBarDatePicker
     }
-
-//    func bindTargetDateToModel() {
-//        datePicker.datePickerMode = .date
-//        let externalDate : String = tempSettings[KeysForFirebase.TARGET_DATE] as! String
-//        datePicker.date = makeDateFromString(dateAsString: externalDate)
-//        datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
-//        targetDate.text = externalDate
-//    }
     
     func bindNumberFieldsToModel() {
         for tagCollectionSequence in 0..<dataEntryNumbers.count {
@@ -71,36 +60,30 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
             let tag = dataEntryNumbers[tagCollectionSequence].tag
             switch (tag) {
             case 0:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN] as? Int ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN] as? Double ?? 0)
             case 1:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FAT] as? Int ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0)
             case 2:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_STARCH] as? Int ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0)
             case 3:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FRUIT] as? Int ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0)
             case 4:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_VEGGIES] as? Int ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_VEGGIES] as? Double ?? 0)
+            case 5:
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_HIGH] as? Double ?? 0)
+                if displayTextField.text == "0" {
+                    displayTextField.text = ""
+                }
             default :
-                NSLog("bad tag number in storyboard")
+                NSLog("bad tag number in storyboard (SettingsViewController:bindNumberFieldsToModel)")
             }
        }
     }
     
-//    func createToolBarForDatePicker() {
-//        toolBarDatePicker = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-//        let todayButton = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonPressed(sender:)))
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressedForTargetDate(sender:)))
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width/3, height: 40))
-//        label.text = "Choose your target weight date"
-//        let labelButton = UIBarButtonItem(customView: label)
-//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-//        toolBarDatePicker.setItems([todayButton, flexibleSpace, labelButton,flexibleSpace,doneButton], animated: true)
-//    }
-//
     func createToolBarForNumber() {
         toolBarNumber = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneNumber (sender:)))
+        let clearButton = UIBarButtonItem(title: "clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
+        let doneButton = UIBarButtonItem(title: "return", style: .plain, target: self, action: #selector(doneNumber (sender:)))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width/3, height: 40))
         label.text = "Enter number"
         let labelButton = UIBarButtonItem(customView: label)
@@ -120,17 +103,7 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         }
         NSLog("mismatch in doneNumber")
     }
-//
-//    @objc func doneButtonPressedForTargetDate(sender: UIBarButtonItem) {
-//        modelController.targetDate = datePicker.date
-//        showTargetDate(targetDate: datePicker.date)
-//        targetDate.resignFirstResponder()
-//    }
-//
-//    @objc func todayButtonPressed(sender: UIBarButtonItem) {
-//        showTargetDate(targetDate: Date())
-//        targetDate.resignFirstResponder()
-//    }
+
     
     @objc func clearButtonPressedForNumber(sender: UIBarButtonItem) {
         for tag in 0..<dataEntryNumbers.count {
@@ -144,13 +117,6 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         NSLog("mismatch in clearButtonPressed")
     }
 
-//    func showTargetDate(targetDate date : Date) {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .short
-//        dateFormatter.timeStyle = .none
-//        targetDate.text = dateFormatter.string(from: date)
-//     }
-//
     
     @objc func textFieldDidBeginEditing(textField: UITextField) {
         activeTextField = textField
@@ -158,23 +124,23 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     
     @objc func numberTextFieldDidEnd(_ textField: UITextField) {
-        var keyedInt = 0
-        if let inputIntNumber = Int(textField.text!) {
-            keyedInt = inputIntNumber
+        var keyedDouble = 0.0
+        if let inputIntNumber = Double(textField.text!) {
+            keyedDouble = inputIntNumber
         }
         
         switch (textField.tag) {
             // adjust numberFor... by - 2 offset to match the storyboard tag. Storyboard tags start with 0
         case SettingsDataEntryNumbers.numberForProtein.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_PROTEIN] = keyedInt
+            newSettings[KeysForFirebase.LIMIT_PROTEIN] = keyedDouble
         case SettingsDataEntryNumbers.numberForFat.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_FAT] = keyedInt
+            newSettings[KeysForFirebase.LIMIT_FAT] = keyedDouble
         case SettingsDataEntryNumbers.numberForStarch.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_STARCH] = keyedInt
+            newSettings[KeysForFirebase.LIMIT_STARCH] = keyedDouble
         case SettingsDataEntryNumbers.numberForFruit.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_FRUIT] = keyedInt
+            newSettings[KeysForFirebase.LIMIT_FRUIT] = keyedDouble
         case  SettingsDataEntryNumbers.numberForVeggies.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_VEGGIES] = keyedInt
+            newSettings[KeysForFirebase.LIMIT_VEGGIES] = keyedDouble
         default:
             NSLog("bad input to numberTextFieldEnd")
         }
@@ -182,15 +148,6 @@ class SettingsViewController: UIViewController, MFMailComposeViewControllerDeleg
         cancelButton.isHidden = false
     }
     
-    
-    
-    
-//    @objc func datePickerValueChanged(datePicker: UIDatePicker) {
-//        newSettings[KeysForFirebase.TARGET_DATE] = datePicker.date.makeShortStringDate()
-//        saveButton.isHidden = false
-//        cancelButton.isHidden = false
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

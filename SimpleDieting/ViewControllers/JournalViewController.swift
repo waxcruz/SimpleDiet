@@ -9,22 +9,23 @@
 import UIKit
 import MessageUI
 
-class JournalViewController: UIViewController, MFMailComposeViewControllerDelegate  {
+class JournalViewController: UIViewController, MFMailComposeViewControllerDelegate {
     // MARK: - global model controller
     var modelController : ModelController!
     // MARK: - outlets
 
+    @IBOutlet weak var weight: UITextField!
     @IBOutlet weak var mealDescription: UITextView!
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var recordingDate: UITextField!
     @IBOutlet var dailyConsumptionTotals: [UILabel]!
     @IBOutlet var todayConsumptionTotals: [UILabel]!
     @IBOutlet var balanceConsumptionTotals: [UILabel]!
-
     @IBOutlet var dataEntryNumbers: [UITextField]!
     @IBOutlet var checkButtons: [UIButton]!
     @IBOutlet weak var scrollContent: UIScrollView!
-    
+    @IBOutlet weak var constraintMealContentHeight: NSLayoutConstraint!
+    @IBOutlet weak var mealContent: UIView!
     @IBOutlet weak var chooseMeal: UISegmentedControl!
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -39,8 +40,9 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     // MARK: - number
     var keyedNumberString = ""
     // MARK - textfield helper
-    var activeTextField = UITextField()
-    
+    var activeTextField : UITextField?
+    var lastOffset : CGPoint!
+    var keyboardHeight : Double!
     // MARK - temp storage
     var firebaseJournal : [String: Any?] = [:]
     var firebaseMealContents : [String : Any?] = [:]
@@ -57,6 +59,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         if modelController?.settingsInFirebase?.count == 0 {
             NSLog("model not ready. Fix it")
         }
+        lastOffset = scrollContent.contentOffset
         firebaseSettings = modelController.settingsInFirebase as! [String : Any?]
         createToolBarForDatePicker()
         createToolBarForNumber()
@@ -66,20 +69,24 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         modelController.firebaseDateKey = recordDate.makeShortStringDate()
         saveButton.isHidden = true
         cancelButton.isHidden = true
-        firebaseJournal = journalOnDate(journalDate: recordDate.makeShortStringDate())
         firebaseMealContents = mealOnDate(mealDate: recordDate.makeShortStringDate())
-        initializeView()
+        firebaseJournal = journalOnDate(journalDate: recordDate.makeShortStringDate())
+        // Observe keyboard change
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        firebaseSettings = modelController.settingsInFirebase as! [String : Any?]
+        buildTotals()
         recordingDate.inputView = datePicker
         recordingDate.inputAccessoryView = toolBarDate
         bindNumberFieldsToModel()
         bindMealDateToDatePicker()
-//        todayWeight.inputAccessoryView = toolBarNumber
-//        todayWeight.text = modelController.targetWeigthString()
-//        recordingDate.text = modelController.targetDateString()
+        //        todayWeight.inputAccessoryView = toolBarNumber
+        //        todayWeight.text = modelController.targetWeigthString()
+        //        recordingDate.text = modelController.targetDateString()
         
     }
     
@@ -89,7 +96,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
                                                 for: .normal)
     }
     
-    func initializeView() {
+    func buildTotals() {
         // assumes firebase data retrieved
         
         // build totals
@@ -99,15 +106,15 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             let mapTagToSettingIndex = dailyConsumptionTotals[tag].tag
             switch (mapTagToSettingIndex) {
             case 0:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_PROTEIN] as? Int ?? 0)
+                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_PROTEIN] as? Double ?? 0.0)
             case 1:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FAT] as? Int ?? 0)
+                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0.0)
             case 2:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_STARCH] as? Int ?? 0)
+                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0.0)
             case 3:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FRUIT] as? Int ?? 0)
+                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0.0)
             case 4:
-                dailyConsumptionTotals[tag].text =  String(firebaseSettings[KeysForFirebase.LIMIT_VEGGIES] as? Int ?? 0)
+                dailyConsumptionTotals[tag].text =  String(firebaseSettings[KeysForFirebase.LIMIT_VEGGIES] as? Double ?? 0.0)
             default:
                 NSLog("index error in initializeView")
             }
@@ -136,6 +143,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             let totalsTag = balanceConsumptionTotals[tag].tag
             balanceConsumptionTotals[tag].text = String(totalLine[totalsTag] )
         }
+        // add code to highlight negative numbers in red for fat, starch, and fruits
     }
     
     
@@ -147,16 +155,26 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     func bindNumberFieldsToModel()  -> Void {
-        for tag in 0..<dataEntryNumbers.count {
-            dataEntryNumbers[tag].inputAccessoryView = toolBarNumber
-            dataEntryNumbers[tag].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidEnd(_:)), for: UIControlEvents.editingDidEnd)
+        for tagCollectionSequence in 0..<dataEntryNumbers.count {
+            dataEntryNumbers[tagCollectionSequence].inputAccessoryView = toolBarNumber
+            dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidEnd(_:)), for: UIControlEvents.editingDidEnd)
+            dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(SettingsViewController.textFieldDidBeginEditing(textField:)), for: UIControlEvents.editingDidBegin)
+            dataEntryNumbers[tagCollectionSequence].delegate = self as? UITextFieldDelegate
+            let displayTextField = dataEntryNumbers[tagCollectionSequence]
+            let tag = dataEntryNumbers[tagCollectionSequence].tag
+            switch (tag) {
+            case 0:
+                displayTextField.text = String(firebaseJournal[KeysForFirebase.WEIGHED] as? Double ?? 0.0)
+            default:
+                NSLog("bad tag number in storyboard (JournalViewController:bindNumberFieldsToModel")
+            }
         }
     }
     
     func createToolBarForDatePicker() {
         toolBarDate = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        let todayButton = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonPressed(sender:)))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressedForMealDate(sender:)))
+        let todayButton = UIBarButtonItem(title: "today", style: .plain, target: self, action: #selector(todayButtonPressed(sender:)))
+        let doneButton = UIBarButtonItem(title: "return", style: .plain, target: self, action: #selector(doneButtonPressedForMealDate(sender:)))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width/3, height: 40))
         label.text = "Choose your meal date"
         let labelButton = UIBarButtonItem(customView: label)
@@ -166,8 +184,8 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     
     func createToolBarForNumber() {
         toolBarNumber = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneNumber (sender:)))
+        let clearButton = UIBarButtonItem(title: "clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
+        let doneButton = UIBarButtonItem(title: "return", style: .plain, target: self, action: #selector(doneNumber (sender:)))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width/3, height: 40))
         label.text = "Enter number"
         let labelButton = UIBarButtonItem(customView: label)
@@ -204,8 +222,15 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     }
     
     @objc func clearButtonPressedForNumber(sender: UIBarButtonItem) {
-//        modelController.targetWeight = 0.0
-//        todayWeight.text = ""
+        for tag in 0..<dataEntryNumbers.count {
+            if let tf = dataEntryNumbers?[tag] {
+                if tf == activeTextField {
+                    tf.text = ""
+                    return
+                }
+            }
+        }
+        NSLog("mismatch in clearButtonPressed")
     }
     
     func showMealDate(mealDate date : Date) {
@@ -214,17 +239,42 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     
     @objc func textFieldDidBeginEditing(textField: UITextField) {
         activeTextField = textField
+        lastOffset = scrollContent.contentOffset
+
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let info = notification.userInfo
+        let kbSize : CGSize = (info![UIKeyboardFrameEndUserInfoKey] as! CGRect).size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+        scrollContent.contentInset = contentInsets
+        scrollContent.scrollIndicatorInsets = contentInsets
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
+        if !(aRect.contains((activeTextField?.frame.origin)!)) {
+            scrollContent.scrollRectToVisible((activeTextField?.frame)!, animated: true)
+        }
+        
+    }
+    
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        scrollContent.contentInset = contentInsets
+        scrollContent.scrollIndicatorInsets = contentInsets
     }
     
     
     @objc func numberTextFieldDidEnd(_ textField: UITextField) {
-        var keyedNumber = 0.0
-        if let inputNumber = Double(textField.text!) {
-            keyedNumber = inputNumber
-        } else {
-            NSLog("bad number in numberTextFieldDidEnd")
-        }
+        
+        var keyedDoubleNumber = 0.0
 
+            if let inputNumber = Double(textField.text!) {
+                keyedDoubleNumber = inputNumber
+            } else {
+                NSLog("bad number in numberTextFieldDidEnd")
+            }
+            
         switch (textField.tag) {
         case MealDataEntryNumbers.numberForWeight.rawValue:
 //            modelController.targetWeight = keyedNumber
@@ -232,7 +282,11 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         default:
             NSLog("bad input to numberTextFieldEnd")
         }
+        saveButton.isHidden = false
+        cancelButton.isHidden = false
+        activeTextField?.resignFirstResponder()
     }
+    
     
     func journalOnDate(journalDate date: String) -> Dictionary<String, Any?> {
         return [:]
@@ -288,6 +342,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             </head>
             <body>
             <h2>Journal</h2>
+            <h4>(Easier to read in landscape mode)</h4>
             <p>08/04/2018</p>
             <table style="font-size:10px;">
               <tr>
@@ -305,7 +360,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
                 <td> </td>
                 <td>10</td>
                 <td>3</td>
-                <td>∞</td>
+                <td>3</td>
                 <td>2</td>
                 <td>4</td>
                 <td> </td>

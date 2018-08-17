@@ -21,6 +21,20 @@ class SocialMediaViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func linkToEducationalLibarary(_ sender: Any) {
+        
+        let dict : [String: Any?] = [:]
+        if let url = URL(string: "https://thehealthyway.us/") { // educational-library/
+            UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
+        } else {
+            NSLog("Can't open https://thehealthyway.us/") // educational-library/
+        }
+        
+   }
+    
+    
+    
     @IBAction func facebook(_ sender: Any) {
         let dict : [String: Any?] = [:]
         if let url = URL(string: "https://www.facebook.com/HealthyWaySantaCruz/") {
@@ -35,7 +49,7 @@ class SocialMediaViewController: UIViewController {
     
     @IBAction func instagram(_ sender: Any) {
         let dict : [String: Any?] = [:]
-        if let url = URL(string: "https://www.instagram.com/healthywaysc//") {
+        if let url = URL(string: "https://www.instagram.com/healthywaysantacruz//") {
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
             NSLog("Can't open https://www.instagram.com/healthywaysc/")

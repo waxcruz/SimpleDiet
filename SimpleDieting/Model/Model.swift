@@ -19,11 +19,13 @@ enum KeysForFirebase {
     static let LIMIT_FAT = "LIMIT_FAT"
     static let LIMIT_FRUIT = "LIMIT_FRUIT"
     static let LIMIT_PROTEIN = "LIMIT_PROTEIN"
+    static let LIMIT_PROTEIN_HIGH = "LIMIT_PROTEIN_HIGH"
     static let LIMIT_STARCH = "LIMIT_STARCH"
     static let LIMIT_VEGGIES = "LIMIT_VEGGIES"
     //MARK: - Stats fields
     static let GLASSES_OF_WATER = "GLASSES_OF_WATER"
-    static let MINUTES_EXERCISED = "MINUTES_EXERCISED"
+    static let EXERCISED = "MINUTES_EXERCISED"
+    static let SUPPLEMENTS = "SUPPLEMENTS"
     static let WEIGHED = "WEIGHED"
     //MARK: - Consume fields
     static let MEAL_DESCRIPTION = "MEAL_DATE"

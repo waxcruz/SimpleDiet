@@ -156,12 +156,12 @@ class ModelController
 //
 //    }
 //
-    var limitsProtein : Int? {
+    var limitsProtein : Double? {
         get {
             if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN] {
-                return protein as? Int
+                return protein as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
         
@@ -175,12 +175,12 @@ class ModelController
         }
     }
  
-    var limitsFat : Int? {
+    var limitsFat : Double? {
         get {
             if let fat = settingsInFirebase?[KeysForFirebase.LIMIT_FAT] {
-                return fat as? Int
+                return fat as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
         
@@ -195,12 +195,12 @@ class ModelController
     }
     
 
-    var limitsFruit : Int? {
+    var limitsFruit : Double? {
         get {
             if let fruit = settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] {
-                return fruit as? Int
+                return fruit as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
     
@@ -214,12 +214,12 @@ class ModelController
         }
     }
     
-    var limitsStarch : Int? {
+    var limitsStarch : Double? {
         get {
             if let starch = settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] {
-                return starch as? Int
+                return starch as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
         
@@ -233,12 +233,12 @@ class ModelController
         }
     }
     
-    var limitsVeggies : Int? {
+    var limitsVeggies : Double? {
         get {
             if let veggies = settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] {
-                return veggies as? Int
+                return veggies as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
         
@@ -271,12 +271,12 @@ class ModelController
         }
     }
 
-    var statsWeight : Int? {
+    var statsWeight : Double? {
         get {
             if let weight = settingsInFirebase?[KeysForFirebase.WEIGHED] {
-                return weight as? Int
+                return weight as? Double
             } else {
-                return 0
+                return 0.0
             }
         }
         
@@ -292,7 +292,7 @@ class ModelController
 
     var statsExercise : Int? {
         get {
-            if let exercise = settingsInFirebase?[KeysForFirebase.MINUTES_EXERCISED] {
+            if let exercise = settingsInFirebase?[KeysForFirebase.EXERCISED] {
                 return exercise as? Int
             } else {
                 return 0
@@ -309,7 +309,25 @@ class ModelController
         }
     }
 
-     // MARK - Meal management
+    var statsSupplements : Int? {
+        get {
+            if let exercise = settingsInFirebase?[KeysForFirebase.SUPPLEMENTS] {
+                return exercise as? Int
+            } else {
+                return 0
+            }
+        }
+        
+        set {
+            if settingsInFirebase == nil {
+                NSLog("settings doesn't exist in set statsExercise")
+            } else {
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
+            }
+        }
+    }
+    // MARK - Meal management
     
     func newDay() {
         
@@ -357,15 +375,15 @@ class ModelController
         for (newSettingsKey, newSettingsValue) in settings {
             switch (newSettingsKey) {
             case KeysForFirebase.LIMIT_PROTEIN:
-                limitsProtein = newSettingsValue as? Int
+                limitsProtein = newSettingsValue as? Double
             case  KeysForFirebase.LIMIT_FAT:
-                limitsFat = newSettingsValue as? Int
+                limitsFat = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_STARCH:
-                limitsStarch = newSettingsValue as? Int
+                limitsStarch = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_FRUIT:
-                limitsFruit = newSettingsValue as? Int
+                limitsFruit = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_VEGGIES:
-                limitsVeggies = newSettingsValue as? Int
+                limitsVeggies = newSettingsValue as? Double
             default:
                 NSLog("Bad key in updateSettings")
             }
