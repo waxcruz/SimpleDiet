@@ -56,12 +56,12 @@ class ModelController
         })
 
         let journalRef = ref.child(KeysForFirebase.TABLE_JOURNAL)
-        journalHandle = statsRef.observe(DataEventType.value, with: { (snapshot) in
+        journalHandle = journalRef.observe(DataEventType.value, with: { (snapshot) in
             self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-//            for key in (self.statsInFirebase?.keys)! {
+//            for key in (self.journalInFirebase?.keys)! {
 //                NSLog("key: \(key)")
 //            }
-//            for value in (self.statsInFirebase?.values)! {
+//            for value in (self.journalInFirebase?.values)! {
 //                NSLog("value: \(value)")
 //                var dict = value as! Dictionary<String, Any>
 //                let dictValue =  dict["WEIGHED"]
@@ -254,9 +254,9 @@ class ModelController
     }
     
   
-    var statsWaterConsumed : Int? {
+    var journalWaterConsumed : Int? {
         get {
-            if let water = statsInFirebase?[KeysForFirebase.GLASSES_OF_WATER] {
+            if let water = journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] {
                 return water as? Int
             } else {
                 return 0
@@ -265,15 +265,15 @@ class ModelController
         
         set {
             if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set statsWaterConsumed")
+                NSLog("settings doesn't exist in set journalWaterConsumed")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
-                statsInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
+                journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
             }
         }
     }
 
-    var statsWeight : Double? {
+    var journalWeight : Double? {
         get {
             if let weight = settingsInFirebase?[KeysForFirebase.WEIGHED] {
                 return weight as? Double
@@ -284,15 +284,15 @@ class ModelController
         
         set {
             if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set statsWeight")
+                NSLog("settings doesn't exist in set journalWeight")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
     }
 
-    var statsExercise : Int? {
+    var journalExercise : Int? {
         get {
             if let exercise = settingsInFirebase?[KeysForFirebase.EXERCISED] {
                 return exercise as? Int
@@ -303,15 +303,15 @@ class ModelController
         
         set {
             if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set statsExercise")
+                NSLog("settings doesn't exist in set journalExercise")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
     }
 
-    var statsSupplements : Int? {
+    var journalSupplements : Int? {
         get {
             if let exercise = settingsInFirebase?[KeysForFirebase.SUPPLEMENTS] {
                 return exercise as? Int
@@ -322,10 +322,10 @@ class ModelController
         
         set {
             if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set statsExercise")
+                NSLog("settings doesn't exist in set journalExercise")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_STATS, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                statsInFirebase?[KeysForFirebase.WEIGHED] = newValue
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
     }

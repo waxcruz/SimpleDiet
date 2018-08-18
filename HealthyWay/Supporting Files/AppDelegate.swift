@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         model.startModel()
         
-        let settingsRef = model.ref.child("Settings")
+        let settingsRef = model.ref.child("waxcoder@yahoo,com")
         settingsRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
             self.model.breakConnectionToFirebase(typeOfHandle: FirebaseHandleIdentifiers.settings)

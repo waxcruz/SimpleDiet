@@ -27,11 +27,11 @@ func makeCopyright() -> String {
 }
 
 func makeFirebaseEmailKey(email : String) -> String {
-    var firebaseEmail = email.replace(/\./g, ",");
+    let firebaseEmail = email.replacingOccurrences(of: "[.]", with: ",", options: .regularExpression)
     return firebaseEmail
 }
 
 func restoreEmail(firebaseEmailKey email : String) -> String {
-    var validEmail = email.replace(/,/g, ".");
+    let validEmail = email.replacingOccurrences(of: "[,]", with: ".", options: .regularExpression)
     return validEmail
 }
