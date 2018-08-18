@@ -19,3 +19,19 @@ func makeDateFromString(dateAsString: String) -> Date{
         return Date(timeIntervalSince1970: 0)
     }
 }
+
+func makeCopyright() -> String {
+    let today = Date()
+    return "Copyright @ " +  today.makeYearStringFromDate() +
+    " The Healthy Way"
+}
+
+func makeFirebaseEmailKey(email : String) -> String {
+    var firebaseEmail = email.replace(/\./g, ",");
+    return firebaseEmail
+}
+
+func restoreEmail(firebaseEmailKey email : String) -> String {
+    var validEmail = email.replace(/,/g, ".");
+    return validEmail
+}

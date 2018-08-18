@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F883320FCC788007F91B8 /* JournalViewController.swift */; };
-		3435699E2110E6A6002B7D48 /* MyDateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3435699D2110E6A6002B7D48 /* MyDateMethods.swift */; };
+		3435699E2110E6A6002B7D48 /* MyMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3435699D2110E6A6002B7D48 /* MyMethods.swift */; };
 		344B1C0A20F8EAC300BADBDA /* mealsOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0420F8EAC200BADBDA /* mealsOutlined.png */; };
 		344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0520F8EAC200BADBDA /* journalOutlined.png */; };
 		344B1C0C20F8EAC300BADBDA /* resultsFilleded.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0620F8EAC200BADBDA /* resultsFilleded.png */; };
@@ -41,7 +41,7 @@
 /* Begin PBXFileReference section */
 		328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleDieting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340F883320FCC788007F91B8 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
-		3435699D2110E6A6002B7D48 /* MyDateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDateMethods.swift; sourceTree = "<group>"; };
+		3435699D2110E6A6002B7D48 /* MyMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMethods.swift; sourceTree = "<group>"; };
 		344B1C0420F8EAC200BADBDA /* mealsOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealsOutlined.png; sourceTree = "<group>"; };
 		344B1C0520F8EAC200BADBDA /* journalOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalOutlined.png; sourceTree = "<group>"; };
 		344B1C0620F8EAC200BADBDA /* resultsFilleded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsFilleded.png; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		34B35B7121021C8C00D3E90B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
-		34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDieting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34C3F0BC20EDDFEB002DAF24 /* Healthy Way.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Healthy Way.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C3F0C420EDDFEB002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34C3F0C620EDDFED002DAF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		34C3F0BD20EDDFEB002DAF24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */,
+				34C3F0BC20EDDFEB002DAF24 /* Healthy Way.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				34DDD5F320F3A98300D4A110 /* ExtendDate.swift */,
-				3435699D2110E6A6002B7D48 /* MyDateMethods.swift */,
+				3435699D2110E6A6002B7D48 /* MyMethods.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -208,9 +208,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		34C3F0BB20EDDFEB002DAF24 /* SimpleDieting */ = {
+		34C3F0BB20EDDFEB002DAF24 /* Healthy Way */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34C3F0CE20EDDFED002DAF24 /* Build configuration list for PBXNativeTarget "SimpleDieting" */;
+			buildConfigurationList = 34C3F0CE20EDDFED002DAF24 /* Build configuration list for PBXNativeTarget "Healthy Way" */;
 			buildPhases = (
 				98ED5302E4CC96863FBB4AED /* [CP] Check Pods Manifest.lock */,
 				34C3F0B820EDDFEB002DAF24 /* Sources */,
@@ -222,9 +222,9 @@
 			);
 			dependencies = (
 			);
-			name = SimpleDieting;
+			name = "Healthy Way";
 			productName = SimpleDieting;
-			productReference = 34C3F0BC20EDDFEB002DAF24 /* SimpleDieting.app */;
+			productReference = 34C3F0BC20EDDFEB002DAF24 /* Healthy Way.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +242,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34C3F0B720EDDFEA002DAF24 /* Build configuration list for PBXProject "SimpleDieting" */;
+			buildConfigurationList = 34C3F0B720EDDFEA002DAF24 /* Build configuration list for PBXProject "Healthy Way" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -255,7 +255,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34C3F0BB20EDDFEB002DAF24 /* SimpleDieting */,
+				34C3F0BB20EDDFEB002DAF24 /* Healthy Way */,
 			);
 		};
 /* End PBXProject section */
@@ -344,7 +344,7 @@
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
 				3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */,
 				340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */,
-				3435699E2110E6A6002B7D48 /* MyDateMethods.swift in Sources */,
+				3435699E2110E6A6002B7D48 /* MyMethods.swift in Sources */,
 				34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,7 +526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34C3F0B720EDDFEA002DAF24 /* Build configuration list for PBXProject "SimpleDieting" */ = {
+		34C3F0B720EDDFEA002DAF24 /* Build configuration list for PBXProject "Healthy Way" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34C3F0CC20EDDFED002DAF24 /* Debug */,
@@ -535,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34C3F0CE20EDDFED002DAF24 /* Build configuration list for PBXNativeTarget "SimpleDieting" */ = {
+		34C3F0CE20EDDFED002DAF24 /* Build configuration list for PBXNativeTarget "Healthy Way" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34C3F0CF20EDDFED002DAF24 /* Debug */,

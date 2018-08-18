@@ -10,12 +10,17 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var copyright: UILabel!
+    
+    
     // MARK: - global model controller
     var modelController : ModelController!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        copyright.text = makeCopyright()
 
         // Do any additional setup after loading the view.
     }

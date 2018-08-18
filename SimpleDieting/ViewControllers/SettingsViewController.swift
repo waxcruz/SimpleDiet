@@ -10,6 +10,10 @@ import UIKit
 import MessageUI
 
 class SettingsViewController: UIViewController{
+    
+    @IBOutlet weak var copyright: UILabel!
+    
+    
     // MARK: - global model controller
     var modelController : ModelController!
     // MARK: - outlets
@@ -35,6 +39,7 @@ class SettingsViewController: UIViewController{
     // MARK - Delegates and Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        copyright.text = makeCopyright()
         modelController = (self.parent as! SimpleDietTabBarController).getModel()
         if modelController?.settingsInFirebase?.count == 0 {
             NSLog("model not ready. Fix it")
@@ -60,7 +65,7 @@ class SettingsViewController: UIViewController{
             let tag = dataEntryNumbers[tagCollectionSequence].tag
             switch (tag) {
             case 0:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN] as? Double ?? 0)
+                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0)
             case 1:
                 displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0)
             case 2:
@@ -68,10 +73,8 @@ class SettingsViewController: UIViewController{
             case 3:
                 displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0)
             case 4:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_VEGGIES] as? Double ?? 0)
-            case 5:
                 displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_HIGH] as? Double ?? 0)
-                if displayTextField.text == "0" {
+                if displayTextField.text == "0.0" {
                     displayTextField.text = ""
                 }
             default :
@@ -130,17 +133,17 @@ class SettingsViewController: UIViewController{
         }
         
         switch (textField.tag) {
-            // adjust numberFor... by - 2 offset to match the storyboard tag. Storyboard tags start with 0
-        case SettingsDataEntryNumbers.numberForProtein.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_PROTEIN] = keyedDouble
-        case SettingsDataEntryNumbers.numberForFat.rawValue - 2:
+            // adjust numberFor... by - 1 offset to match the storyboard tag. Storyboard tags start with 0
+        case SettingsDataEntryNumbers.numberForProteinLow.rawValue - 1:
+            newSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] = keyedDouble
+        case SettingsDataEntryNumbers.numberForFat.rawValue - 1:
             newSettings[KeysForFirebase.LIMIT_FAT] = keyedDouble
-        case SettingsDataEntryNumbers.numberForStarch.rawValue - 2:
+        case SettingsDataEntryNumbers.numberForStarch.rawValue - 1:
             newSettings[KeysForFirebase.LIMIT_STARCH] = keyedDouble
-        case SettingsDataEntryNumbers.numberForFruit.rawValue - 2:
+        case SettingsDataEntryNumbers.numberForFruit.rawValue - 1:
             newSettings[KeysForFirebase.LIMIT_FRUIT] = keyedDouble
-        case  SettingsDataEntryNumbers.numberForVeggies.rawValue - 2:
-            newSettings[KeysForFirebase.LIMIT_VEGGIES] = keyedDouble
+        case SettingsDataEntryNumbers.numberForProteinHigh.rawValue - 1:
+            newSettings[KeysForFirebase.LIMIT_PROTEIN_HIGH] = keyedDouble
         default:
             NSLog("bad input to numberTextFieldEnd")
         }

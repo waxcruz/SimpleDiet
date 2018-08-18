@@ -13,8 +13,8 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     // MARK: - global model controller
     var modelController : ModelController!
     // MARK: - outlets
-
-    @IBOutlet weak var weight: UITextField!
+    @IBOutlet weak var copyright: UILabel!
+    
     @IBOutlet weak var mealDescription: UITextView!
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var recordingDate: UITextField!
@@ -55,6 +55,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        copyright.text = makeCopyright()
         modelController = (self.parent as! SimpleDietTabBarController).getModel()
         if modelController?.settingsInFirebase?.count == 0 {
             NSLog("model not ready. Fix it")
@@ -72,8 +73,6 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         firebaseMealContents = mealOnDate(mealDate: recordDate.makeShortStringDate())
         firebaseJournal = journalOnDate(journalDate: recordDate.makeShortStringDate())
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,10 +83,14 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         recordingDate.inputAccessoryView = toolBarDate
         bindNumberFieldsToModel()
         bindMealDateToDatePicker()
-        //        todayWeight.inputAccessoryView = toolBarNumber
-        //        todayWeight.text = modelController.targetWeigthString()
-        //        recordingDate.text = modelController.targetDateString()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func formatMealChoices() {
@@ -106,7 +109,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             let mapTagToSettingIndex = dailyConsumptionTotals[tag].tag
             switch (mapTagToSettingIndex) {
             case 0:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_PROTEIN] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0.0)
             case 1:
                 dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0.0)
             case 2:
@@ -114,7 +117,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             case 3:
                 dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0.0)
             case 4:
-                dailyConsumptionTotals[tag].text =  String(firebaseSettings[KeysForFirebase.LIMIT_VEGGIES] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = "3.0"
             default:
                 NSLog("index error in initializeView")
             }

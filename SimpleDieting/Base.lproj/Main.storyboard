@@ -14,7 +14,7 @@
         <!--Simple Diet Loading-->
         <scene sceneID="Gub-HV-tNq">
             <objects>
-                <viewController title="Simple Diet Loading" id="78S-Mo-Mnw" customClass="LoadingPleaseWaitViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Simple Diet Loading" id="78S-Mo-Mnw" customClass="LoadingPleaseWaitViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yPs-tD-Cuv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,10 +26,28 @@
                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv5-OC-tqs" userLabel="copyright">
+                                <rect key="frame" x="16" y="655" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="3Bt-8k-R0e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZQO-Qb-IPr" firstAttribute="bottom" secondItem="nv5-OC-tqs" secondAttribute="bottom" constant="2" id="3fL-PU-d3D"/>
+                            <constraint firstItem="nv5-OC-tqs" firstAttribute="centerX" secondItem="ZQO-Qb-IPr" secondAttribute="centerX" id="cCP-rw-dxR"/>
+                            <constraint firstItem="ZQO-Qb-IPr" firstAttribute="trailing" secondItem="nv5-OC-tqs" secondAttribute="trailing" constant="16" id="dzw-st-LSy"/>
+                            <constraint firstItem="nv5-OC-tqs" firstAttribute="leading" secondItem="ZQO-Qb-IPr" secondAttribute="leading" constant="16" id="teW-Bh-Dqh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZQO-Qb-IPr"/>
                     </view>
+                    <connections>
+                        <outlet property="copyright" destination="nv5-OC-tqs" id="dPz-3o-L3p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiW-On-Jmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,7 +56,7 @@
         <!--Login View Controller-->
         <scene sceneID="3he-tY-XP7">
             <objects>
-                <viewController storyboardIdentifier="SignInVC" id="XS8-Fc-xYl" customClass="LoginViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" id="XS8-Fc-xYl" customClass="LoginViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h59-po-hUf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,20 +176,34 @@
                                     <constraint firstItem="4rX-lI-KPT" firstAttribute="centerY" secondItem="cx9-u1-Wy1" secondAttribute="centerY" id="o6E-EX-KH6"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67p-8M-229" userLabel="copyright">
+                                <rect key="frame" x="16" y="655" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="CFN-lf-kmg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5Ct-wd-Kix" firstAttribute="trailing" secondItem="67p-8M-229" secondAttribute="trailing" constant="16" id="2sg-th-a6h"/>
+                            <constraint firstItem="67p-8M-229" firstAttribute="centerX" secondItem="5Ct-wd-Kix" secondAttribute="centerX" id="6kV-QU-Z4X"/>
                             <constraint firstItem="cx9-u1-Wy1" firstAttribute="top" secondItem="5Ct-wd-Kix" secondAttribute="top" id="76b-9d-60o"/>
                             <constraint firstItem="cx9-u1-Wy1" firstAttribute="leading" secondItem="5Ct-wd-Kix" secondAttribute="leading" id="Fu6-Hl-9dy"/>
                             <constraint firstItem="5Ct-wd-Kix" firstAttribute="bottom" secondItem="9H6-ii-nLC" secondAttribute="bottom" id="Jhh-ve-8S3"/>
                             <constraint firstItem="9H6-ii-nLC" firstAttribute="leading" secondItem="5Ct-wd-Kix" secondAttribute="leading" id="Kxw-w6-wCT"/>
+                            <constraint firstItem="5Ct-wd-Kix" firstAttribute="bottom" secondItem="67p-8M-229" secondAttribute="bottom" constant="2" id="Rh2-5N-DbR"/>
                             <constraint firstItem="9H6-ii-nLC" firstAttribute="top" secondItem="cx9-u1-Wy1" secondAttribute="bottom" id="SRU-W9-i91"/>
+                            <constraint firstItem="67p-8M-229" firstAttribute="leading" secondItem="5Ct-wd-Kix" secondAttribute="leading" constant="16" id="j9g-yo-IAq"/>
                             <constraint firstItem="cx9-u1-Wy1" firstAttribute="trailing" secondItem="5Ct-wd-Kix" secondAttribute="trailing" id="nYK-XV-asR"/>
                             <constraint firstItem="5Ct-wd-Kix" firstAttribute="trailing" secondItem="9H6-ii-nLC" secondAttribute="trailing" id="vTI-85-MHZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ct-wd-Kix"/>
                     </view>
                     <connections>
+                        <outlet property="copyright" destination="67p-8M-229" id="BzJ-SN-jQY"/>
                         <segue destination="TPj-CJ-J6l" kind="show" identifier="segueDummy" id="aFc-NR-QCY"/>
                     </connections>
                 </viewController>
@@ -182,7 +214,7 @@
         <!--Social Media View Controller-->
         <scene sceneID="7OB-cl-DuP">
             <objects>
-                <viewController id="fh2-bo-osw" customClass="SocialMediaViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fh2-bo-osw" customClass="SocialMediaViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8cr-Yj-Jet">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,10 +299,22 @@
                                     <constraint firstItem="kRK-Xr-GLJ" firstAttribute="top" secondItem="LPg-t3-YP6" secondAttribute="top" constant="8" id="tmF-AI-YQL"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZG-wV-NC4" userLabel="copyright">
+                                <rect key="frame" x="16" y="606" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="YQt-H3-Gog"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="77P-5W-J2u" firstAttribute="trailing" secondItem="oZG-wV-NC4" secondAttribute="trailing" constant="16" id="1Xb-uy-9es"/>
+                            <constraint firstItem="oZG-wV-NC4" firstAttribute="leading" secondItem="77P-5W-J2u" secondAttribute="leading" constant="16" id="2ru-g0-kyc"/>
                             <constraint firstItem="LPg-t3-YP6" firstAttribute="top" secondItem="77P-5W-J2u" secondAttribute="top" id="Bw3-8M-kjC"/>
+                            <constraint firstItem="77P-5W-J2u" firstAttribute="bottom" secondItem="oZG-wV-NC4" secondAttribute="bottom" constant="2" id="YQ5-pc-Pvp"/>
                             <constraint firstItem="77P-5W-J2u" firstAttribute="bottom" secondItem="LPg-t3-YP6" secondAttribute="bottom" id="kzM-XX-NKX"/>
                             <constraint firstItem="LPg-t3-YP6" firstAttribute="leading" secondItem="77P-5W-J2u" secondAttribute="leading" constant="16" id="lsF-3c-WOC"/>
                             <constraint firstItem="77P-5W-J2u" firstAttribute="trailing" secondItem="LPg-t3-YP6" secondAttribute="trailing" constant="16" id="u0Q-pu-hqa"/>
@@ -278,6 +322,9 @@
                         <viewLayoutGuide key="safeArea" id="77P-5W-J2u"/>
                     </view>
                     <navigationItem key="navigationItem" id="sjW-f4-fnO"/>
+                    <connections>
+                        <outlet property="copyright" destination="oZG-wV-NC4" id="T6B-Rb-yjh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IlB-Nr-3lQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +333,7 @@
         <!--Weight Graph-->
         <scene sceneID="EDr-ar-sqL">
             <objects>
-                <viewController id="CQX-yq-ymL" customClass="WeightChartViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CQX-yq-ymL" customClass="WeightChartViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YdO-vV-suI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,20 +371,35 @@
                                     <constraint firstAttribute="trailing" secondItem="ljT-Wu-mXN" secondAttribute="trailing" constant="15" id="xDu-oc-eXy"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FN-fI-ign" userLabel="copyright">
+                                <rect key="frame" x="16" y="606" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="QNo-Eb-wiE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="L3e-Gv-98b" firstAttribute="leading" secondItem="IUx-gf-dVH" secondAttribute="leading" constant="2" id="1Ng-8U-a28"/>
                             <constraint firstItem="6t2-Gh-wGb" firstAttribute="top" secondItem="IUx-gf-dVH" secondAttribute="top" id="LYD-cV-kM4"/>
+                            <constraint firstItem="IUx-gf-dVH" firstAttribute="trailing" secondItem="6FN-fI-ign" secondAttribute="trailing" constant="16" id="RDU-bO-CGU"/>
                             <constraint firstItem="IUx-gf-dVH" firstAttribute="trailing" secondItem="6t2-Gh-wGb" secondAttribute="trailing" id="XpP-cV-AYT"/>
                             <constraint firstItem="IUx-gf-dVH" firstAttribute="trailing" secondItem="L3e-Gv-98b" secondAttribute="trailing" constant="2" id="aYm-Qy-VxO"/>
+                            <constraint firstItem="6FN-fI-ign" firstAttribute="leading" secondItem="IUx-gf-dVH" secondAttribute="leading" constant="16" id="ccK-4V-9vS"/>
                             <constraint firstItem="L3e-Gv-98b" firstAttribute="top" secondItem="6t2-Gh-wGb" secondAttribute="bottom" constant="2" id="fVg-IU-1zK"/>
+                            <constraint firstItem="IUx-gf-dVH" firstAttribute="bottom" secondItem="6FN-fI-ign" secondAttribute="bottom" constant="2" id="pq7-5G-GJb"/>
                             <constraint firstItem="IUx-gf-dVH" firstAttribute="leading" secondItem="6t2-Gh-wGb" secondAttribute="leading" id="q64-x1-NAO"/>
                             <constraint firstItem="IUx-gf-dVH" firstAttribute="bottom" secondItem="L3e-Gv-98b" secondAttribute="bottom" constant="2" id="tKc-vd-akr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IUx-gf-dVH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weight Graph" image="weightChartTab" id="Aru-td-NlT"/>
+                    <connections>
+                        <outlet property="copyright" destination="6FN-fI-ign" id="bDr-Br-ZEN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcf-2T-fYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,7 +408,7 @@
         <!--SImple Diet-->
         <scene sceneID="pe2-EO-A2Z">
             <objects>
-                <tabBarController storyboardIdentifier="SimpleDietTabBarControllerID" title="SImple Diet" id="TPj-CJ-J6l" customClass="SimpleDietTabBarController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SimpleDietTabBarControllerID" title="SImple Diet" id="TPj-CJ-J6l" customClass="SimpleDietTabBarController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tjj-Tp-9pE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -367,7 +429,7 @@
         <!--Settings-->
         <scene sceneID="dOU-H3-XRr">
             <objects>
-                <viewController title="Settings" id="eSG-1j-DRE" customClass="SettingsViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="eSG-1j-DRE" customClass="SettingsViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vfI-hJ-e93">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -473,7 +535,7 @@
                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -580,11 +642,21 @@
                                     <constraint firstAttribute="height" constant="40" id="NMe-63-pI2"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlL-9d-xss" userLabel="copyright">
+                                <rect key="frame" x="16" y="606" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Yhj-bK-TEa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qdJ-LJ-l7O" firstAttribute="centerX" secondItem="xVR-Zd-XYB" secondAttribute="centerX" id="2XG-y4-wdL"/>
                             <constraint firstItem="IeL-1O-nF7" firstAttribute="top" secondItem="CVY-nV-huO" secondAttribute="bottom" constant="8" id="42p-NB-a5S"/>
+                            <constraint firstItem="xVR-Zd-XYB" firstAttribute="trailing" secondItem="JlL-9d-xss" secondAttribute="trailing" constant="16" id="5Wt-q9-nQq"/>
                             <constraint firstItem="qdJ-LJ-l7O" firstAttribute="leading" secondItem="xVR-Zd-XYB" secondAttribute="leading" id="7lE-Jp-wb6"/>
                             <constraint firstItem="9as-sQ-8zF" firstAttribute="width" secondItem="vfI-hJ-e93" secondAttribute="width" id="7sf-xF-Enq"/>
                             <constraint firstItem="xVR-Zd-XYB" firstAttribute="trailing" secondItem="qdJ-LJ-l7O" secondAttribute="trailing" id="8gu-OF-4ge"/>
@@ -593,8 +665,10 @@
                             <constraint firstItem="xVR-Zd-XYB" firstAttribute="trailing" secondItem="IeL-1O-nF7" secondAttribute="trailing" id="GvL-4H-kSa"/>
                             <constraint firstItem="xVR-Zd-XYB" firstAttribute="trailing" secondItem="L7b-s3-TZm" secondAttribute="trailing" id="UQE-dW-rec"/>
                             <constraint firstItem="CVY-nV-huO" firstAttribute="top" secondItem="9as-sQ-8zF" secondAttribute="bottom" constant="8" id="Ucr-zg-aOx"/>
+                            <constraint firstItem="xVR-Zd-XYB" firstAttribute="bottom" secondItem="JlL-9d-xss" secondAttribute="bottom" constant="2" id="XFP-FK-VvI"/>
                             <constraint firstItem="CVY-nV-huO" firstAttribute="centerX" secondItem="xVR-Zd-XYB" secondAttribute="centerX" id="XHF-8t-ZzW"/>
                             <constraint firstItem="IeL-1O-nF7" firstAttribute="leading" secondItem="xVR-Zd-XYB" secondAttribute="leading" id="aVP-Tp-0s1"/>
+                            <constraint firstItem="JlL-9d-xss" firstAttribute="leading" secondItem="xVR-Zd-XYB" secondAttribute="leading" constant="16" id="chg-Je-lSq"/>
                             <constraint firstItem="CVY-nV-huO" firstAttribute="width" secondItem="vfI-hJ-e93" secondAttribute="width" id="iLC-EZ-3bG"/>
                             <constraint firstItem="9as-sQ-8zF" firstAttribute="leading" secondItem="xVR-Zd-XYB" secondAttribute="leading" id="ixs-u8-7sl"/>
                             <constraint firstItem="qdJ-LJ-l7O" firstAttribute="top" secondItem="IeL-1O-nF7" secondAttribute="bottom" constant="19" id="k1i-kQ-fl7"/>
@@ -609,6 +683,7 @@
                     <navigationItem key="navigationItem" id="HsE-il-lU4"/>
                     <connections>
                         <outlet property="cancelButton" destination="g2m-jh-WHT" id="kYn-JF-WeD"/>
+                        <outlet property="copyright" destination="JlL-9d-xss" id="veS-MC-plB"/>
                         <outlet property="saveButton" destination="Ifz-xH-e23" id="J9q-3H-1Ww"/>
                         <outletCollection property="dataEntryNumbers" destination="wl6-XQ-tbY" collectionClass="NSMutableArray" id="zAm-Bc-bzC"/>
                         <outletCollection property="dataEntryNumbers" destination="3fZ-U0-gCr" collectionClass="NSMutableArray" id="vHf-hT-v46"/>
@@ -624,7 +699,7 @@
         <!--Healthy Way Education Library-->
         <scene sceneID="B0J-tm-pGO">
             <objects>
-                <viewController id="xdc-pR-owc" customClass="HandoutsViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xdc-pR-owc" customClass="HandoutsViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AZc-rL-cye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -679,7 +754,7 @@
         <!--Grocery List-->
         <scene sceneID="XHI-u7-51S">
             <objects>
-                <viewController id="J7a-bj-5Wg" customClass="GroceryListViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J7a-bj-5Wg" customClass="GroceryListViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Xf-6E-OeR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -730,21 +805,34 @@
                                     <constraint firstItem="d0X-T5-WMS" firstAttribute="leading" secondItem="Rre-HX-WAP" secondAttribute="leading" id="lc3-A7-YcQ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5B-oC-Bpw" userLabel="copyright">
+                                <rect key="frame" x="16" y="606" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="PZv-ah-mDd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dEZ-jn-bYs" firstAttribute="trailing" secondItem="SzJ-Dh-588" secondAttribute="trailing" constant="16" id="91C-Q6-xX5"/>
+                            <constraint firstItem="dEZ-jn-bYs" firstAttribute="bottom" secondItem="I5B-oC-Bpw" secondAttribute="bottom" constant="2" id="Cvl-g8-YwW"/>
                             <constraint firstItem="Rre-HX-WAP" firstAttribute="top" secondItem="dEZ-jn-bYs" secondAttribute="top" constant="32" id="ETp-TJ-1hK"/>
                             <constraint firstItem="Rre-HX-WAP" firstAttribute="leading" secondItem="dEZ-jn-bYs" secondAttribute="leading" constant="16" id="HIL-7V-y8a"/>
+                            <constraint firstItem="dEZ-jn-bYs" firstAttribute="trailing" secondItem="I5B-oC-Bpw" secondAttribute="trailing" constant="16" id="OuG-gJ-di3"/>
                             <constraint firstItem="dEZ-jn-bYs" firstAttribute="bottom" secondItem="Rre-HX-WAP" secondAttribute="bottom" constant="20" id="ml0-zV-UDg"/>
                             <constraint firstItem="dEZ-jn-bYs" firstAttribute="trailing" secondItem="Rre-HX-WAP" secondAttribute="trailing" constant="16" id="olr-z2-gmr"/>
                             <constraint firstItem="SzJ-Dh-588" firstAttribute="top" secondItem="dEZ-jn-bYs" secondAttribute="top" id="qC6-8R-qw5"/>
                             <constraint firstItem="SzJ-Dh-588" firstAttribute="leading" secondItem="dEZ-jn-bYs" secondAttribute="leading" constant="16" id="yoB-8a-ehI"/>
+                            <constraint firstItem="I5B-oC-Bpw" firstAttribute="leading" secondItem="dEZ-jn-bYs" secondAttribute="leading" constant="16" id="zWv-tK-Bra"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dEZ-jn-bYs"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Grocery List" image="groceryListTab" id="idI-N9-2OL"/>
                     <connections>
+                        <outlet property="copyright" destination="I5B-oC-Bpw" id="bDJ-lC-Aod"/>
                         <outlet property="groceryListImageView" destination="i4i-8O-aqS" id="R7u-wZ-QN7"/>
                         <outlet property="groceryListScrollView" destination="d0X-T5-WMS" id="cJ9-62-D15"/>
                     </connections>
@@ -756,11 +844,20 @@
         <!--Journal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SimpleDietViewControllerID" title="Journal" id="BYZ-38-t0r" customClass="JournalViewController" customModule="SimpleDieting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SimpleDietViewControllerID" title="Journal" id="BYZ-38-t0r" customClass="JournalViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyG-CD-PG1" userLabel="copyright">
+                                <rect key="frame" x="16" y="606" width="343" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Qwi-BG-T23"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXu-lz-H8N" userLabel="Header">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <subviews>
@@ -796,7 +893,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kB-Fj-5hl" userLabel="MailBox">
-                                        <rect key="frame" x="-1" y="3" width="50" height="25"/>
+                                        <rect key="frame" x="0.0" y="3" width="50" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="p14-yF-b7U"/>
                                             <constraint firstAttribute="height" constant="25" id="zV5-3H-Bz1"/>
@@ -817,7 +914,7 @@
                                     <constraint firstItem="1kB-Fj-5hl" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="top" constant="3" id="YCl-OR-hdo"/>
                                     <constraint firstAttribute="bottom" secondItem="1kB-Fj-5hl" secondAttribute="bottom" constant="2" id="h2H-K2-rwd"/>
                                     <constraint firstAttribute="height" constant="30" id="nh0-HO-KrO"/>
-                                    <constraint firstItem="1kB-Fj-5hl" firstAttribute="leading" secondItem="VXu-lz-H8N" secondAttribute="leading" constant="-1" id="rez-Dw-Z60"/>
+                                    <constraint firstItem="1kB-Fj-5hl" firstAttribute="leading" secondItem="VXu-lz-H8N" secondAttribute="leading" id="rez-Dw-Z60"/>
                                     <constraint firstItem="P8E-bY-cAX" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="top" id="wmO-zh-6gr"/>
                                 </constraints>
                             </view>
@@ -1155,7 +1252,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BjV-qM-QWY" userLabel="Counts Middle Stack View">
                                                         <rect key="frame" x="147.5" y="293" width="78.5" height="60"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGQ-7c-lot" userLabel="Fruits Stack View">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGQ-7c-lot" userLabel="Starch Stack View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starch" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNy-dh-Hal">
@@ -1164,7 +1261,7 @@
                                                                         <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Fruit Consumption">
+                                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Starch Consumption">
                                                                         <rect key="frame" x="47.5" y="0.0" width="31" height="30"/>
                                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="textColor"/>
@@ -1173,7 +1270,7 @@
                                                                     </textField>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4e-pa-FQa" userLabel="Veggies Stack View">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4e-pa-FQa" userLabel="Fruit Stack View">
                                                                 <rect key="frame" x="0.0" y="30" width="78.5" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ex-Wv-8s6">
@@ -1182,7 +1279,7 @@
                                                                         <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Veggie Consumption">
+                                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Fruit Consumption">
                                                                         <rect key="frame" x="47.5" y="0.0" width="31" height="30"/>
                                                                         <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="textColor"/>
@@ -1512,13 +1609,17 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dPI-Kq-ynN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0qt-M3-OVN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wyG-CD-PG1" secondAttribute="bottom" constant="2" id="20r-sZ-MOe"/>
                             <constraint firstItem="VXu-lz-H8N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7FG-R7-ucj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JhX-7q-mtg" secondAttribute="trailing" constant="16" id="94T-4x-g0F"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.18" id="HCE-4r-oTw"/>
+                            <constraint firstItem="wyG-CD-PG1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LRp-35-WoK"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="M1b-5R-G7B"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Nrn-Lc-1KE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wyG-CD-PG1" secondAttribute="trailing" constant="16" id="TLl-M4-4tY"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="16" id="UX8-5h-y35"/>
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="width" secondItem="VXu-lz-H8N" secondAttribute="width" id="YGz-tA-VHn"/>
+                            <constraint firstItem="wyG-CD-PG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YbJ-8R-BuP"/>
                             <constraint firstItem="VXu-lz-H8N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dXC-RZ-Gtp"/>
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="bottom" constant="2" id="jGp-GV-OQ5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dPI-Kq-ynN" secondAttribute="trailing" id="kcj-NI-muh"/>
@@ -1538,13 +1639,13 @@
                         <outlet property="cancelButton" destination="knE-t3-acd" id="W3g-Sr-Umt"/>
                         <outlet property="chooseMeal" destination="gyU-at-o00" id="QLg-LG-uIO"/>
                         <outlet property="constraintMealContentHeight" destination="5lQ-1A-IUw" id="Kxj-ku-fYY"/>
+                        <outlet property="copyright" destination="wyG-CD-PG1" id="c6Z-3U-ths"/>
                         <outlet property="mealContent" destination="Muk-Dm-ga8" id="3Jk-vs-1QI"/>
                         <outlet property="mealDescription" destination="Qc8-nk-ztc" id="t4A-26-gFZ"/>
                         <outlet property="notes" destination="4S9-01-fQ7" id="fHa-a8-91v"/>
                         <outlet property="recordingDate" destination="oB7-gj-9pi" id="Nj7-Ot-zG8"/>
                         <outlet property="saveButton" destination="P8E-bY-cAX" id="HG9-63-iOg"/>
                         <outlet property="scrollContent" destination="dPI-Kq-ynN" id="BMW-RZ-Rvp"/>
-                        <outlet property="weight" destination="er0-do-UKl" id="yOf-Gl-KmR"/>
                         <outletCollection property="dailyConsumptionTotals" destination="XhB-BN-dDQ" collectionClass="NSMutableArray" id="zF2-mj-HJJ"/>
                         <outletCollection property="dailyConsumptionTotals" destination="Ujh-Ot-6rF" collectionClass="NSMutableArray" id="djv-KV-6vb"/>
                         <outletCollection property="dailyConsumptionTotals" destination="9cN-Xm-XOx" collectionClass="NSMutableArray" id="qTt-54-PeQ"/>

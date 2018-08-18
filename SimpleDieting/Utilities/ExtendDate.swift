@@ -18,4 +18,12 @@ extension Date {
     }
     
     
+    func makeYearStringFromDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+        let year = dateFormatter.string(from: self)
+        return year
+    }
+
 }

@@ -10,10 +10,13 @@ import UIKit
 
 class SocialMediaViewController: UIViewController {
 
+    @IBOutlet weak var copyright: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        copyright.text = makeCopyright()
+        
     }
 
     override func didReceiveMemoryWarning() {

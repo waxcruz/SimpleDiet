@@ -11,16 +11,16 @@ import Firebase
 
 class ModelController
 {
-    //MARK - Firebase keys
+    //MARK - Firebase
+        // Reference and handles
     var ref = DatabaseReference()
     var refHandle = DatabaseHandle()
     var settingsHandle  = DatabaseHandle()
     var journalHandle = DatabaseHandle()
-    var statsHandle = DatabaseHandle()
     var mealContentsHandle = DatabaseHandle()
-    var settingsInFirebase : Dictionary? = [:]
+        // Keys and content
     var firebaseDateKey : String = "YYYY-MM-DD"
-    var statsInFirebase : Dictionary? = [:]
+    var settingsInFirebase : Dictionary? = [:]
     var journalInFirebase : Dictionary? = [:]
     var mealContentsInFirebase : Dictionary? = [:]
 
@@ -40,9 +40,7 @@ class ModelController
         switch (handle) {
         case FirebaseHandleIdentifiers.settings:
             closeHandle = settingsHandle
-        case FirebaseHandleIdentifiers.stats:
-            closeHandle = statsHandle
-        case FirebaseHandleIdentifiers.consume:
+        case FirebaseHandleIdentifiers.journal:
             closeHandle = journalHandle
         case FirebaseHandleIdentifiers.mealContents:
             closeHandle = mealContentsHandle
@@ -52,18 +50,14 @@ class ModelController
     
     func makeConnectionToFirebase() {
         // Connect to Settings
-        let settingsRef = ref.child("Settings")
+        let settingsRef = ref.child(KeysForFirebase.TABLE_SETTINGS)
         settingsHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
             self.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
 
-        let consumeRef = ref.child("Consume")
-        journalHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
+        let journalRef = ref.child(KeysForFirebase.TABLE_JOURNAL)
+        journalHandle = statsRef.observe(DataEventType.value, with: { (snapshot) in
             self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-        })
-        let statsRef = ref.child("Stats")
-        statsHandle = statsRef.observe(DataEventType.value, with: { (snapshot) in
-            self.statsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
 //            for key in (self.statsInFirebase?.keys)! {
 //                NSLog("key: \(key)")
 //            }
@@ -73,26 +67,14 @@ class ModelController
 //                let dictValue =  dict["WEIGHED"]
 //            }
         })
-        let mealContentsRef = ref.child("MealContents")
+        let mealContentsRef = ref.child(KeysForFirebase.TABLE_MEAL_CONTENTS)
         mealContentsHandle = mealContentsRef.observe(DataEventType.value, with: { (snapshot) in
             self.mealContentsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
     }
-
-    
-//    func getStats(recordedOnDateKey date : String)-> Stats {
-//        // date must be of the form YYYY-MM-DD or no match will be found
-//        let statsForDate = Stats(
-//            recordForDate: date,
-//            glassesOfWaterConsumed: statsInFirebase![KeysForFirebase.GLASSES_OF_WATER] as! Int,
-//            weightOnDate: statsInFirebase![KeysForFirebase.WEIGHED] as! Double,
-//            minutesExercising: statsInFirebase![KeysForFirebase.MINUTES_EXERCISED] as! Int)
-//        return statsForDate
-//    }
-//    
-    func getConsume(mealConsumedOnDateKey date: String) {
+    func getJournal(journalOnDateKey date: String) {
         // date must be of the form YYYY-MM-DD or no match will be found
-        let consumeRef = self.ref.child("Consume")
+        let consumeRef = self.ref.child(KeysForFirebase.TABLE_JOURNAL)
         self.refHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
             self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
@@ -156,9 +138,9 @@ class ModelController
 //
 //    }
 //
-    var limitsProtein : Double? {
+    var limitsProteinLow : Double? {
         get {
-            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN] {
+            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] {
                 return protein as? Double
             } else {
                 return 0.0
@@ -169,12 +151,32 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set limitsProtein")
             } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN] = newValue
+                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
+                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] = newValue
             }
         }
     }
  
+    var limitsProteinHigh : Double? {
+        get {
+            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] {
+                return protein as? Double
+            } else {
+                return 0.0
+            }
+        }
+        
+        set {
+            if settingsInFirebase == nil {
+                NSLog("settings doesn't exist in set limitsProtein")
+            } else {
+                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
+                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] = newValue
+            }
+        }
+    }
+    
+    
     var limitsFat : Double? {
         get {
             if let fat = settingsInFirebase?[KeysForFirebase.LIMIT_FAT] {
@@ -194,7 +196,7 @@ class ModelController
         }
     }
     
-
+    
     var limitsFruit : Double? {
         get {
             if let fruit = settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] {
@@ -374,8 +376,8 @@ class ModelController
     func updateSettings(newSettings settings : Dictionary<String, Any?>) {
         for (newSettingsKey, newSettingsValue) in settings {
             switch (newSettingsKey) {
-            case KeysForFirebase.LIMIT_PROTEIN:
-                limitsProtein = newSettingsValue as? Double
+            case KeysForFirebase.LIMIT_PROTEIN_LOW:
+                limitsProteinLow = newSettingsValue as? Double
             case  KeysForFirebase.LIMIT_FAT:
                 limitsFat = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_STARCH:
@@ -384,6 +386,8 @@ class ModelController
                 limitsFruit = newSettingsValue as? Double
             case KeysForFirebase.LIMIT_VEGGIES:
                 limitsVeggies = newSettingsValue as? Double
+            case KeysForFirebase.LIMIT_PROTEIN_HIGH:
+                limitsProteinHigh = newSettingsValue as? Double
             default:
                 NSLog("Bad key in updateSettings")
             }

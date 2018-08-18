@@ -9,16 +9,13 @@
 import Foundation
 enum KeysForFirebase {
     //MARK: - Firebase NONSQL Segment Names
-    static let TABLE_CONSUME = "Consume"
-    static let TABLE_STATS = "Stats"
+    static let TABLE_JOURNAL = "Journal"
     static let TABLE_MEAL_CONTENTS = "MealContents"
     static let TABLE_SETTINGS = "Settings"
     //MARK: - Settings fields
-    static let TARGET_DATE = "TARGET_DATE_KEY"
-    static let TARGET_WEIGHT = "TARGET_WEIGHT_KEY"
     static let LIMIT_FAT = "LIMIT_FAT"
     static let LIMIT_FRUIT = "LIMIT_FRUIT"
-    static let LIMIT_PROTEIN = "LIMIT_PROTEIN"
+    static let LIMIT_PROTEIN_LOW = "LIMIT_PROTEIN_LOW"
     static let LIMIT_PROTEIN_HIGH = "LIMIT_PROTEIN_HIGH"
     static let LIMIT_STARCH = "LIMIT_STARCH"
     static let LIMIT_VEGGIES = "LIMIT_VEGGIES"
@@ -45,8 +42,7 @@ enum KeysForFirebase {
 
 enum FirebaseHandleIdentifiers : Int {
     case settings = 0
-    case stats
-    case consume
+    case journal
     case mealContents
 }
 
@@ -65,7 +61,7 @@ enum MealDataEntryNumbers : Int {
     case numberForWeight
     case numberForWater
     case numberForExercise
-    case numberForProtein
+    case numberForProteinLow
     case numberForFat
     case numberForStarch
     case numberForFruit
@@ -75,12 +71,11 @@ enum MealDataEntryNumbers : Int {
 
 enum SettingsDataEntryNumbers : Int {
     case firstPlaceholder = 0
-    case numberForWeight
-    case numberForProtein
+    case numberForProteinLow
     case numberForFat
     case numberForStarch
     case numberForFruit
-    case numberForVeggies
+    case numberForProteinHigh
     case lastPlaceHolder
 }
 enum MealTotalColumns : Int {

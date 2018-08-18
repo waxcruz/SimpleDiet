@@ -11,6 +11,7 @@ import UIKit
 class GroceryListViewController: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate {
     @IBOutlet weak var groceryListScrollView: UIScrollView!
     @IBOutlet weak var groceryListImageView: UIImageView!
+    @IBOutlet weak var copyright: UILabel!
     
     var pinchFingers = UIPinchGestureRecognizer()
     var panFingers = UIPanGestureRecognizer()
@@ -20,6 +21,7 @@ class GroceryListViewController: UIViewController, UIGestureRecognizerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        copyright.text = makeCopyright()
         groceryListScrollView.delegate = self
         groceryListScrollView.minimumZoomScale = 1.0
         groceryListScrollView.maximumZoomScale = 3.75
