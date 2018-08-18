@@ -1,6 +1,6 @@
 //
-//  LoadingPleaseWaitViewController.swift
-//  SimpleDieting
+//  HealthyWayTabBarController.swift
+// HealthyWay
 //
 //  Created by Bill Weatherwax on 7/12/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
@@ -8,23 +8,30 @@
 
 import UIKit
 
-class LoadingPleaseWaitViewController: UIViewController {
-    @IBOutlet weak var copyright: UILabel!
+class HealthyWayTabBarController: UITabBarController
+{
+    // MARK: - global model controller
+    var modelController : ModelController!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        copyright.text = makeCopyright()
+
         // Do any additional setup after loading the view.
     }
 
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
-   /*
+    func getModel()->ModelController {
+        return modelController
+    }
+    
+    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

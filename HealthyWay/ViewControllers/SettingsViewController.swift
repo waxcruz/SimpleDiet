@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  SimpleDieting
+// HealthyWay
 //
 //  Created by Bill Weatherwax on 7/14/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         copyright.text = makeCopyright()
-        modelController = (self.parent as! SimpleDietTabBarController).getModel()
+        modelController = (self.parent as! HealthyWayTabBarController).getModel()
         if modelController?.settingsInFirebase?.count == 0 {
             NSLog("model not ready. Fix it")
         }

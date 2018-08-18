@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Simple Diet Loading-->
+        <!--Healthy Way Loading-->
         <scene sceneID="Gub-HV-tNq">
             <objects>
-                <viewController title="Simple Diet Loading" id="78S-Mo-Mnw" customClass="LoadingPleaseWaitViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Healthy Way Loading" id="78S-Mo-Mnw" userLabel="Healthy Way Loading" customClass="LoadingPleaseWaitViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yPs-tD-Cuv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -405,10 +405,10 @@
             </objects>
             <point key="canvasLocation" x="-562.39999999999998" y="1079.0104947526238"/>
         </scene>
-        <!--SImple Diet-->
+        <!--Healthy Way Master-->
         <scene sceneID="pe2-EO-A2Z">
             <objects>
-                <tabBarController storyboardIdentifier="SimpleDietTabBarControllerID" title="SImple Diet" id="TPj-CJ-J6l" customClass="SimpleDietTabBarController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HealthyWayTabBarControllerID" title="Healthy Way Master" id="TPj-CJ-J6l" userLabel="Healthy Way Master" customClass="HealthyWayTabBarController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tjj-Tp-9pE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -844,7 +844,7 @@
         <!--Journal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SimpleDietViewControllerID" title="Journal" id="BYZ-38-t0r" customClass="JournalViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HealthyWayViewControllerID" title="Journal" id="BYZ-38-t0r" customClass="JournalViewController" customModule="Healthy_Way" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

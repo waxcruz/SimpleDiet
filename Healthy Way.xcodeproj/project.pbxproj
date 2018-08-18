@@ -22,7 +22,7 @@
 		3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3460F688211F33780075DA50 /* HandoutsViewController.swift */; };
 		3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */; };
 		3479962221152B4F00BDF6BF /* GroceryList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3479962121152B4F00BDF6BF /* GroceryList.pdf */; };
-		347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */; };
+		347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */; };
 		34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B7121021C8C00D3E90B /* LoginViewController.swift */; };
@@ -55,7 +55,7 @@
 		3460F688211F33780075DA50 /* HandoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandoutsViewController.swift; sourceTree = "<group>"; };
 		3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		3479962121152B4F00BDF6BF /* GroceryList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GroceryList.pdf; sourceTree = "<group>"; };
-		347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDietTabBarController.swift; sourceTree = "<group>"; };
+		347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthyWayTabBarController.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
 		34B35B7121021C8C00D3E90B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
-				34C3F0BE20EDDFEB002DAF24 /* SimpleDieting */,
+				34C3F0BE20EDDFEB002DAF24 /* HealthyWay */,
 				34C3F0BD20EDDFEB002DAF24 /* Products */,
 				88CA09FC5A018E6B3305693D /* Pods */,
 				187D4B8F6DCA3C5AEC565F15 /* Frameworks */,
@@ -136,7 +136,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		34C3F0BE20EDDFEB002DAF24 /* SimpleDieting */ = {
+		34C3F0BE20EDDFEB002DAF24 /* HealthyWay */ = {
 			isa = PBXGroup;
 			children = (
 				34C3F0C320EDDFEB002DAF24 /* Main.storyboard */,
@@ -148,7 +148,7 @@
 				34DDD5F220F3A94B00D4A110 /* Utilities */,
 				3479962021152B2C00BDF6BF /* Documents */,
 			);
-			path = SimpleDieting;
+			path = HealthyWay;
 			sourceTree = "<group>";
 		};
 		34C3F0D220EDE134002DAF24 /* Supporting Files */ = {
@@ -183,7 +183,7 @@
 		34DFDBAC20F63BC1000B422B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				347F851A20F7C15E00A9677B /* SimpleDietTabBarController.swift */,
+				347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */,
 				34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */,
 				344B1C1620FA46F500BADBDA /* SettingsViewController.swift */,
 				340F883320FCC788007F91B8 /* JournalViewController.swift */,
@@ -338,7 +338,7 @@
 				34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */,
 				34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */,
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
-				347F851B20F7C15E00A9677B /* SimpleDietTabBarController.swift in Sources */,
+				347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */,
 				344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */,
 				349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */,
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
@@ -492,12 +492,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
-				INFOPLIST_FILE = SimpleDieting/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheHealthyWay/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.SimpleDieting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.HealthyWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,12 +511,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
-				INFOPLIST_FILE = SimpleDieting/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheHealthyWay/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.SimpleDieting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.HealthyWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,36 +1,28 @@
 //
-//  SimpleDietTabBarController.swift
-//  SimpleDieting
+//  WeightChartViewController.swift
+// HealthyWay
 //
-//  Created by Bill Weatherwax on 7/12/18.
+//  Created by Bill Weatherwax on 7/21/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
 //
 
 import UIKit
 
-class SimpleDietTabBarController: UITabBarController
-{
-    // MARK: - global model controller
-    var modelController : ModelController!
-    
-    
-    
+class WeightChartViewController: UIViewController {
+
+    @IBOutlet weak var copyright: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        copyright.text = makeCopyright()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func getModel()->ModelController {
-        return modelController
-    }
-    
-    
+
     /*
     // MARK: - Navigation
 

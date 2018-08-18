@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SimpleDieting
+// HealthyWay
 //
 //  Created by Bill Weatherwax on 7/4/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
@@ -46,13 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") // SimpleDietTabBarControllerID
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") // HealthyWayTabBarControllerID
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
         
         // Make sure correct view controller loaded
-        if let vc = window?.rootViewController as? LoginViewController { // SimpleDietTabBarController
+        if let vc = window?.rootViewController as? LoginViewController { // HealthyWayTabBarController
             vc.modelController = model
         }
 

@@ -1,6 +1,6 @@
 //
 //  GroceryListViewController.swift
-//  SimpleDieting
+// HealthyWay
 //
 //  Created by Bill Weatherwax on 8/3/18.
 //  Copyright © 2018 waxcruz. All rights reserved.
