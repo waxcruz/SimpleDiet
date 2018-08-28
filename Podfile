@@ -8,6 +8,6 @@ target 'Healthy Way' do
   # Pods for Healthy Way
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'FirebaseUI'
+  pod 'Firebase/Auth'
 
 end

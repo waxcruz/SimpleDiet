@@ -327,6 +327,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         composeVC.mailComposeDelegate = self
         
         
+        
         // Configure the fields of the interface.
         composeVC.setToRecipients(["waxcruz@yahoo.com"])
         composeVC.setSubject("Journal")
