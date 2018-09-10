@@ -19,13 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cloud data loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPb-4I-Zq0">
-                                <rect key="frame" x="45" y="297" width="242" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv5-OC-tqs" userLabel="copyright">
                                 <rect key="frame" x="16" y="655" width="343" height="10"/>
                                 <constraints>
@@ -35,12 +28,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62x-bS-4Wb" userLabel="Content">
+                                <rect key="frame" x="2" y="22" width="371" height="631"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hwWebsiteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="7aM-fR-rRd" userLabel="Healthy Way Icon">
+                                        <rect key="frame" x="8" y="8" width="355" height="615"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7aM-fR-rRd" secondAttribute="trailing" constant="8" id="3KZ-gn-0gh"/>
+                                    <constraint firstItem="7aM-fR-rRd" firstAttribute="leading" secondItem="62x-bS-4Wb" secondAttribute="leading" constant="8" id="5U2-N5-aEI"/>
+                                    <constraint firstItem="7aM-fR-rRd" firstAttribute="top" secondItem="62x-bS-4Wb" secondAttribute="top" constant="8" id="FLV-NJ-bTo"/>
+                                    <constraint firstAttribute="bottom" secondItem="7aM-fR-rRd" secondAttribute="bottom" constant="8" id="TL7-O8-InV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZQO-Qb-IPr" firstAttribute="bottom" secondItem="nv5-OC-tqs" secondAttribute="bottom" constant="2" id="3fL-PU-d3D"/>
+                            <constraint firstItem="nv5-OC-tqs" firstAttribute="top" secondItem="62x-bS-4Wb" secondAttribute="bottom" constant="2" id="6h5-sR-Nfs"/>
+                            <constraint firstItem="62x-bS-4Wb" firstAttribute="leading" secondItem="ZQO-Qb-IPr" secondAttribute="leading" constant="2" id="beY-Xy-Gyz"/>
                             <constraint firstItem="nv5-OC-tqs" firstAttribute="centerX" secondItem="ZQO-Qb-IPr" secondAttribute="centerX" id="cCP-rw-dxR"/>
+                            <constraint firstItem="62x-bS-4Wb" firstAttribute="top" secondItem="ZQO-Qb-IPr" secondAttribute="top" constant="2" id="chB-Ew-AB2"/>
                             <constraint firstItem="ZQO-Qb-IPr" firstAttribute="trailing" secondItem="nv5-OC-tqs" secondAttribute="trailing" constant="16" id="dzw-st-LSy"/>
+                            <constraint firstItem="ZQO-Qb-IPr" firstAttribute="trailing" secondItem="62x-bS-4Wb" secondAttribute="trailing" constant="2" id="lQG-bw-07Z"/>
                             <constraint firstItem="nv5-OC-tqs" firstAttribute="leading" secondItem="ZQO-Qb-IPr" secondAttribute="leading" constant="16" id="teW-Bh-Dqh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZQO-Qb-IPr"/>
