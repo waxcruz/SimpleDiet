@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F883320FCC788007F91B8 /* JournalViewController.swift */; };
-		3435699E2110E6A6002B7D48 /* MyMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3435699D2110E6A6002B7D48 /* MyMethods.swift */; };
 		343CA9D5212880EF003F8207 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 343CA9D4212880EF003F8207 /* Default-568h@2x.png */; };
 		344B1C0A20F8EAC300BADBDA /* mealsOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0420F8EAC200BADBDA /* mealsOutlined.png */; };
 		344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0520F8EAC200BADBDA /* journalOutlined.png */; };
@@ -33,16 +32,44 @@
 		34C3F0C520EDDFEB002DAF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C320EDDFEB002DAF24 /* Main.storyboard */; };
 		34C3F0C720EDDFED002DAF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C620EDDFED002DAF24 /* Assets.xcassets */; };
 		34C3F0CA20EDDFED002DAF24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3F0C820EDDFED002DAF24 /* LaunchScreen.storyboard */; };
-		34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0D920EED2FB002DAF24 /* Model.swift */; };
 		34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0DB20EED58B002DAF24 /* ModelController.swift */; };
-		34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDD5F320F3A98300D4A110 /* ExtendDate.swift */; };
-		AA72D6FCBEAB6486C5DB137A /* Pods_Healthy_Way.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32AEE3DDA05F3C8EB3596B9 /* Pods_Healthy_Way.framework */; };
+		34F191C321472990008F5550 /* HealthyWayFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F191C22147297C008F5550 /* HealthyWayFramework.framework */; };
+		34F191C421472990008F5550 /* HealthyWayFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34F191C22147297C008F5550 /* HealthyWayFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		34F191C12147297C008F5550 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F191B22147297B008F5550 /* HealthyWayFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 345B855C2132F12700E2D615;
+			remoteInfo = HealthyWayFramework;
+		};
+		34F191C521472990008F5550 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F191B22147297B008F5550 /* HealthyWayFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 345B855B2132F12700E2D615;
+			remoteInfo = HealthyWayFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		34F191C721472990008F5550 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				34F191C421472990008F5550 /* HealthyWayFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleDieting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340F883320FCC788007F91B8 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
-		3435699D2110E6A6002B7D48 /* MyMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMethods.swift; sourceTree = "<group>"; };
 		343CA9D4212880EF003F8207 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		344B1C0420F8EAC200BADBDA /* mealsOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealsOutlined.png; sourceTree = "<group>"; };
 		344B1C0520F8EAC200BADBDA /* journalOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalOutlined.png; sourceTree = "<group>"; };
@@ -69,14 +96,14 @@
 		34C3F0C620EDDFED002DAF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34C3F0C920EDDFED002DAF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34C3F0CB20EDDFED002DAF24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34C3F0D920EED2FB002DAF24 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		34C3F0DB20EED58B002DAF24 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		34DDD5F320F3A98300D4A110 /* ExtendDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDate.swift; sourceTree = "<group>"; };
-		7CAB072E57E9C86E1522FA7D /* Pods-SimpleDieting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDieting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting.debug.xcconfig"; sourceTree = "<group>"; };
-		A309A750B46FD61A9DF5E454 /* Pods-Healthy Way.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Healthy Way.release.xcconfig"; path = "Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way.release.xcconfig"; sourceTree = "<group>"; };
-		D611EFB165B81750A699D268 /* Pods-SimpleDieting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleDieting.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleDieting/Pods-SimpleDieting.release.xcconfig"; sourceTree = "<group>"; };
-		F32AEE3DDA05F3C8EB3596B9 /* Pods_Healthy_Way.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Healthy_Way.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F93AAB7CF3764B4F33F103D4 /* Pods-Healthy Way.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Healthy Way.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way.debug.xcconfig"; sourceTree = "<group>"; };
+		34F191B22147297B008F5550 /* HealthyWayFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = HealthyWayFramework.xcodeproj; sourceTree = "<group>"; };
+		34F191B72147297B008F5550 /* dictionariesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictionariesConstants.swift; sourceTree = "<group>"; };
+		34F191B82147297B008F5550 /* HealthyWayFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthyWayFramework.h; sourceTree = "<group>"; };
+		34F191BA2147297B008F5550 /* buildJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildJournal.swift; sourceTree = "<group>"; };
+		34F191BB2147297B008F5550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34F191BD2147297B008F5550 /* MyMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMethods.swift; sourceTree = "<group>"; };
+		34F191BE2147297B008F5550 /* ExtendDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,22 +111,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA72D6FCBEAB6486C5DB137A /* Pods_Healthy_Way.framework in Frameworks */,
+				34F191C321472990008F5550 /* HealthyWayFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		187D4B8F6DCA3C5AEC565F15 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				328DF39B0899CA000A32F3A3 /* Pods_SimpleDieting.framework */,
-				F32AEE3DDA05F3C8EB3596B9 /* Pods_Healthy_Way.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3479962021152B2C00BDF6BF /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,11 +145,10 @@
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
+				34F191B12147297B008F5550 /* HealthyWayFramework */,
 				343CA9D4212880EF003F8207 /* Default-568h@2x.png */,
 				34C3F0BE20EDDFEB002DAF24 /* HealthyWay */,
 				34C3F0BD20EDDFEB002DAF24 /* Products */,
-				88CA09FC5A018E6B3305693D /* Pods */,
-				187D4B8F6DCA3C5AEC565F15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +169,6 @@
 				34C3F0D220EDE134002DAF24 /* Supporting Files */,
 				34C3F0CB20EDDFED002DAF24 /* Info.plist */,
 				349A300220F291DB00037E08 /* GoogleService-Info.plist */,
-				34DDD5F220F3A94B00D4A110 /* Utilities */,
 				3479962021152B2C00BDF6BF /* Documents */,
 			);
 			path = HealthyWay;
@@ -169,19 +185,9 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		34DDD5F220F3A94B00D4A110 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				34DDD5F320F3A98300D4A110 /* ExtendDate.swift */,
-				3435699D2110E6A6002B7D48 /* MyMethods.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		34DFDBAB20F63BAB000B422B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				34C3F0D920EED2FB002DAF24 /* Model.swift */,
 				34C3F0DB20EED58B002DAF24 /* ModelController.swift */,
 			);
 			path = Model;
@@ -203,15 +209,67 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		88CA09FC5A018E6B3305693D /* Pods */ = {
+		34F191B12147297B008F5550 /* HealthyWayFramework */ = {
 			isa = PBXGroup;
 			children = (
-				7CAB072E57E9C86E1522FA7D /* Pods-SimpleDieting.debug.xcconfig */,
-				D611EFB165B81750A699D268 /* Pods-SimpleDieting.release.xcconfig */,
-				F93AAB7CF3764B4F33F103D4 /* Pods-Healthy Way.debug.xcconfig */,
-				A309A750B46FD61A9DF5E454 /* Pods-Healthy Way.release.xcconfig */,
+				34F191B22147297B008F5550 /* HealthyWayFramework.xcodeproj */,
+				34F191B52147297B008F5550 /* HealthyWayFramework */,
 			);
-			name = Pods;
+			name = HealthyWayFramework;
+			path = ../../HealthyWayFrameworkFolder/HealthyWayFramework;
+			sourceTree = "<group>";
+		};
+		34F191B32147297B008F5550 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34F191C22147297C008F5550 /* HealthyWayFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34F191B52147297B008F5550 /* HealthyWayFramework */ = {
+			isa = PBXGroup;
+			children = (
+				34F191B62147297B008F5550 /* Constants */,
+				34F191B82147297B008F5550 /* HealthyWayFramework.h */,
+				34F191B92147297B008F5550 /* Presentation */,
+				34F191BB2147297B008F5550 /* Info.plist */,
+				34F191BC2147297B008F5550 /* CommonCode */,
+				34F191BF2147297B008F5550 /* Widgets */,
+			);
+			path = HealthyWayFramework;
+			sourceTree = "<group>";
+		};
+		34F191B62147297B008F5550 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				34F191B72147297B008F5550 /* dictionariesConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		34F191B92147297B008F5550 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				34F191BA2147297B008F5550 /* buildJournal.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		34F191BC2147297B008F5550 /* CommonCode */ = {
+			isa = PBXGroup;
+			children = (
+				34F191BD2147297B008F5550 /* MyMethods.swift */,
+				34F191BE2147297B008F5550 /* ExtendDate.swift */,
+			);
+			path = CommonCode;
+			sourceTree = "<group>";
+		};
+		34F191BF2147297B008F5550 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,10 +284,12 @@
 				34C3F0B920EDDFEB002DAF24 /* Frameworks */,
 				34C3F0BA20EDDFEB002DAF24 /* Resources */,
 				3013BBCA5C2825C09D151A08 /* [CP] Embed Pods Frameworks */,
+				34F191C721472990008F5550 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				34F191C621472990008F5550 /* PBXTargetDependency */,
 			);
 			name = "Healthy Way";
 			productName = SimpleDieting;
@@ -262,12 +322,28 @@
 			mainGroup = 34C3F0B320EDDFEA002DAF24;
 			productRefGroup = 34C3F0BD20EDDFEB002DAF24 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 34F191B32147297B008F5550 /* Products */;
+					ProjectRef = 34F191B22147297B008F5550 /* HealthyWayFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				34C3F0BB20EDDFEB002DAF24 /* Healthy Way */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		34F191C22147297C008F5550 /* HealthyWayFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HealthyWayFramework.framework;
+			remoteRef = 34F191C12147297C008F5550 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		34C3F0BA20EDDFEB002DAF24 /* Resources */ = {
@@ -348,7 +424,6 @@
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
 				34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */,
 				34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */,
-				34DDD5F420F3A98300D4A110 /* ExtendDate.swift in Sources */,
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
 				347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */,
 				344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */,
@@ -356,12 +431,18 @@
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
 				3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */,
 				340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */,
-				3435699E2110E6A6002B7D48 /* MyMethods.swift in Sources */,
-				34C3F0DA20EED2FB002DAF24 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34F191C621472990008F5550 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HealthyWayFramework;
+			targetProxy = 34F191C521472990008F5550 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		34C3F0C320EDDFEB002DAF24 /* Main.storyboard */ = {
@@ -499,8 +580,8 @@
 		};
 		34C3F0CF20EDDFED002DAF24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F93AAB7CF3764B4F33F103D4 /* Pods-Healthy Way.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
@@ -518,8 +599,8 @@
 		};
 		34C3F0D020EDDFED002DAF24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A309A750B46FD61A9DF5E454 /* Pods-Healthy Way.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
