@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
+import HealthyWayFramework
 
 class ModelController
 {
@@ -23,16 +25,26 @@ class ModelController
     var settingsInFirebase : Dictionary? = [:]
     var journalInFirebase : Dictionary? = [:]
     var mealContentsInFirebase : Dictionary? = [:]
-
-    
+    var clientNode : [String : Any?] = [:] // key is node type journal, settings, and mealContent
+    var clientErrorMessages : String = ""
+    var signedinUID : String?
+    var signedinEmail : String?
+    var signedinUserDataNode : [String : Any?] = [:]
+    var signedinUserErrorMessages : String = ""
     // MARK: - methods
     
     func startModel(){
         ref = Database.database().reference()
+        signedinUID = nil
+        signedinEmail = nil
     }
     
     func stopModel(){
         ref.removeObserver(withHandle: refHandle)
+    }
+    
+    func getDatabaseRef() -> DatabaseReference {
+        return ref
     }
     
     func breakConnectionToFirebase(typeOfHandle handle : FirebaseHandleIdentifiers) {
@@ -50,12 +62,12 @@ class ModelController
     
     func makeConnectionToFirebase() {
         // Connect to Settings
-        let settingsRef = ref.child(KeysForFirebase.TABLE_SETTINGS)
+        let settingsRef = ref.child(KeysForFirebase.NODE_SETTINGS)
         settingsHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
             self.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
 
-        let journalRef = ref.child(KeysForFirebase.TABLE_JOURNAL)
+        let journalRef = ref.child(KeysForFirebase.NODE_JOURNAL)
         journalHandle = journalRef.observe(DataEventType.value, with: { (snapshot) in
             self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
 //            for key in (self.journalInFirebase?.keys)! {
@@ -67,14 +79,14 @@ class ModelController
 //                let dictValue =  dict["WEIGHED"]
 //            }
         })
-        let mealContentsRef = ref.child(KeysForFirebase.TABLE_MEAL_CONTENTS)
+        let mealContentsRef = ref.child(KeysForFirebase.NODE_MEAL_CONTENTS)
         mealContentsHandle = mealContentsRef.observe(DataEventType.value, with: { (snapshot) in
             self.mealContentsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
     }
     func getJournal(journalOnDateKey date: String) {
         // date must be of the form YYYY-MM-DD or no match will be found
-        let consumeRef = self.ref.child(KeysForFirebase.TABLE_JOURNAL)
+        let consumeRef = self.ref.child(KeysForFirebase.NODE_JOURNAL)
         self.refHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
             self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
         })
@@ -112,7 +124,7 @@ class ModelController
 //            if settingsInFirebase == nil {
 //                NSLog("settings doesn't exist set targetDate")
 //            } else {
-//                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_DATE, value: target_date_string!)
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_DATE, value: target_date_string!)
 //                settingsInFirebase![KeysForFirebase.TARGET_DATE] = target_date_string
 //            }
 //         }
@@ -131,7 +143,7 @@ class ModelController
 //             if settingsInFirebase == nil {
 //                NSLog("settings doesn't exist in set of targetWeight")
 //            } else {
-//                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_WEIGHT, value: newValue!)
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_WEIGHT, value: newValue!)
 //                settingsInFirebase![KeysForFirebase.TARGET_WEIGHT] = newValue
 //            }
 //        }
@@ -151,7 +163,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set limitsProtein")
             } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
+                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
                 settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] = newValue
             }
         }
@@ -170,7 +182,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set limitsProtein")
             } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
+                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
                 settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] = newValue
             }
         }
@@ -190,7 +202,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set limitsFat")
             } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.TABLE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_FAT, value: newValue!)
+                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_FAT, value: newValue!)
                 settingsInFirebase?[KeysForFirebase.LIMIT_FAT] = newValue
             }
         }
@@ -267,7 +279,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set journalWaterConsumed")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
                 journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
             }
         }
@@ -286,7 +298,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set journalWeight")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
                 journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
@@ -305,7 +317,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set journalExercise")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
                 journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
@@ -324,7 +336,7 @@ class ModelController
             if settingsInFirebase == nil {
                 NSLog("settings doesn't exist in set journalExercise")
             } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.TABLE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
                 journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
             }
         }
@@ -394,6 +406,193 @@ class ModelController
         }
     }
     
+    // MARK - Authentication
+    
+    func loginUser(email : String, password : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            // ...
+            if user == nil {
+                errorHandler((error?.localizedDescription)!)
+            } else {
+                self.signedinUID = user?.user.uid
+                self.signedinEmail = user?.user.email
+                handler()
+            }
+        }
+    }
+ 
+    
+    
+    func signoutUser(errorHandler : @escaping (_ : String) -> Void) {
+        if Auth.auth().currentUser?.displayName != nil {
+            do {
+                print("Signing out user: ", Auth.auth().currentUser?.displayName! ?? "unknown user")
+                try Auth.auth().signOut()
+                signedinUID = nil
+                signedinEmail = nil
+            } catch {
+                errorHandler("Sign out failed")
+            }
+        }
+
+    }
+    func signoutUser(errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        if Auth.auth().currentUser?.uid != nil {
+            do {
+                print("Signing out user: ", Auth.auth().currentUser?.email! ?? "unknown user")
+                try Auth.auth().signOut()
+                signedinUID = nil
+                signedinEmail = nil
+                handler()
+            } catch {
+                errorHandler("Sign out failed")
+            }
+        }
+        
+    }
+
+    func passwordReset(clientEmail email : String, errorHandler : @escaping (_ : String) -> Void, handler : @escaping () -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            // error
+            if let checkError = error {
+                let message = "Reset email failure: \(checkError.localizedDescription)"
+                errorHandler(message)
+            } else {
+                handler()
+            }
+        }
+
+    }
+    
+    func updatePassword(newPassword : String, errorHandler : @escaping (_ : String) -> Void, handler : @escaping () -> Void) {
+        Auth.auth().currentUser?.updatePassword(to:newPassword) {(error) in
+            if error != nil {
+                let message = "Failed to update new password: \(error!.localizedDescription)"
+                errorHandler(message)
+            } else {
+                handler()
+            }
+        }
+    }
+    
+    
+    
+    func checkFirebaseConnected(handler : @escaping () -> Void) -> Void {
+        
+        let healthywayDatabaseRef = ref
+        let connectedRef = healthywayDatabaseRef.database.reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+
+           if snapshot.value as? Bool ?? false {
+                print("Connected to Firebase")
+            } else {
+                print("Not connected to Firebase")
+            }
+           handler()
+        })
+    }
+    
+    func getNodeOfClient(email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        clientNode = [:]
+        clientErrorMessages = ""
+        let firebaseEmail = makeFirebaseEmailKey(email: email)
+        let emailsRef = ref.child("emails").child(firebaseEmail)
+        emailsRef.observeSingleEvent(of: .value, with:  { (snapshot)
+            in
+            let nodeEmailsValue = snapshot.value as? [String : Any?] ?? [:]
+            let clientUID = nodeEmailsValue["uid"] as? String
+            if clientUID == nil {
+                self.clientErrorMessages = "No client found with that email address"
+                errorHandler(self.clientErrorMessages)
+            }
+            let usersRef = self.ref.child("users").child(clientUID!)
+            usersRef.observeSingleEvent(of: .value, with:  { (snapshot)
+                in
+                let nodeUsersValue = snapshot.value as? [String : Any?] ?? [:]
+                let userEmail = nodeUsersValue["email"] as? String
+                let checkEmail = restoreEmail(firebaseEmailKey: userEmail!)
+                if checkEmail == email {
+                    let userDataRef = self.ref.child("userData").child(clientUID!)
+                    userDataRef.observeSingleEvent(of: .value, with:
+                        { (snapshot)
+                            in
+                            self.clientNode = snapshot.value as? [String : Any?] ?? [:]
+                            handler()
+                    }) { (error) in
+                        self.clientErrorMessages = "Encountered error, " + error.localizedDescription +
+                        ", searching for client data"
+                        errorHandler(self.clientErrorMessages)
+                    }
+                } else {
+                    self.clientErrorMessages = "Mismatch between emails and uids."
+                    errorHandler(self.clientErrorMessages)
+                }
+            }) { (error) in
+                self.clientErrorMessages = "Encountered error, " + error.localizedDescription + ", searching for client UID"
+                errorHandler(self.clientErrorMessages)
+            }
+        })  { (error) in
+            self.clientErrorMessages = "Encountered error, " + error.localizedDescription + ", searching for client email"
+            errorHandler(self.clientErrorMessages)
+        }
+    }
+
+    func createAuthUserNode(userEmail emailEntered : String, userPassword passwordEntered : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        Auth.auth().createUser(withEmail: emailEntered, password: passwordEntered) { (authResult, error) in
+            // ...
+            self.signedinUID = authResult?.user.uid
+            self.signedinEmail = authResult?.user.email
+            if self.signedinUID == nil {
+                let firebaseError = "Account creation failed: "
+                    + (error?.localizedDescription)!
+                errorHandler(firebaseError)
+            }else {
+                handler()
+            }
+        }
+    }
+                
+    func createUserInUsersNode(userUID uid : String, userEmail email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        self.ref.child("users").child(uid).setValue(["email": email, "isAdmin": true]) {
+            (error:Error?, ref:DatabaseReference) in
+            if let checkError = error {
+                errorHandler("Account creation failed: \(checkError).")
+                return
+            } else {
+                handler()
+            }
+        }
+    }
+    
+    func createEmailInEmailsNode(userUID uid : String, userEmail email : String, errorHandling : @escaping (_ : String) -> Void, handler : @escaping () -> Void) {
+        let keyEmail = makeFirebaseEmailKey(email: email)
+        self.ref.child("emails").child(keyEmail).setValue(["uid" : uid]) {
+            (error : Error?, ref: DatabaseReference) in
+                if let checkError = error {
+                    errorHandling("Email creation failed:\(checkError).")
+                    return
+                } else {
+                    handler()
+            }
+        }
+    }
+
+    
+    func getNodeUserData(email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+        signedinUserDataNode = [:]
+        signedinUserErrorMessages = ""
+        let userDataRef = self.ref.child("userData").child(signedinUID!)
+        userDataRef.observeSingleEvent(of: .value, with:
+            { (snapshot)
+                in
+                self.signedinUserDataNode = snapshot.value as? [String : Any?] ?? [:]
+                handler()
+        }) { (error) in
+            self.signedinUserErrorMessages = "Encountered error, " + error.localizedDescription +
+            ", searching for client data"
+            errorHandler(self.clientErrorMessages)
+        }
+    }
     
 }
 

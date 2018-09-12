@@ -8,10 +8,12 @@
 
 import UIKit
 import MessageUI
+import HealthyWayFramework
 
 class JournalViewController: UIViewController, MFMailComposeViewControllerDelegate {
     // MARK: - global model controller
     var modelController : ModelController!
+    
     // MARK: - outlets
     @IBOutlet weak var copyright: UILabel!
     
@@ -270,14 +272,6 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     
     @objc func numberTextFieldDidEnd(_ textField: UITextField) {
         
-        var keyedDoubleNumber = 0.0
-
-            if let inputNumber = Double(textField.text!) {
-                keyedDoubleNumber = inputNumber
-            } else {
-                NSLog("bad number in numberTextFieldDidEnd")
-            }
-            
         switch (textField.tag) {
         case MealDataEntryNumbers.numberForWeight.rawValue:
 //            modelController.targetWeight = keyedNumber

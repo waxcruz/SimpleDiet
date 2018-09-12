@@ -23,9 +23,14 @@
 		3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */; };
 		3479962221152B4F00BDF6BF /* GroceryList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3479962121152B4F00BDF6BF /* GroceryList.pdf */; };
 		347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */; };
+		349392322147435D004D8ADD /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349392312147435D004D8ADD /* ChangePasswordViewController.swift */; };
+		3493923421474366004D8ADD /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493923321474365004D8ADD /* CreateNewAccountViewController.swift */; };
+		349392362147436E004D8ADD /* ForgottenPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349392352147436E004D8ADD /* ForgottenPasswordViewController.swift */; };
+		349392382147437C004D8ADD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349392372147437C004D8ADD /* SignInViewController.swift */; };
+		3493923A21474400004D8ADD /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493923921474400004D8ADD /* MyAccountViewController.swift */; };
+		3493923C21475B70004D8ADD /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493923B21475B70004D8ADD /* GlobalConstants.swift */; };
 		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */; };
-		34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B7121021C8C00D3E90B /* LoginViewController.swift */; };
 		34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
 		34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0BF20EDDFEB002DAF24 /* AppDelegate.swift */; };
@@ -35,6 +40,7 @@
 		34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3F0DB20EED58B002DAF24 /* ModelController.swift */; };
 		34F191C321472990008F5550 /* HealthyWayFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F191C22147297C008F5550 /* HealthyWayFramework.framework */; };
 		34F191C421472990008F5550 /* HealthyWayFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34F191C22147297C008F5550 /* HealthyWayFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4D3F3C4FEDEB38133305043 /* Pods_Healthy_Way.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CDE4ED9926CDAE47CF18B4 /* Pods_Healthy_Way.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		022A85213A16187EB6529231 /* Pods-Healthy Way.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Healthy Way.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way.debug.xcconfig"; sourceTree = "<group>"; };
+		24CDE4ED9926CDAE47CF18B4 /* Pods_Healthy_Way.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Healthy_Way.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340F883320FCC788007F91B8 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		343CA9D4212880EF003F8207 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		344B1C0420F8EAC200BADBDA /* mealsOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealsOutlined.png; sourceTree = "<group>"; };
@@ -85,9 +93,14 @@
 		3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		3479962121152B4F00BDF6BF /* GroceryList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GroceryList.pdf; sourceTree = "<group>"; };
 		347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthyWayTabBarController.swift; sourceTree = "<group>"; };
+		349392312147435D004D8ADD /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		3493923321474365004D8ADD /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
+		349392352147436E004D8ADD /* ForgottenPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgottenPasswordViewController.swift; sourceTree = "<group>"; };
+		349392372147437C004D8ADD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3493923921474400004D8ADD /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		3493923B21475B70004D8ADD /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
-		34B35B7121021C8C00D3E90B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
 		34C3F0BC20EDDFEB002DAF24 /* Healthy Way.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Healthy Way.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +117,7 @@
 		34F191BB2147297B008F5550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34F191BD2147297B008F5550 /* MyMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMethods.swift; sourceTree = "<group>"; };
 		34F191BE2147297B008F5550 /* ExtendDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDate.swift; sourceTree = "<group>"; };
+		8090ED847481DDCB156B045D /* Pods-Healthy Way.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Healthy Way.release.xcconfig"; path = "Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F191C321472990008F5550 /* HealthyWayFramework.framework in Frameworks */,
+				B4D3F3C4FEDEB38133305043 /* Pods_Healthy_Way.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,10 +160,14 @@
 		34C3F0B320EDDFEA002DAF24 = {
 			isa = PBXGroup;
 			children = (
+				34C3F0C320EDDFEB002DAF24 /* Main.storyboard */,
+				3493923B21475B70004D8ADD /* GlobalConstants.swift */,
 				34F191B12147297B008F5550 /* HealthyWayFramework */,
 				343CA9D4212880EF003F8207 /* Default-568h@2x.png */,
 				34C3F0BE20EDDFEB002DAF24 /* HealthyWay */,
 				34C3F0BD20EDDFEB002DAF24 /* Products */,
+				EFCD57C4F5CE2320AAC09CC2 /* Pods */,
+				47E91CEB502DBDF6270C65F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,7 +182,6 @@
 		34C3F0BE20EDDFEB002DAF24 /* HealthyWay */ = {
 			isa = PBXGroup;
 			children = (
-				34C3F0C320EDDFEB002DAF24 /* Main.storyboard */,
 				34DFDBAC20F63BC1000B422B /* ViewControllers */,
 				34DFDBAB20F63BAB000B422B /* Model */,
 				34C3F0D220EDE134002DAF24 /* Supporting Files */,
@@ -196,15 +214,19 @@
 		34DFDBAC20F63BC1000B422B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */,
-				34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */,
-				344B1C1620FA46F500BADBDA /* SettingsViewController.swift */,
-				340F883320FCC788007F91B8 /* JournalViewController.swift */,
-				34B35B7121021C8C00D3E90B /* LoginViewController.swift */,
-				34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */,
+				349392312147435D004D8ADD /* ChangePasswordViewController.swift */,
+				3493923321474365004D8ADD /* CreateNewAccountViewController.swift */,
+				349392352147436E004D8ADD /* ForgottenPasswordViewController.swift */,
 				3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */,
-				349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */,
 				3460F688211F33780075DA50 /* HandoutsViewController.swift */,
+				347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */,
+				340F883320FCC788007F91B8 /* JournalViewController.swift */,
+				34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */,
+				3493923921474400004D8ADD /* MyAccountViewController.swift */,
+				344B1C1620FA46F500BADBDA /* SettingsViewController.swift */,
+				349392372147437C004D8ADD /* SignInViewController.swift */,
+				349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */,
+				34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -270,6 +292,23 @@
 			children = (
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		47E91CEB502DBDF6270C65F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24CDE4ED9926CDAE47CF18B4 /* Pods_Healthy_Way.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EFCD57C4F5CE2320AAC09CC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				022A85213A16187EB6529231 /* Pods-Healthy Way.debug.xcconfig */,
+				8090ED847481DDCB156B045D /* Pods-Healthy Way.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +417,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -385,6 +425,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -422,14 +463,19 @@
 			files = (
 				3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */,
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
+				3493923421474366004D8ADD /* CreateNewAccountViewController.swift in Sources */,
 				34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */,
-				34B35B7221021C8C00D3E90B /* LoginViewController.swift in Sources */,
 				34C3F0DC20EED58B002DAF24 /* ModelController.swift in Sources */,
 				347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */,
 				344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */,
+				349392382147437C004D8ADD /* SignInViewController.swift in Sources */,
+				349392362147436E004D8ADD /* ForgottenPasswordViewController.swift in Sources */,
+				3493923A21474400004D8ADD /* MyAccountViewController.swift in Sources */,
 				349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */,
 				34C3F0C020EDDFEB002DAF24 /* AppDelegate.swift in Sources */,
+				349392322147435D004D8ADD /* ChangePasswordViewController.swift in Sources */,
 				3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */,
+				3493923C21475B70004D8ADD /* GlobalConstants.swift in Sources */,
 				340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -569,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -580,8 +626,9 @@
 		};
 		34C3F0CF20EDDFED002DAF24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 022A85213A16187EB6529231 /* Pods-Healthy Way.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
@@ -590,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.HealthyWay;
+				PRODUCT_BUNDLE_IDENTIFIER = us.thehealthyway.healthyway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,8 +646,9 @@
 		};
 		34C3F0D020EDDFED002DAF24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8090ED847481DDCB156B045D /* Pods-Healthy Way.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZMW4PYK4Y;
@@ -609,7 +657,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.waxcruz.HealthyWay;
+				PRODUCT_BUNDLE_IDENTIFIER = us.thehealthyway.healthyway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

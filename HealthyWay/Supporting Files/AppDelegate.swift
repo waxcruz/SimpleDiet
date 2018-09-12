@@ -21,21 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         model.startModel()
-        
-        let settingsRef = model.ref.child("waxcoder@yahoo,com")
-        settingsRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-            self.model.breakConnectionToFirebase(typeOfHandle: FirebaseHandleIdentifiers.settings)
-            self.showFirstViewController()
-            self.model.makeConnectionToFirebase()
-        })
-//        model.refHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
-//            self.model.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-//            self.model.breakConnectionToFirebase()
-//            self.showFirstViewController()
-//            self.model.makeConnectionToFirebase()
-//        })
-
+        model.checkFirebaseConnected(handler: showFirstViewController)
         return true
     }
 
@@ -44,17 +30,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         // Grab a reference to whichever storyboard you have the ViewController within
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.MAIN, bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") // HealthyWayTabBarControllerID
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.SIGNIN_VC) // HealthyWayTabBarControllerID
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
         
         // Make sure correct view controller loaded
-        if let vc = window?.rootViewController as? LoginViewController { // HealthyWayTabBarController
+        if let vc = window?.rootViewController as? SignInViewController { // start with Signin
             vc.modelController = model
+        } else {
+            print("Problem in AppDelegate.swift")
         }
 
 

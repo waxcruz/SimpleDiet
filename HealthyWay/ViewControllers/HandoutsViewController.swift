@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthyWayFramework
 
 class HandoutsViewController: UIViewController  {
 

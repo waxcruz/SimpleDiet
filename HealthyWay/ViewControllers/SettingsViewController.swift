@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import HealthyWayFramework
 
 class SettingsViewController: UIViewController{
     

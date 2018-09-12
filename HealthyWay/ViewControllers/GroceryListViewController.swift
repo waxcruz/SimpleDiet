@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthyWayFramework
 
 class GroceryListViewController: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate {
     @IBOutlet weak var groceryListScrollView: UIScrollView!
