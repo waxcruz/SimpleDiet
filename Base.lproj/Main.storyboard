@@ -1736,7 +1736,7 @@
                     </view>
                     <connections>
                         <outlet property="copyright" destination="IWB-l5-wBJ" id="ds4-m9-KA9"/>
-                        <segue destination="8ye-MO-Zra" kind="unwind" identifier="unwindBackToHomeID" unwindAction="unwindToSignInViewControllerWithSegue:" id="gg9-kE-RMt"/>
+                        <segue destination="8ye-MO-Zra" kind="unwind" identifier="unwindToSignInFromMyAccount" unwindAction="unwindToSignInViewControllerWithSegue:" id="cqe-RF-FFB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUW-K6-8ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1871,7 +1871,7 @@
                         <outlet property="message" destination="bbW-2s-ZgX" id="rPV-RD-oWn"/>
                         <outlet property="newPassword" destination="WJh-jb-zcs" id="BgL-We-8VW"/>
                         <outlet property="oldPassword" destination="cw1-TX-Z2m" id="ENY-x1-fpQ"/>
-                        <segue destination="xjz-aV-9WF" kind="unwind" identifier="unwindFromChangePasswordToSignin" unwindAction="unwindToSignInViewControllerWithSegue:" id="AG0-iq-k7h"/>
+                        <segue destination="xjz-aV-9WF" kind="unwind" identifier="unwindToSettingsFromChangePassword" unwindAction="unwindToSettingsViewControllerWithSegue:" id="Za2-Lv-KCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtc-aC-YRr" userLabel="First Responder" sceneMemberID="firstResponder"/>

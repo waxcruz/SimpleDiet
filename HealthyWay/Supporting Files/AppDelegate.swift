@@ -33,7 +33,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: Constants.MAIN, bundle: nil)
         
         // Grab a reference to the ViewController you want to show 1st.
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.SIGNIN_VC) // HealthyWayTabBarControllerID
+        var initialViewController = UIViewController()
+        if let uid = Auth.auth().currentUser?.uid {
+            model.signedinUID = uid
+            model.signedinEmail = Auth.auth().currentUser?.email
+            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.HEALTHY_WAY_TABBAR_CONTOLLER_ID) // HealthyWayTabBarControllerID
+            // Set that ViewController as the rootViewController
+            self.window?.rootViewController = initialViewController
+            
+            // Make sure correct view controller loaded
+            if let vc = window?.rootViewController as? HealthyWayTabBarController { // start with Signin
+                vc.modelController = model
+            } else {
+                print("Problem in AppDelegate.swift")
+            }
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.SIGNIN_VC) // HealthyWayTabBarControllerID
+            // Set that ViewController as the rootViewController
+            self.window?.rootViewController = initialViewController
+            // Make sure correct view controller loaded
+            if let vc = window?.rootViewController as? SignInViewController { // start with Signin
+                vc.modelController = model
+            } else {
+                print("Problem in AppDelegate.swift")
+            }
+        }
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
@@ -45,11 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Problem in AppDelegate.swift")
         }
 
-
         // Sets our window up in front
         self.window?.makeKeyAndVisible()
-
-
     }
     
     

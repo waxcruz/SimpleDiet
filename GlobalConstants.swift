@@ -11,8 +11,12 @@ public enum Constants {
     //MARK: - Segues
     public static let MAIN = "Main"
     public static let SIGNIN_VC = "SignInVC"
+    public static let  HEALTHY_WAY_TABBAR_CONTOLLER_ID = "HealthyWayTabBarControllerID"
     public static let SEGUE_FROM_SIGNIN_TO_TAB_CONTROLLER = "segueFromSigninToTabController"
     public static let UNWIND_TO_SIGNIN_VIEW_CONTROLLER_WITH_SEGUE = "unwindToSignInViewControllerWithSegue"
+    public static let UNWIND_TO_SIGNIN_FROM_MY_ACCOUNT = "unwindToSignInFromMyAccount"
+    public static let UNWIND_TO_SETTINGS_FROM_CHANGE_PASSWORD = "unwindToSettingsFromChangePassword"
+    public static let CURRENT_UID = "CURRENT_UID"
 
     // MARK - Message text
     static let CHART_DESCRIPTION = "The Healthy Way Maintenance Chart"

@@ -35,8 +35,12 @@ class ModelController
     
     func startModel(){
         ref = Database.database().reference()
-        signedinUID = nil
-        signedinEmail = nil
+        if let uid = UserDefaults.standard.string(forKey: Constants.CURRENT_UID) {
+            signedinUID = uid
+        } else {
+            signedinUID = nil
+            signedinEmail = nil
+        }
     }
     
     func stopModel(){
@@ -481,8 +485,7 @@ class ModelController
         
         let healthywayDatabaseRef = ref
         let connectedRef = healthywayDatabaseRef.database.reference(withPath: ".info/connected")
-        connectedRef.observe(.value, with: { snapshot in
-
+        connectedRef.observeSingleEvent(of: .value, with: { snapshot in
            if snapshot.value as? Bool ?? false {
                 print("Connected to Firebase")
             } else {

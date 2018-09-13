@@ -59,9 +59,6 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         super.viewDidLoad()
         copyright.text = makeCopyright()
         modelController = (self.parent as! HealthyWayTabBarController).getModel()
-        if modelController?.settingsInFirebase?.count == 0 {
-            NSLog("model not ready. Fix it")
-        }
         lastOffset = scrollContent.contentOffset
         firebaseSettings = modelController.settingsInFirebase as! [String : Any?]
         createToolBarForDatePicker()
@@ -163,7 +160,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         for tagCollectionSequence in 0..<dataEntryNumbers.count {
             dataEntryNumbers[tagCollectionSequence].inputAccessoryView = toolBarNumber
             dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidEnd(_:)), for: UIControlEvents.editingDidEnd)
-            dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(SettingsViewController.textFieldDidBeginEditing(textField:)), for: UIControlEvents.editingDidBegin)
+            dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.textFieldDidBeginEditing(textField:)), for: UIControlEvents.editingDidBegin)
             dataEntryNumbers[tagCollectionSequence].delegate = self as? UITextFieldDelegate
             let displayTextField = dataEntryNumbers[tagCollectionSequence]
             let tag = dataEntryNumbers[tagCollectionSequence].tag

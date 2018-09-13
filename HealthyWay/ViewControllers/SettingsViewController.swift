@@ -20,8 +20,7 @@ class SettingsViewController: UIViewController{
     // MARK: - outlets
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-//    @IBOutlet weak var targetDatePicker: UIDatePicker!
-//    @IBOutlet weak var targetDate: UITextField!
+
     @IBOutlet var dataEntryNumbers: [UITextField]!
     
 //    // MARK: - date picker
@@ -156,6 +155,8 @@ class SettingsViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    
     
     // MARK: - actions
   
@@ -180,15 +181,22 @@ class SettingsViewController: UIViewController{
         cancelButton.isHidden = true
     }
     
-     
-    /*
-    // MARK: - Navigation
+    // MARK - segue methods
+    
+    @IBAction func unwindToSettingsViewController(segue:UIStoryboardSegue) { }
 
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let vc = segue.destination
+        if vc .isKind(of: MyAccountViewController.self) {
+            (vc as! MyAccountViewController).modelController = modelController
+        } else {
+            print("In SettingsViewController, unknown segue: \(segue.destination.debugDescription)")
+        }
     }
-    */
 
 }
