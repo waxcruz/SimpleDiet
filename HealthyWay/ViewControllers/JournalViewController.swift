@@ -29,7 +29,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var constraintMealContentHeight: NSLayoutConstraint!
     @IBOutlet weak var mealContent: UIView!
     @IBOutlet weak var chooseMeal: UISegmentedControl!
-    
+    @IBOutlet weak var waiting: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -46,12 +46,13 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     var lastOffset : CGPoint!
     var keyboardHeight : Double!
     // MARK - temp storage
-    var firebaseJournal : [String: Any?] = [:]
-    var firebaseMealContents : [String : Any?] = [:]
-    var newJournal : [String: Any?] = [:]
-    var newMealContents : [String: Any?] = [:]
-    var firebaseSettings : [String: Any?] = [:]
-
+    var journalNode : [String: Any?] = [:]
+    var mealContentsNode : [String : Any?] = [:]
+    var newJournalNode : [String: Any?] = [:]
+    var newMealContentsNode : [String: Any?] = [:]
+    var settingsNode : [String: Any?] = [:]
+    // MARK - controls
+    var isWaitingVisible : Bool = false
     
     // MARK - Delegates and Methods
     
@@ -60,7 +61,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         copyright.text = makeCopyright()
         modelController = (self.parent as! HealthyWayTabBarController).getModel()
         lastOffset = scrollContent.contentOffset
-        firebaseSettings = modelController.settingsInFirebase as! [String : Any?]
+        settingsNode = modelController.settingsInFirebase as! [String : Any?]
         createToolBarForDatePicker()
         createToolBarForNumber()
         formatMealChoices()
@@ -69,14 +70,44 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         modelController.firebaseDateKey = recordDate.makeShortStringDate()
         saveButton.isHidden = true
         cancelButton.isHidden = true
-        firebaseMealContents = mealOnDate(mealDate: recordDate.makeShortStringDate())
-        firebaseJournal = journalOnDate(journalDate: recordDate.makeShortStringDate())
         // Observe keyboard change
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        firebaseSettings = modelController.settingsInFirebase as! [String : Any?]
+//        if (routeOverlays.count > 0) {
+//            self.busyMapBuilding.hidden = false;
+//            [self.busyMapBuilding setUserInteractionEnabled:false];
+//            [self.busyMapBuilding startAnimating];
+//            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+//            dispatch_async(queue, ^{
+//                // Perform async operation
+//                // Call your method/function here
+//                // Example:
+//                UIImage *overlaidMap = [self.map addRoutes:routeOverlays];
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    self.busyMapBuilding.hidden = true;
+//                    [self.busyMapBuilding setUserInteractionEnabled:true];
+//                    [self.busyMapBuilding stopAnimating];
+//                    self.mapUIImageView.image = overlaidMap;
+//                    [self.mapUIImageView sizeToFit];
+//                    [self.mapScrollView sizeToFit];
+//                    });
+//                });
+//        }
+
+        // assemble data for journal and meals
+        waiting.isHidden = false
+        waiting.setUserInteractionEnabled = false
+        waiting.startAnimating()
+        
+        
+        
+        
+        mealContentsNode = mealOnDate(mealDate: recordDate.makeShortStringDate())
+        journalNode = journalOnDate(journalDate: recordDate.makeShortStringDate())
+
+        settingsNode = modelController.settingsInFirebase as! [String : Any?]
         buildTotals()
         recordingDate.inputView = datePicker
         recordingDate.inputAccessoryView = toolBarDate
@@ -108,13 +139,13 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             let mapTagToSettingIndex = dailyConsumptionTotals[tag].tag
             switch (mapTagToSettingIndex) {
             case 0:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = String(settingsNode[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0.0)
             case 1:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = String(settingsNode[KeysForFirebase.LIMIT_FAT] as? Double ?? 0.0)
             case 2:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = String(settingsNode[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0.0)
             case 3:
-                dailyConsumptionTotals[tag].text = String(firebaseSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0.0)
+                dailyConsumptionTotals[tag].text = String(settingsNode[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0.0)
             case 4:
                 dailyConsumptionTotals[tag].text = "3.0"
             default:
@@ -166,7 +197,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
             let tag = dataEntryNumbers[tagCollectionSequence].tag
             switch (tag) {
             case 0:
-                displayTextField.text = String(firebaseJournal[KeysForFirebase.WEIGHED] as? Double ?? 0.0)
+                displayTextField.text = String(journalNode[KeysForFirebase.WEIGHED] as? Double ?? 0.0)
             default:
                 NSLog("bad tag number in storyboard (JournalViewController:bindNumberFieldsToModel")
             }
@@ -296,6 +327,17 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
         recordingDate.text = recordDate.makeShortStringDate()
     }
     // MARK: - Actions
+    
+    @IBAction func waterClick(_ sender: Any) {
+    }
+    
+    
+    @IBAction func supplementClick(_ sender: Any) {
+    }
+    
+    @IBAction func exerciseClick(_ sender: Any) {
+    }
+    
     
     @IBAction func chooseMeal(_ sender: Any) {
     }
