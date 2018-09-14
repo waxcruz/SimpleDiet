@@ -32,6 +32,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var waiting: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var messageBox: UITextView!
     
     // MARK: - date picker
     var datePicker = UIDatePicker()
@@ -98,7 +99,7 @@ class JournalViewController: UIViewController, MFMailComposeViewControllerDelega
 
         // assemble data for journal and meals
         waiting.isHidden = false
-        waiting.setUserInteractionEnabled = false
+        waiting.isUserInteractionEnabled = false
         waiting.startAnimating()
         
         

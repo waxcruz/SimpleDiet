@@ -663,9 +663,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="47g-We-CVT">
-                                <rect key="frame" x="177" y="309" width="20" height="20"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright @ 2018 The Healthy Way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyG-CD-PG1" userLabel="copyright">
                                 <rect key="frame" x="16" y="606" width="343" height="10"/>
                                 <constraints>
@@ -1469,13 +1466,32 @@
                                     <constraint firstItem="Eh5-TL-45K" firstAttribute="centerX" secondItem="lHj-pG-M2k" secondAttribute="centerX" id="hcg-ye-ytt"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="47g-We-CVT">
+                                <rect key="frame" x="63" y="194" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="H10-8S-3rE"/>
+                                    <constraint firstAttribute="width" constant="250" id="gBa-5T-V88"/>
+                                </constraints>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <textView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RET-EC-AIY" userLabel="Message">
+                                <rect key="frame" x="2" y="568" width="371" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BCn-yT-81R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dPI-Kq-ynN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0qt-M3-OVN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wyG-CD-PG1" secondAttribute="bottom" constant="2" id="20r-sZ-MOe"/>
+                            <constraint firstItem="RET-EC-AIY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="4pR-cu-ryJ"/>
                             <constraint firstItem="VXu-lz-H8N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7FG-R7-ucj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JhX-7q-mtg" secondAttribute="trailing" constant="16" id="94T-4x-g0F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RET-EC-AIY" secondAttribute="bottom" constant="10" id="CcF-FT-pko"/>
                             <constraint firstItem="47g-We-CVT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="EvC-Hk-aOu"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.18" id="HCE-4r-oTw"/>
                             <constraint firstItem="47g-We-CVT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IXo-Np-grw"/>
@@ -1487,6 +1503,7 @@
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="width" secondItem="VXu-lz-H8N" secondAttribute="width" id="YGz-tA-VHn"/>
                             <constraint firstItem="wyG-CD-PG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YbJ-8R-BuP"/>
                             <constraint firstItem="VXu-lz-H8N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dXC-RZ-Gtp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RET-EC-AIY" secondAttribute="trailing" constant="2" id="hsq-gR-qUT"/>
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="bottom" constant="2" id="jGp-GV-OQ5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dPI-Kq-ynN" secondAttribute="trailing" id="kcj-NI-muh"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.2" id="maW-Lx-baz"/>
@@ -1508,12 +1525,12 @@
                         <outlet property="copyright" destination="wyG-CD-PG1" id="c6Z-3U-ths"/>
                         <outlet property="mealContent" destination="Muk-Dm-ga8" id="3Jk-vs-1QI"/>
                         <outlet property="mealDescription" destination="Qc8-nk-ztc" id="t4A-26-gFZ"/>
+                        <outlet property="messageBox" destination="RET-EC-AIY" id="pJ4-Ey-ggI"/>
                         <outlet property="notes" destination="4S9-01-fQ7" id="fHa-a8-91v"/>
                         <outlet property="recordingDate" destination="oB7-gj-9pi" id="Nj7-Ot-zG8"/>
                         <outlet property="saveButton" destination="P8E-bY-cAX" id="HG9-63-iOg"/>
                         <outlet property="scrollContent" destination="dPI-Kq-ynN" id="BMW-RZ-Rvp"/>
                         <outlet property="waiting" destination="47g-We-CVT" id="yD7-PD-pEb"/>
-                        <outlet property="waterClicks" destination="i8F-5W-Znt" id="Ibn-Qf-IaG"/>
                         <outletCollection property="dailyConsumptionTotals" destination="XhB-BN-dDQ" collectionClass="NSMutableArray" id="zF2-mj-HJJ"/>
                         <outletCollection property="dailyConsumptionTotals" destination="Ujh-Ot-6rF" collectionClass="NSMutableArray" id="djv-KV-6vb"/>
                         <outletCollection property="dailyConsumptionTotals" destination="9cN-Xm-XOx" collectionClass="NSMutableArray" id="qTt-54-PeQ"/>
