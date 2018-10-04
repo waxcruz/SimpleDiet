@@ -581,7 +581,7 @@ class ModelController
     }
 
     
-    func getNodeUserData(email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
+    func getNodeUserData(errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
         signedinUserDataNode = [:]
         signedinUserErrorMessages = ""
         let userDataRef = self.ref.child("userData").child(signedinUID!)
@@ -595,6 +595,19 @@ class ModelController
             ", searching for client data"
             errorHandler(self.clientErrorMessages)
         }
+    }
+    
+    
+    func setNodeUserData(userDataNode node : [String : Any?], errorHandler : @escaping (_ : String) -> Void, handler : @escaping ()-> Void) {
+        self.ref.child(KeysForFirebase.NODE_USERDATA).child(signedinUID!).setValue(node) {
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                errorHandler(error.localizedDescription)
+            } else {
+                handler()
+            }
+        }
+        
     }
     
 }

@@ -48,7 +48,7 @@ class WeightChartViewController: UIViewController {
         if email == "" {
             return
         }
-        modelController.getNodeUserData(email: email, errorHandler: errorInDatabase, handler: assembleUserData)
+        modelController.getNodeUserData(errorHandler: errorInDatabase, handler: assembleUserData)
     }
     
     // MARK - assemble data helper methods

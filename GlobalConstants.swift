@@ -8,6 +8,7 @@
 
 import Foundation
 public enum Constants {
+    
     //MARK: - Segues
     public static let MAIN = "Main"
     public static let SIGNIN_VC = "SignInVC"
@@ -17,7 +18,23 @@ public enum Constants {
     public static let UNWIND_TO_SIGNIN_FROM_MY_ACCOUNT = "unwindToSignInFromMyAccount"
     public static let UNWIND_TO_SETTINGS_FROM_CHANGE_PASSWORD = "unwindToSettingsFromChangePassword"
     public static let CURRENT_UID = "CURRENT_UID"
-
+    // MARK: - tags
+    static let WATER_CHECKS_START_TAG  = 0
+    static let WATER_CHECKS_END_TAG = 7
+    static let SUPPLEMENTS_CHECKS_START_TAG = 8
+    static let SUPPLEMENTS_CHECKS_END_TAG = 10
+    static let EXERCISE_CHECK_TAG = 11
+    static let CONSUMPTION_NUMBERS_START = 1
+    static let CONSUMPTION_NUMBERS_END = 5
+    static let CONSUMPTION_NUMBER_PROTEIN = 1
+    static let CONSUMPTION_NUMBER_FAT = 2
+    static let CONSUMPTION_NUMBER_STARCH = 3
+    static let CONSUMPTION_NUMBER_FRUIT = 4
+    static let CONSUMPTION_NUMBER_VEGGIES = 5
+    static let WEIGHT_NUMBER = 0
+    // MARK - Key Constants
+    static let KEY_NAME = "KEY"
+    static let isNil : Any = "nil"
     // MARK - Message text
     static let CHART_DESCRIPTION = "The Healthy Way Maintenance Chart"
     static let CHART_DATA_DESCRIPTION = "Weight Loss/Gain"
@@ -109,3 +126,24 @@ public enum Constants {
             </html>
             """
 }
+
+public enum MealTypeStrings : String {
+    case mealTypeBreakfast = "Breakfast"
+    case mealTypeMorningSnack = "Morning Snack"
+    case mealTypeLunch = "Lunch"
+    case mealTypeAfternoonSnack = "Afternoon Snack"
+    case mealTypeDinner = "Dinner"
+    case mealTypeEveningSnack = "Evening Snack"
+}
+
+extension MealTypeStrings : CaseIterable {}
+
+public enum QuantityTypeStrings : String {
+    case mealProteinQuantity = "MEAL_PROTEIN_QUANTITY"
+    case mealStarchQuantity = "MEAL_STARCH_QUANTITY"
+    case mealFatQuantity = "MEAL_FAT_QUANTITY"
+    case mealFruitQuantity = "MEAL_FRUIT_QUANTITY"
+    case mealVeggiesQuantity = "MEAL_VEGGIES_QUANTITY"
+}
+
+extension QuantityTypeStrings : CaseIterable {}
