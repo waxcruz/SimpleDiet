@@ -72,7 +72,11 @@ class WeightChartViewController: UIViewController {
         if nodeJournal == nil {
             return
         }
-        let sortedKeysDates = Array(nodeJournal!.keys).sorted(by: <)
+        var sortedKeysDates = Array(nodeJournal!.keys).sorted(by: <)
+        // trim to 7 most recent weights
+        while sortedKeysDates.count > 7 {
+            sortedKeysDates.removeFirst()
+        }
         var startDate = ""
         var startWeight = 0.0
         var chartDataPoint = [String : Double]()
