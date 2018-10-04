@@ -113,6 +113,7 @@ class WeightChartViewController: UIViewController {
         lineChart.xAxis.granularity = 1
         lineChart.xAxis.labelRotationAngle = -45.0
         lineChart.chartDescription?.text = Constants.CHART_DESCRIPTION
+        lineChart.drawBordersEnabled = true
         
         lineChart.notifyDataSetChanged()
         
