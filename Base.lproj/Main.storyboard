@@ -1863,7 +1863,7 @@
                     </view>
                     <connections>
                         <outlet property="copyright" destination="IWB-l5-wBJ" id="ds4-m9-KA9"/>
-                        <segue destination="8ye-MO-Zra" kind="unwind" identifier="unwindToSignInFromMyAccount" unwindAction="unwindToSignInViewControllerWithSegue:" id="cqe-RF-FFB"/>
+                        <segue destination="8ye-MO-Zra" kind="unwind" identifier="unwindToSignInViewController" unwindAction="unwindToSignInViewControllerWithSegue:" id="A93-4e-pUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUW-K6-8ps" userLabel="First Responder" sceneMemberID="firstResponder"/>

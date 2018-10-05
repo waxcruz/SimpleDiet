@@ -124,7 +124,7 @@ MFMailComposeViewControllerDelegate {
         isViewInNeedOfModelData = false
         mealContentsNode = mealOnDate(mealDate: recordDate.makeShortStringDate())
         journalNode = journalOnDate(journalDate: recordDate.makeShortStringDate())
-        settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as! [String : Any?]
+        settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:]
         buildTotals()
         recordingDate.inputView = datePicker
         recordingDate.inputAccessoryView = toolBarDate
