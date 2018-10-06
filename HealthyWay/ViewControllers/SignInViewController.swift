@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import Firebase
 import HealthyWayFramework
 
 class SignInViewController: UIViewController {
     // MARK: - global model controller
     var modelController : ModelController!
-
+    // MARK: - view window
+    var window: UIWindow?
     // MARK - properties
     var emailEntered : String?
     var passwordEntered : String?
@@ -45,6 +46,32 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let uid = Auth.auth().currentUser?.uid {
+            modelController.signedinUID = uid
+            modelController.signedinEmail = Auth.auth().currentUser?.email
+//            // Set the window to the dimensions of the device
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//            // Grab a reference to whichever storyboard you have the ViewController within
+//            let storyboard = UIStoryboard(name: Constants.MAIN, bundle: nil)
+//
+//            // Grab a reference to the ViewController you want to show 1st.
+//            var initialViewController = UIViewController()
+//
+//            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.HEALTHY_WAY_TABBAR_CONTOLLER_ID) // HealthyWayTabBarControllerID
+//            // Set that ViewController as the rootViewController
+//            self.window?.rootViewController = initialViewController
+//
+//            // Make sure correct view controller loaded
+//            if let vc = window?.rootViewController as? HealthyWayTabBarController { // start with Signin
+//                vc.modelController = modelController
+//            } else {
+//                print("Problem in AppDelegate.swift")
+//            }
+//            // Sets our window up in front
+//            self.window?.makeKeyAndVisible()
+            getUserData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

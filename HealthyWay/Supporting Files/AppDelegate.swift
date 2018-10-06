@@ -35,30 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Grab a reference to the ViewController you want to show 1st.
         var initialViewController = UIViewController()
-        if let uid = Auth.auth().currentUser?.uid {
-            model.signedinUID = uid
-            model.signedinEmail = Auth.auth().currentUser?.email
-            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.HEALTHY_WAY_TABBAR_CONTOLLER_ID) // HealthyWayTabBarControllerID
-            // Set that ViewController as the rootViewController
-            self.window?.rootViewController = initialViewController
-            
-            // Make sure correct view controller loaded
-            if let vc = window?.rootViewController as? HealthyWayTabBarController { // start with Signin
-                vc.modelController = model
-            } else {
-                print("Problem in AppDelegate.swift")
-            }
+        initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.SIGNIN_VC) // HealthyWayTabBarControllerID
+        // Set that ViewController as the rootViewController
+        self.window?.rootViewController = initialViewController
+        // Make sure correct view controller loaded
+        if let vc = window?.rootViewController as? SignInViewController { // start with Signin
+            vc.modelController = model
         } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.SIGNIN_VC) // HealthyWayTabBarControllerID
-            // Set that ViewController as the rootViewController
-            self.window?.rootViewController = initialViewController
-            // Make sure correct view controller loaded
-            if let vc = window?.rootViewController as? SignInViewController { // start with Signin
-                vc.modelController = model
-            } else {
-                print("Problem in AppDelegate.swift")
-            }
+            print("Problem in AppDelegate.swift")
         }
+        //        }
         
         // Set that ViewController as the rootViewController
         self.window?.rootViewController = initialViewController
@@ -66,10 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Make sure correct view controller loaded
         if let vc = window?.rootViewController as? SignInViewController { // start with Signin
             vc.modelController = model
-        } else {
-            print("Problem in AppDelegate.swift")
         }
-
+        
         // Sets our window up in front
         self.window?.makeKeyAndVisible()
     }
