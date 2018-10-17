@@ -21,10 +21,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        model.closureForIsConnectedHandler = showFirstViewController
+        model.closureForIsConnectedError = noFirebaseAlert
         model.startModel()
-        model.checkFirebaseConnected(handler: showFirstViewController)
         return true
     }
+    
+    func noFirebaseAlert(error errorMessage : String) {
+        print(errorMessage)
+        let alert = UIAlertController(title: "Offline warning", message: "Your device can't connect to the Internet or the cloud server is unavailable. The app will not fully function.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Quit the app and retry later", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                UIControl().sendAction(#selector(NSXPCConnection.suspend),
+                                       to: UIApplication.shared, for: nil)
+            case .cancel:
+                print("Error in no Firebase Alert because cancel returned")
+                
+            case .destructive:
+                print("Error in datepicker no Firebase because destructive returned")
+                
+                
+            }}))
+        alert.addAction(UIAlertAction(title: "Run the app in degraded functionality", style: .cancel, handler: { action in
+            switch action.style{
+            case .default:
+                print("Error in no Firebase Alert because default returned")
+            case .cancel:
+                self.showFirstViewController()
+
+                
+            case .destructive:
+                print("Error in no Firebase Alert because destructive returned")
+            }}))
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    
 
     func showFirstViewController(){
         // Set the window to the dimensions of the device

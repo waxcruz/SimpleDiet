@@ -76,7 +76,7 @@ MFMailComposeViewControllerDelegate {
         createToolBarForText()
         formatMealChoices()
         // testing only
-        recordDate = makeDateFromString(dateAsString: "2018-09-01") // Date()
+        recordDate = Date() // test only value: makeDateFromString(dateAsString: "2018-09-01") 
         recordingDate.text = recordDate.makeShortStringDate()
         modelController.firebaseDateKey = recordDate.makeShortStringDate()
         saveButton.isHidden = true
@@ -359,14 +359,15 @@ MFMailComposeViewControllerDelegate {
         recordDate = datePicker.date
         showMealDate(mealDate: datePicker.date)
         recordingDate.resignFirstResponder()
-//        saveButton.isHidden = false
-//        cancelButton.isHidden = false
+        saveButton.isHidden = false
+        cancelButton.isHidden = false
         self.resignFirstResponder()
+        buildDataEntryFields()
     }
     
     @objc func todayButtonPressed(sender: UIBarButtonItem) {
         showMealDate(mealDate: Date())
-        recordingDate.resignFirstResponder()
+        datePicker.date = Date()
     }
     
     

@@ -766,7 +766,7 @@
                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="185.5" borderStyle="roundedRect" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="er0-do-UKl" userLabel="Today Weight">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="185.5" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="er0-do-UKl" userLabel="Today Weight">
                                                                 <rect key="frame" x="63" y="0.0" width="94.5" height="32"/>
                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="textColor"/>
@@ -1089,7 +1089,7 @@
                                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgE-QN-6uS" userLabel="Today Protein Consumption">
+                                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgE-QN-6uS" userLabel="Today Protein Consumption">
                                                                                 <rect key="frame" x="51.5" y="0.0" width="31" height="30"/>
                                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1108,7 +1108,7 @@
                                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="919-Zb-5lP" userLabel="Today Fat Consumption">
+                                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="919-Zb-5lP" userLabel="Today Fat Consumption">
                                                                                 <rect key="frame" x="51.5" y="0.0" width="31" height="30"/>
                                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="textColor"/>
@@ -1135,7 +1135,7 @@
                                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Starch Consumption">
+                                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-j5-oD1" userLabel="Today Starch Consumption">
                                                                                 <rect key="frame" x="47.5" y="0.0" width="31" height="30"/>
                                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="textColor"/>
@@ -1153,7 +1153,7 @@
                                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Fruit Consumption">
+                                                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-pA-iq5" userLabel="Today Fruit Consumption">
                                                                                 <rect key="frame" x="47.5" y="0.0" width="31" height="30"/>
                                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="textColor"/>
@@ -1209,7 +1209,7 @@
                                                                                 <color key="textColor" red="0.2901960784" green="0.13725490200000001" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncY-FP-Iiz" userLabel="Today Veggie Consumption">
+                                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncY-FP-Iiz" userLabel="Today Veggie Consumption">
                                                                                 <rect key="frame" x="58" y="0.0" width="31" height="30"/>
                                                                                 <color key="backgroundColor" red="0.83137254900000002" green="0.98431372549999996" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="textColor"/>
@@ -2248,15 +2248,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Healthy Way Grocery LIst" width="850" height="1100"/>
+        <image name="Healthy Way Grocery LIst" width="612" height="792"/>
         <image name="checkMarkTab" width="25" height="25"/>
-        <image name="facebook" width="72" height="72"/>
+        <image name="facebook" width="144" height="144"/>
         <image name="groceryListTab" width="25" height="25"/>
-        <image name="hwIcon" width="30" height="30"/>
+        <image name="hwIcon" width="60" height="60"/>
         <image name="hwWebsiteLogo" width="512" height="512"/>
-        <image name="instagram" width="256" height="256"/>
+        <image name="instagram" width="61.439998626708984" height="61.439998626708984"/>
         <image name="mailboxButton" width="25" height="25"/>
-        <image name="pinterest" width="512" height="512"/>
+        <image name="pinterest" width="244.1324462890625" height="244.1324462890625"/>
         <image name="plateAndForkTab" width="25" height="25"/>
         <image name="weightChartTab" width="25" height="25"/>
         <image name="youtube" width="794" height="178"/>

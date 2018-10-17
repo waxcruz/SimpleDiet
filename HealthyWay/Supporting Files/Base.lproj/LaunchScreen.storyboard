@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,18 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMb-nS-aFd" userLabel="Launch Content">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="633"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hwWebsiteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uvr-Vb-dwu">
-                                        <rect key="frame" x="16" y="16" width="343" height="615"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="617"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="uvr-Vb-dwu" firstAttribute="leading" secondItem="KMb-nS-aFd" secondAttribute="leading" constant="16" id="5KV-a4-jzV"/>
-                                    <constraint firstAttribute="trailing" secondItem="uvr-Vb-dwu" secondAttribute="trailing" constant="16" id="9qQ-X0-0kS"/>
-                                    <constraint firstItem="uvr-Vb-dwu" firstAttribute="top" secondItem="KMb-nS-aFd" secondAttribute="top" constant="16" id="Hei-Ze-mtY"/>
-                                    <constraint firstAttribute="bottom" secondItem="uvr-Vb-dwu" secondAttribute="bottom" constant="16" id="ftG-tJ-gJC"/>
+                                    <constraint firstItem="uvr-Vb-dwu" firstAttribute="leading" secondItem="KMb-nS-aFd" secondAttribute="leading" constant="8" id="5KV-a4-jzV"/>
+                                    <constraint firstAttribute="trailing" secondItem="uvr-Vb-dwu" secondAttribute="trailing" constant="8" id="9qQ-X0-0kS"/>
+                                    <constraint firstItem="uvr-Vb-dwu" firstAttribute="top" secondItem="KMb-nS-aFd" secondAttribute="top" constant="8" id="Hei-Ze-mtY"/>
+                                    <constraint firstAttribute="bottom" secondItem="uvr-Vb-dwu" secondAttribute="bottom" constant="8" id="ftG-tJ-gJC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -39,7 +39,7 @@
                             <constraint firstItem="KMb-nS-aFd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7aS-c4-2Cf"/>
                             <constraint firstItem="KMb-nS-aFd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ljq-eN-pDG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KMb-nS-aFd" secondAttribute="trailing" id="a8g-hO-KnE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KMb-nS-aFd" secondAttribute="bottom" id="uTq-YO-lLv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KMb-nS-aFd" secondAttribute="bottom" constant="14" id="uTq-YO-lLv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hwWebsiteLogo" width="973" height="602"/>
+        <image name="hwWebsiteLogo" width="512" height="512"/>
     </resources>
 </document>

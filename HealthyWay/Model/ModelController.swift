@@ -31,10 +31,50 @@ class ModelController
     var signedinEmail : String?
     var signedinUserDataNode : [String : Any?] = [:]
     var signedinUserErrorMessages : String = ""
-    // MARK: - methods
+    // MARK: - state of Firebase
+    var isFirebaseConnected : Bool = false
+    // MARK: - Firebase callbacks
+    var closureForIsConnectedHandler : (()->Void)?
+    var closureForIsConnectedError : ((String)->Void)?
     
-    func startModel(){
+    func startModel() {
         ref = Database.database().reference()
+        ref.removeAllObservers()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            let connectedRef = Database.database().reference(withPath: ".info/connected")
+            connectedRef.observe(.value, with: {snapshot in
+                if snapshot.value as? Bool ?? false {
+                    if let uid = UserDefaults.standard.string(forKey: Constants.CURRENT_UID) {
+                        self.signedinUID = uid
+                    } else {
+                        self.signedinUID = nil
+                        self.signedinEmail = nil
+                    }
+                    if self.closureForIsConnectedHandler == nil {
+                        print("closure handler is nil")
+                    }
+                    self.closureForIsConnectedHandler!()
+                } else {
+                    if self.closureForIsConnectedError == nil {
+                        print("closure error handler is nil")
+                    } else {
+                        self.closureForIsConnectedError!("\n\n*********\nNot connected to Firebase\n******\n\n")
+                    }
+                    
+                }
+            })
+        })
+    }
+    
+    
+    
+    
+    
+    func probleConnectingToFirebase(errorMessage messageText : String) {
+        print(messageText)
+    }
+    
+    func successfullStartOfFirebase() {
         if let uid = UserDefaults.standard.string(forKey: Constants.CURRENT_UID) {
             signedinUID = uid
         } else {
@@ -105,55 +145,7 @@ class ModelController
         })
     }
     
-    // MARK: - properties
-    
-//    var targetDate : Date? {
-//        get {
-//            if let target_date_string = settingsInFirebase?[KeysForFirebase.TARGET_DATE] {
-//                let myDate = makeDateFromString(dateAsString: target_date_string as! String)
-//                if myDate.description == Date(timeIntervalSince1970: 0).description {
-//                    NSLog("date Bad")
-//                    return Date()
-//                } else {
-//                    return myDate
-//                }
-//            } else {
-//                let dateToday = Date()
-//                return dateToday
-//            }
-//        }
-//
-//        set {
-//            let target_date_string = newValue?.makeShortStringDate()
-//            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist set targetDate")
-//            } else {
-//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_DATE, value: target_date_string!)
-//                settingsInFirebase![KeysForFirebase.TARGET_DATE] = target_date_string
-//            }
-//         }
-//    }
-//
-//    var targetWeight : Double? {
-//        get {
-//            if let target_weight = settingsInFirebase?[KeysForFirebase.TARGET_WEIGHT]  {
-//                return target_weight as? Double
-//            } else {
-//                return 0.0
-//            }
-//        }
-//
-//        set {
-//             if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set of targetWeight")
-//            } else {
-//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.TARGET_WEIGHT, value: newValue!)
-//                settingsInFirebase![KeysForFirebase.TARGET_WEIGHT] = newValue
-//            }
-//        }
-//
-//    }
-//
+
     var limitsProteinLow : Double? {
         get {
             if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] {
@@ -420,6 +412,7 @@ class ModelController
             } else {
                 self.signedinUID = user?.user.uid
                 self.signedinEmail = user?.user.email
+                UserDefaults.standard.set(user?.user.uid, forKey: Constants.CURRENT_UID)
                 handler()
             }
         }
@@ -437,6 +430,7 @@ class ModelController
             } catch {
                 errorHandler("Sign out failed")
             }
+            UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
         }
 
     }
@@ -451,6 +445,7 @@ class ModelController
             } catch {
                 errorHandler("Sign out failed")
             }
+            UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
         }
         
     }
@@ -481,12 +476,13 @@ class ModelController
     
     
     
-    func checkFirebaseConnected(handler : @escaping () -> Void) -> Void {
+    func checkFirebaseConnected(errorHandler : @escaping (_ : String) -> Void, handler : @escaping () -> Void) -> Void {
         
         let healthywayDatabaseRef = ref
         let connectedRef = healthywayDatabaseRef.database.reference(withPath: ".info/connected")
         connectedRef.observeSingleEvent(of: .value, with: { snapshot in
-           if snapshot.value as? Bool ?? false {
+            let result = snapshot.value as? Int ?? -1
+            if result == 0 {
                 print("Connected to Firebase")
             } else {
                 print("Not connected to Firebase")
@@ -548,8 +544,10 @@ class ModelController
             if self.signedinUID == nil {
                 let firebaseError = "Account creation failed: "
                     + (error?.localizedDescription)!
+                UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
                 errorHandler(firebaseError)
-            }else {
+            } else {
+                UserDefaults.standard.set(self.signedinUID, forKey: Constants.CURRENT_UID)
                 handler()
             }
         }

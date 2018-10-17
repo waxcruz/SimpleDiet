@@ -35,6 +35,7 @@ class MyAccountViewController: UIViewController {
                 print("SettngsViewController, Sign out failed")
             }
         }
+        UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
         performSegue(withIdentifier: Constants.UNWIND_TO_SIGNIN_FROM_MY_ACCOUNT, sender: self)
     }
     
