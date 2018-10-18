@@ -18,7 +18,9 @@ class SignInViewController: UIViewController {
     // MARK - properties
     var emailEntered : String?
     var passwordEntered : String?
-
+    // Mark: - skip display
+    @IBOutlet var noShowLogin: UIView!
+    
     
     // MARK - Sign-in fields
     @IBOutlet weak var email: UITextField!
@@ -47,6 +49,7 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let uid = Auth.auth().currentUser?.uid {
+            noShowLogin.isHidden = true
             modelController.signedinUID = uid
             modelController.signedinEmail = Auth.auth().currentUser?.email
             UserDefaults.standard.set(uid, forKey: Constants.CURRENT_UID)

@@ -50,11 +50,14 @@ class ModelController
                         self.signedinUID = nil
                         self.signedinEmail = nil
                     }
+                    self.isFirebaseConnected = true
                     if self.closureForIsConnectedHandler == nil {
                         print("closure handler is nil")
+                    } else {
+                        self.closureForIsConnectedHandler!()
                     }
-                    self.closureForIsConnectedHandler!()
                 } else {
+                    self.isFirebaseConnected = false
                     if self.closureForIsConnectedError == nil {
                         print("closure error handler is nil")
                     } else {

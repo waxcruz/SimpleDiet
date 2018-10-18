@@ -1769,6 +1769,7 @@
                         <outlet property="copyright" destination="BVg-t7-Noo" id="Lks-Ep-fcD"/>
                         <outlet property="email" destination="ueH-4r-YU8" id="7Wl-OJ-GSh"/>
                         <outlet property="message" destination="LB2-MV-ylk" id="Phg-qR-RRU"/>
+                        <outlet property="noShowLogin" destination="N2B-YT-Hzk" id="1DP-LI-tld"/>
                         <outlet property="password" destination="3rq-R6-8yn" id="WPE-hc-hlb"/>
                         <segue destination="TPj-CJ-J6l" kind="show" identifier="segueFromSigninToTabController" id="qKb-D8-teu"/>
                     </connections>

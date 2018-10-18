@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func noFirebaseAlert(error errorMessage : String) {
         print(errorMessage)
-        let alert = UIAlertController(title: "Offline warning", message: "Your device can't connect to the Internet or the cloud server is unavailable. The app will not fully function.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Quit the app and retry later", style: .default, handler: { action in
+        let alert = UIAlertController(title: "Offline warning", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Quit the app", style: .default, handler: { action in
             switch action.style{
             case .default:
                 UIControl().sendAction(#selector(NSXPCConnection.suspend),
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 
             }}))
-        alert.addAction(UIAlertAction(title: "Run the app in degraded functionality", style: .cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: "Use app in offline mode", style: .cancel, handler: { action in
             switch action.style{
             case .default:
                 print("Error in no Firebase Alert because default returned")
@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .destructive:
                 print("Error in no Firebase Alert because destructive returned")
             }}))
+        model.closureForIsConnectedError = nil
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
@@ -89,6 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Sets our window up in front
         self.window?.makeKeyAndVisible()
+        
+        // inactivate Firebase closure
+        model.closureForIsConnectedHandler = nil
     }
     
     

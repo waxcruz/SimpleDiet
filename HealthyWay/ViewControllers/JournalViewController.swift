@@ -747,6 +747,9 @@ MFMailComposeViewControllerDelegate {
         updateJournalOnDate(journalDate: recordDate.makeShortStringDate(), node: journalNode)
         updateMealOnDate(mealDate: recordDate.makeShortStringDate(), node: mealContentsNode)
         modelController.setNodeUserData(userDataNode: userDataNode, errorHandler: errorMessage, handler: updateUserSuccess)
+        if !modelController.isFirebaseConnected {
+            updateUserSuccess()
+        }
     }
     
     func updateUserSuccess() {
