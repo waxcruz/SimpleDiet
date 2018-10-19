@@ -41,9 +41,6 @@ class SettingsViewController: UIViewController{
         super.viewDidLoad()
         copyright.text = makeCopyright()
         modelController = (self.parent as! HealthyWayTabBarController).getModel()
-        if modelController?.settingsInFirebase?.count == 0 {
-            NSLog("model not ready. Fix it")
-        }
         tempSettings = modelController.settingsInFirebase as! [String : Any?]
 //        createToolBarForDatePicker()
         createToolBarForNumber()

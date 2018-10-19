@@ -31,13 +31,20 @@ class ModelController
     var signedinEmail : String?
     var signedinUserDataNode : [String : Any?] = [:]
     var signedinUserErrorMessages : String = ""
+    var nameOfDevice : String?
     // MARK: - state of Firebase
     var isFirebaseConnected : Bool = false
     // MARK: - Firebase callbacks
     var closureForIsConnectedHandler : (()->Void)?
     var closureForIsConnectedError : ((String)->Void)?
+    // MARK: - master
+    var masterNode : [String : Any?] = [:] // this is the data
+    var masterNodeState : String = "empty"
+    
     
     func startModel() {
+        nameOfDevice = UIDevice.current.name
+        // initialize master node and its state
         ref = Database.database().reference()
         ref.removeAllObservers()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -605,6 +612,7 @@ class ModelController
             if let error = error {
                 errorHandler(error.localizedDescription)
             } else {
+                self.signedinUserDataNode = node
                 handler()
             }
         }

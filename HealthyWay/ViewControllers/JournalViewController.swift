@@ -359,8 +359,8 @@ MFMailComposeViewControllerDelegate {
         recordDate = datePicker.date
         showMealDate(mealDate: datePicker.date)
         recordingDate.resignFirstResponder()
-        saveButton.isHidden = false
-        cancelButton.isHidden = false
+//        saveButton.isHidden = false
+//        cancelButton.isHidden = false
         self.resignFirstResponder()
         buildDataEntryFields()
     }
