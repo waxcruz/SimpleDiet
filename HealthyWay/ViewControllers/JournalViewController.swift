@@ -17,7 +17,7 @@ MFMailComposeViewControllerDelegate {
     
     // MARK: - outlets
     @IBOutlet weak var copyright: UILabel!
-
+    
     @IBOutlet weak var mealDescription: UITextView!
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var recordingDate: UITextField!
@@ -55,6 +55,10 @@ MFMailComposeViewControllerDelegate {
     var mealContentsNode : [String : Any?] = [:]
     var settingsNode : [String: Any?] = [:]
     var userDataNode : [String : Any?] = [:]
+    var keyingMealContentNode : [String : Any?] = [:] // hold keyed data until saved
+    var keyingJournalNode : [String : Any?] = [:]     // hold keyed data until saved
+    var keyingDate : String? = nil
+    var keyingMealSelected : MealTypeStrings? = MealTypeStrings.mealTypeBreakfast
     var isViewInNeedOfModelData : Bool = true
     var mealSelected : MealTypeStrings = MealTypeStrings.mealTypeBreakfast
     // MARK - controls
@@ -67,6 +71,10 @@ MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        keyingDate = UserDefaults.standard.object(forKey: Constants.KEYING_DATE) as? String ?? nil
+        keyingJournalNode = UserDefaults.standard.dictionary(forKey: KeysForFirebase.NODE_JOURNAL) ?? [:]
+        keyingMealContentNode = UserDefaults.standard.dictionary(forKey: KeysForFirebase.NODE_MEAL_CONTENTS) ?? [:]
+        keyingMealSelected = UserDefaults.standard.object(forKey: Constants.KEYING_MEAL_SELECTED) as? MealTypeStrings
         buildTagMaps()
         copyright.text = makeCopyright()
         modelController = (self.parent as! HealthyWayTabBarController).getModel()
@@ -76,8 +84,21 @@ MFMailComposeViewControllerDelegate {
         createToolBarForText()
         formatMealChoices()
         // testing only
-        recordDate = Date() // test only value: makeDateFromString(dateAsString: "2018-09-01") 
-        recordingDate.text = recordDate.makeShortStringDate()
+        if keyingDate == nil {
+            recordDate = Date() // test only value: makeDateFromString(dateAsString: "2018-09-01")
+            recordingDate.text = recordDate.makeShortStringDate()
+        } else {
+            recordingDate.text = keyingDate
+            recordDate = makeDateFromString(dateAsString: keyingDate!)
+            keyingDate = nil
+        }
+        if keyingMealSelected == nil {
+            mealSelected = MealTypeStrings.mealTypeBreakfast
+        } else {
+            mealSelected = keyingMealSelected!
+            keyingMealSelected = nil
+        }
+        
         modelController.firebaseDateKey = recordDate.makeShortStringDate()
         saveButton.isHidden = true
         cancelButton.isHidden = true
@@ -85,7 +106,7 @@ MFMailComposeViewControllerDelegate {
         notes.delegate = self
         mealDescription.delegate = self
         mealComments.delegate = self
-   }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -117,13 +138,27 @@ MFMailComposeViewControllerDelegate {
             let tag = number.tag
             mapTagsToNumbers[tag] = number
         }
-
+        
     }
     func buildDataEntryFields() {
         userDataNode = modelController.signedinUserDataNode
         isViewInNeedOfModelData = false
-        mealContentsNode = mealOnDate(mealDate: recordDate.makeShortStringDate())
-        journalNode = journalOnDate(journalDate: recordDate.makeShortStringDate())
+        if keyingMealContentNode.count == 0 {
+            mealContentsNode = mealOnDate(mealDate: recordDate.makeShortStringDate())
+        } else {
+            mealContentsNode = keyingMealContentNode
+            keyingMealContentNode = [:]
+            cancelButton.isHidden = false
+            saveButton.isHidden = false
+        }
+        if keyingJournalNode.count == 0 {
+            journalNode = journalOnDate(journalDate: recordDate.makeShortStringDate())
+        } else {
+            journalNode = keyingJournalNode
+            keyingJournalNode = [:]
+            cancelButton.isHidden = false
+            saveButton.isHidden = false
+        }
         settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:]
         buildTotals()
         recordingDate.inputView = datePicker
@@ -137,7 +172,7 @@ MFMailComposeViewControllerDelegate {
         waiting.stopAnimating()
         messageBox.isHidden = true
     }
- 
+    
     func changeMeal(){
         
         buildTotals()
@@ -161,7 +196,7 @@ MFMailComposeViewControllerDelegate {
     func formatMealChoices() {
         let font = UIFont.systemFont(ofSize: 12)
         chooseMeal.setTitleTextAttributes([NSAttributedStringKey.font: font],
-                                                for: .normal)
+                                          for: .normal)
     }
     func identity<T>(_ t: T) -> T { return t }
     
@@ -189,7 +224,7 @@ MFMailComposeViewControllerDelegate {
                 NSLog("index error in initializeView")
             }
         }
-
+        
         // consumption on date
         var consumptionForTheDay = Array(repeating: 0.0, count: QuantityTypeStrings.allCases.count)
         for (_, mealDict) in mealContentsNode {
@@ -217,14 +252,14 @@ MFMailComposeViewControllerDelegate {
         }
         
         for tag in 0..<todayConsumptionTotals.count {
-
+            
             // dummy code for testing
-                todayConsumptionTotals[tag].text = String(consumptionForTheDay[tag])
+            todayConsumptionTotals[tag].text = String(consumptionForTheDay[tag])
         }
         
         // totals
         var totalLine = Array(repeating: 0.0, count: balanceConsumptionTotals.count)
-
+        
         for tag in 0..<balanceConsumptionTotals.count {
             // dummy code for testing
             let limitTag = dailyConsumptionTotals[tag].tag
@@ -359,8 +394,8 @@ MFMailComposeViewControllerDelegate {
         recordDate = datePicker.date
         showMealDate(mealDate: datePicker.date)
         recordingDate.resignFirstResponder()
-//        saveButton.isHidden = false
-//        cancelButton.isHidden = false
+        //        saveButton.isHidden = false
+        //        cancelButton.isHidden = false
         self.resignFirstResponder()
         buildDataEntryFields()
     }
@@ -371,7 +406,7 @@ MFMailComposeViewControllerDelegate {
     }
     
     
-
+    
     func createToolBarForNumber() {
         toolBarNumber = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         let clearButton = UIBarButtonItem(title: "clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
@@ -381,7 +416,7 @@ MFMailComposeViewControllerDelegate {
         let labelButton = UIBarButtonItem(customView: label)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBarNumber.setItems([clearButton, flexibleSpace, labelButton,flexibleSpace,doneButton], animated: true)
-
+        
     }
     
     @objc func doneNumber (sender: UIBarButtonItem) {
@@ -395,7 +430,7 @@ MFMailComposeViewControllerDelegate {
         }
         NSLog("mismatch in doneNumber")
     }
-
+    
     @objc func clearButtonPressedForNumber(sender: UIBarButtonItem) {
         for tag in 0..<dataEntryNumbers.count {
             if let tf = dataEntryNumbers?[tag] {
@@ -407,7 +442,7 @@ MFMailComposeViewControllerDelegate {
         }
         NSLog("mismatch in clearButtonPressed")
     }
-
+    
     func createToolBarForText() {
         toolBarText = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         let clearButton = UIBarButtonItem(title: "clear", style: .plain, target: self, action: #selector(clearButtonPressedForTextView(sender:)))
@@ -418,7 +453,7 @@ MFMailComposeViewControllerDelegate {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBarText.setItems([clearButton, flexibleSpace, labelButton,flexibleSpace,doneButton], animated: true)
     }
-
+    
     @objc func doneText (sender: UITextView) {
         var tf = mealDescription
         if tf == activeTextView {
@@ -438,16 +473,16 @@ MFMailComposeViewControllerDelegate {
         }
         return
     }
-
-
-
+    
+    
+    
     
     @objc func clearButtonPressedForTextView(sender: UIBarButtonItem) {
         if activeTextView == notes {
             notes.text = ""
         } else {
             if activeTextView == mealDescription {
-               mealDescription.text = ""
+                mealDescription.text = ""
             } else {
                 mealComments.text = ""
             }
@@ -463,7 +498,7 @@ MFMailComposeViewControllerDelegate {
         activeTextView = nil
         lastOffset = scrollContent.contentOffset
     }
-  
+    
     @objc func numberTextFieldDidEnd(_ textField: UITextField) {
         let amount = Double(textField.text ?? "0.0")
         var meal = mealContentsNode[mealSelected.rawValue] as? [String : Any?] ?? [:]
@@ -488,13 +523,14 @@ MFMailComposeViewControllerDelegate {
         default:
             print("invalid tag number")
         }
+        postInflightData()
         saveButton.isHidden = false
         cancelButton.isHidden = false
         activeNumberTextField?.resignFirstResponder()
         buildTotals()
     }
-
-
+    
+    
     
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -520,10 +556,7 @@ MFMailComposeViewControllerDelegate {
         default:
             print("tag error on UITextViews")
         }
-        
-        
-        
-        
+        postInflightData()
         saveButton.isHidden = false
         cancelButton.isHidden = false
         activeTextView?.resignFirstResponder()
@@ -544,7 +577,7 @@ MFMailComposeViewControllerDelegate {
                 return
             }
         }
-
+        
         if activeTextView != nil {
             let absoluteActiveTextViewOrigin = activeTextView?.convert(activeTextView!.bounds.origin, to: nil)
             let checkRect = CGRect.init(x: absoluteActiveTextViewOrigin?.x ?? 0.0, y: absoluteActiveTextViewOrigin?.y ?? 0.0, width: activeTextView?.frame.width ?? 0.0, height: activeTextView?.frame.height ?? 0.0)
@@ -563,7 +596,7 @@ MFMailComposeViewControllerDelegate {
         scrollContent.scrollIndicatorInsets = contentInsets
     }
     
- 
+    
     
     func journalOnDate(journalDate date: String) -> Dictionary<String, Any?> {
         let userJournalContents = userDataNode[KeysForFirebase.NODE_JOURNAL] as? [String : Any?] ?? [:]
@@ -576,7 +609,7 @@ MFMailComposeViewControllerDelegate {
         let userMealOnDate = userMealContents[date] as? [String : Any?] ?? [:]
         return userMealOnDate
     }
- 
+    
     func updateJournalOnDate(journalDate date : String, node : [String : Any?]) {
         var userJournalContents = userDataNode[KeysForFirebase.NODE_JOURNAL] as? [String : Any?] ?? [:]
         var userJournalContentsOnDate = userJournalContents[date] as? [String : Any?] ?? [:]
@@ -614,6 +647,12 @@ MFMailComposeViewControllerDelegate {
                     self.buildDataEntryFields()
                     self.saveButton.resignFirstResponder()
                     self.cancelButton.resignFirstResponder()
+                    // delete userdefaults storage for inflight data
+                    self.clearInflightData()
+                    self.keyingMealSelected = nil
+                    self.keyingJournalNode = [:]
+                    self.keyingMealContentNode = [:]
+                    self.keyingDate = nil
                 case .cancel:
                     print("Error in datepicker Alert because cancel returned")
                     
@@ -642,6 +681,7 @@ MFMailComposeViewControllerDelegate {
         var waterCount = journalNode[KeysForFirebase.GLASSES_OF_WATER] as? Double ?? 0.0
         waterCount += checkMarkClick(checkButton: sender as! UIButton)
         journalNode[KeysForFirebase.GLASSES_OF_WATER] = waterCount
+        postInflightData()
         bindChecksToModel()
     }
     
@@ -650,6 +690,7 @@ MFMailComposeViewControllerDelegate {
         var supplementCount = journalNode[KeysForFirebase.SUPPLEMENTS] as? Double ?? 0.0
         supplementCount += checkMarkClick(checkButton: sender as! UIButton)
         journalNode[KeysForFirebase.SUPPLEMENTS] = supplementCount
+        postInflightData()
         bindChecksToModel()
     }
     
@@ -657,6 +698,7 @@ MFMailComposeViewControllerDelegate {
         var exerciseCount = journalNode[KeysForFirebase.EXERCISED] as? Double ?? 0.0
         exerciseCount += checkMarkClick(checkButton: sender as! UIButton)
         journalNode[KeysForFirebase.EXERCISED] = exerciseCount
+        postInflightData()
         bindChecksToModel()
     }
     
@@ -669,6 +711,7 @@ MFMailComposeViewControllerDelegate {
             checkButton.setTitle(" ", for: .normal)
             result = -1.0
         }
+        postInflightData()
         saveButton.isHidden = false
         cancelButton.isHidden = false
         return result
@@ -693,6 +736,7 @@ MFMailComposeViewControllerDelegate {
         default:
             print("invalid segement index")
         }
+        postInflightData()
         changeMeal()
     }
     
@@ -730,6 +774,7 @@ MFMailComposeViewControllerDelegate {
         cancelButton.isHidden = true
         saveButton.isHidden = true
         userDataNode = [:]
+        clearInflightData()
         mealContentsNode = [:]
         journalNode = [:]
         isViewInNeedOfModelData = true
@@ -753,6 +798,9 @@ MFMailComposeViewControllerDelegate {
     }
     
     func updateUserSuccess() {
+        clearInflightData()
+        saveButton.isHidden = true
+        cancelButton.isHidden = true
         waiting.isHidden = true
         waiting.isUserInteractionEnabled = true
         waiting.stopAnimating()
@@ -760,7 +808,7 @@ MFMailComposeViewControllerDelegate {
     }
     
     
-
+    
     @IBAction func emailJournal(_ sender: Any) {
         if !MFMailComposeViewController.canSendMail() {
             NSLog("No email")
@@ -789,17 +837,20 @@ MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: post inflight data
+    func postInflightData() {
+        UserDefaults.standard.set(journalNode, forKey: KeysForFirebase.NODE_JOURNAL)
+        UserDefaults.standard.set(mealContentsNode, forKey: KeysForFirebase.NODE_MEAL_CONTENTS)
+        UserDefaults.standard.set(mealSelected.rawValue, forKey: Constants.KEYING_MEAL_SELECTED)
+        UserDefaults.standard.set(recordDate.makeShortStringDate(), forKey: Constants.KEYING_DATE)
+    }
     
-
+    func clearInflightData() {
+        UserDefaults.standard.set(nil, forKey: Constants.KEYING_DATE)
+        UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_MEAL_CONTENTS)
+        UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_JOURNAL)
+        UserDefaults.standard.set(nil, forKey: Constants.KEYING_MEAL_SELECTED)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+}
 

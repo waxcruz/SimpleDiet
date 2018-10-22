@@ -27,6 +27,7 @@ class ModelController
     var mealContentsInFirebase : Dictionary? = [:]
     var clientNode : [String : Any?] = [:] // key is node type journal, settings, and mealContent
     var clientErrorMessages : String = ""
+    // master data
     var signedinUID : String?
     var signedinEmail : String?
     var signedinUserDataNode : [String : Any?] = [:]
@@ -37,9 +38,7 @@ class ModelController
     // MARK: - Firebase callbacks
     var closureForIsConnectedHandler : (()->Void)?
     var closureForIsConnectedError : ((String)->Void)?
-    // MARK: - master
-    var masterNode : [String : Any?] = [:] // this is the data
-    var masterNodeState : String = "empty"
+
     
     
     func startModel() {
@@ -51,7 +50,7 @@ class ModelController
             let connectedRef = Database.database().reference(withPath: ".info/connected")
             connectedRef.observe(.value, with: {snapshot in
                 if snapshot.value as? Bool ?? false {
-                    if let uid = UserDefaults.standard.string(forKey: Constants.CURRENT_UID) {
+                    if let uid = self.currentUID {
                         self.signedinUID = uid
                     } else {
                         self.signedinUID = nil
@@ -85,7 +84,7 @@ class ModelController
     }
     
     func successfullStartOfFirebase() {
-        if let uid = UserDefaults.standard.string(forKey: Constants.CURRENT_UID) {
+        if let uid = currentUID {
             signedinUID = uid
         } else {
             signedinUID = nil
@@ -347,6 +346,17 @@ class ModelController
             }
         }
     }
+    
+    // MARK: - inflight storage on UserDefaults
+    var currentUID : String? {
+        get {
+            return UserDefaults.standard.string(forKey: Constants.CURRENT_UID)
+        }
+        
+        set{
+            UserDefaults.standard.set(newValue, forKey: Constants.CURRENT_UID)
+        }
+    }
     // MARK - Meal management
     
     func newDay() {
@@ -422,7 +432,7 @@ class ModelController
             } else {
                 self.signedinUID = user?.user.uid
                 self.signedinEmail = user?.user.email
-                UserDefaults.standard.set(user?.user.uid, forKey: Constants.CURRENT_UID)
+                self.currentUID = user?.user.uid
                 handler()
             }
         }
@@ -440,7 +450,7 @@ class ModelController
             } catch {
                 errorHandler("Sign out failed")
             }
-            UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
+            self.currentUID = nil
         }
 
     }
@@ -455,7 +465,7 @@ class ModelController
             } catch {
                 errorHandler("Sign out failed")
             }
-            UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
+            self.currentUID = nil
         }
         
     }
@@ -500,7 +510,7 @@ class ModelController
            handler()
         })
     }
-    
+    // Used by Healthy Way Admin app
     func getNodeOfClient(email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
         clientNode = [:]
         clientErrorMessages = ""
@@ -554,10 +564,10 @@ class ModelController
             if self.signedinUID == nil {
                 let firebaseError = "Account creation failed: "
                     + (error?.localizedDescription)!
-                UserDefaults.standard.set(nil, forKey: Constants.CURRENT_UID)
+                self.currentUID = nil
                 errorHandler(firebaseError)
             } else {
-                UserDefaults.standard.set(self.signedinUID, forKey: Constants.CURRENT_UID)
+                self.currentUID = self.signedinUID
                 handler()
             }
         }
@@ -618,6 +628,9 @@ class ModelController
         }
         
     }
+    
+
+    
     
 }
 

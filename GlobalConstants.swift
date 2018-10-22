@@ -34,6 +34,8 @@ public enum Constants {
     // MARK - Key Constants
     static let KEY_NAME = "KEY"
     static let isNil : Any = "nil"
+    static let KEYING_DATE = "Keying Date"
+    static let KEYING_MEAL_SELECTED = "Keying Meal Selected"
     // MARK - Message text
     static let CHART_DESCRIPTION = "The Healthy Way Maintenance Chart"
     static let CHART_DATA_DESCRIPTION = "Weight Loss/Gain"

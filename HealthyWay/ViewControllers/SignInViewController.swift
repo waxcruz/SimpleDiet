@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
             noShowLogin.isHidden = true
             modelController.signedinUID = uid
             modelController.signedinEmail = Auth.auth().currentUser?.email
-            UserDefaults.standard.set(uid, forKey: Constants.CURRENT_UID)
+            modelController.currentUID = uid
             getUserData()
         }
     }
