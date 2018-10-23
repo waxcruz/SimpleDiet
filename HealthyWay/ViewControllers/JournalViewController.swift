@@ -67,6 +67,8 @@ MFMailComposeViewControllerDelegate {
     var mapTagsToButtons : [UIButton] = []  // tag is index, button is a check button
     // MARK - number fields
     var mapTagsToNumbers : [UITextField] = [] // tag is index, text field is a number field
+    // MARK: - track days in journal
+    var lastJournalDayCount : Int = 0
     // MARK - Delegates and Methods
     
     override func viewDidLoad() {
@@ -158,6 +160,9 @@ MFMailComposeViewControllerDelegate {
             keyingJournalNode = [:]
             cancelButton.isHidden = false
             saveButton.isHidden = false
+        }
+        if journalNode.count > lastJournalDayCount {
+            lastJournalDayCount = journalNode.count
         }
         settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:]
         buildTotals()
@@ -790,6 +795,19 @@ MFMailComposeViewControllerDelegate {
         waiting.isUserInteractionEnabled = false
         waiting.startAnimating()
         updateJournalOnDate(journalDate: recordDate.makeShortStringDate(), node: journalNode)
+        // 30 day delete check
+        var extractJournalNode = userDataNode[KeysForFirebase.NODE_JOURNAL] as? [String : Any?] ?? [:]
+        if extractJournalNode.count > lastJournalDayCount {
+            lastJournalDayCount = extractJournalNode.count
+            if extractJournalNode.count > 30 {
+                var listOfJournalDates = Array(extractJournalNode.keys).sorted(by: >)
+                for deleteDateIndex in 30..<listOfJournalDates.count {
+                    extractJournalNode[listOfJournalDates[deleteDateIndex]] = nil
+                }
+                lastJournalDayCount = extractJournalNode.count
+                userDataNode[KeysForFirebase.NODE_JOURNAL] = extractJournalNode
+            }
+        }
         updateMealOnDate(mealDate: recordDate.makeShortStringDate(), node: mealContentsNode)
         modelController.setNodeUserData(userDataNode: userDataNode, errorHandler: errorMessage, handler: updateUserSuccess)
         if !modelController.isFirebaseConnected {
