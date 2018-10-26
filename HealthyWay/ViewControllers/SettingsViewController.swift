@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController{
             dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(SettingsViewController.textFieldDidBeginEditing(textField:)), for: UIControlEvents.editingDidBegin)
             let displayTextField = dataEntryNumbers[tagCollectionSequence]
             let tag = dataEntryNumbers[tagCollectionSequence].tag
-            switch (tag) {
+            switch (tag ) {
             case 0:
                 displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0)
             case 1:

@@ -79,9 +79,7 @@ class ModelController
     
     
     
-    func probleConnectingToFirebase(errorMessage messageText : String) {
-        print(messageText)
-    }
+
     
     func successfullStartOfFirebase() {
         if let uid = currentUID {
@@ -100,43 +98,6 @@ class ModelController
         return ref
     }
     
-    func breakConnectionToFirebase(typeOfHandle handle : FirebaseHandleIdentifiers) {
-        var closeHandle = DatabaseHandle()
-        switch (handle) {
-        case FirebaseHandleIdentifiers.settings:
-            closeHandle = settingsHandle
-        case FirebaseHandleIdentifiers.journal:
-            closeHandle = journalHandle
-        case FirebaseHandleIdentifiers.mealContents:
-            closeHandle = mealContentsHandle
-        }
-        ref.removeObserver(withHandle: closeHandle)
-    }
-    
-    func makeConnectionToFirebase() {
-        // Connect to Settings
-        let settingsRef = ref.child(KeysForFirebase.NODE_SETTINGS)
-        settingsHandle = settingsRef.observe(DataEventType.value, with: { (snapshot) in
-            self.settingsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-        })
-
-        let journalRef = ref.child(KeysForFirebase.NODE_JOURNAL)
-        journalHandle = journalRef.observe(DataEventType.value, with: { (snapshot) in
-            self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-//            for key in (self.journalInFirebase?.keys)! {
-//                NSLog("key: \(key)")
-//            }
-//            for value in (self.journalInFirebase?.values)! {
-//                NSLog("value: \(value)")
-//                var dict = value as! Dictionary<String, Any>
-//                let dictValue =  dict["WEIGHED"]
-//            }
-        })
-        let mealContentsRef = ref.child(KeysForFirebase.NODE_MEAL_CONTENTS)
-        mealContentsHandle = mealContentsRef.observe(DataEventType.value, with: { (snapshot) in
-            self.mealContentsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-        })
-    }
     func getJournal(journalOnDateKey date: String) {
         // date must be of the form YYYY-MM-DD or no match will be found
         let consumeRef = self.ref.child(KeysForFirebase.NODE_JOURNAL)

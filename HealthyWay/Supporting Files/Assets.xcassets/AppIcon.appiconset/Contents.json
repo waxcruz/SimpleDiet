@@ -3,109 +3,109 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_40pt.png",
+      "filename" : "HW_App_40ptNoAlpha.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_60pt.png",
+      "filename" : "HW_App_60ptNoAlpha.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_58pt.png",
+      "filename" : "HW_App_58ptNoAlpha.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_87pt.png",
+      "filename" : "HW_App_87ptNoAlpha.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_80pt.png",
+      "filename" : "HW_App_80ptNoAlpha.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_120pt.png",
+      "filename" : "HW_App_120ptNoAlpha.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_120pt-1.png",
+      "filename" : "HW_App_120ptNoAlpha-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "HW_App_WhiteBackground_180pt.png",
+      "filename" : "HW_App_180ptNoAlpha.png",
       "scale" : "3x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_20pt.png",
+      "filename" : "HW_App_20ptNoAlpha.png",
       "scale" : "1x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_40pt-1.png",
+      "filename" : "HW_App_40ptNoAlpha-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_29pt.png",
+      "filename" : "HW_App_29ptNoAlpha.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_58pt-1.png",
+      "filename" : "HW_App_58ptNoAlpha-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_40pt-2.png",
+      "filename" : "HW_App_40ptNoAlpha-2.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_80pt-1.png",
+      "filename" : "HW_App_80ptNoAlpha-1.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_76pt.png",
+      "filename" : "HW_App_76ptNoAlpha.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_152pt.png",
+      "filename" : "HW_App_152ptNoAlpha.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "HW_App_WhiteBackground_167pt.png",
+      "filename" : "HW_App_167ptNoAlpha.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "HW_App_1024pt.png",
+      "filename" : "HW_App_1024ptNoAlpha.png",
       "scale" : "1x"
     }
   ],
