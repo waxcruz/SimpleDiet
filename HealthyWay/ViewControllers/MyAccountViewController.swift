@@ -59,6 +59,13 @@ class MyAccountViewController: UIViewController {
         if vc .isKind(of: ChangePasswordViewController.self) {
             (vc as! ChangePasswordViewController).modelController = modelController
         } else {
+            if vc .isKind(of: SignInViewController.self) {
+                if (vc as! SignInViewController).modelController == nil {
+                    print("Segue to improperly prepared view controller, SignInViewController")
+                } else {
+                    print("Unwinding to SignInViewController")
+                }
+            }
             print("Unknown segue (", vc.debugDescription, ") in ClientViewController")
         }
     }

@@ -32,20 +32,31 @@ class SettingsViewController: UIViewController{
     var activeTextField = UITextField()
     
     // MARK - temp storage
-    var tempSettings : [String: Any?] = [:]
-    var newSettings : [String: Any?] = [:]
-    
+    var keyingSettings : [String : Any?] = [:] // inflight data
+
+    // Firebase work areas
+    var settingsNode : [String: Any?] = [:]
+    var userDataNode : [String : Any?] = [:]
     
     // MARK - Delegates and Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         copyright.text = makeCopyright()
         modelController = (self.parent as! HealthyWayTabBarController).getModel()
-        tempSettings = modelController.settingsInFirebase as! [String : Any?]
-//        createToolBarForDatePicker()
+        userDataNode = modelController.signedinUserDataNode
+        keyingSettings = UserDefaults.standard.dictionary(forKey: KeysForFirebase.NODE_SETTINGS) ?? [:]
+        if keyingSettings.count == 0 {
+            settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS]  as? [String : Any?] ?? [:]
+            saveButton.isHidden = true
+            cancelButton.isHidden = true
+        } else {
+            settingsNode = keyingSettings
+            cancelButton.isHidden = false
+            saveButton.isHidden = false
+            keyingSettings = [:]
+            UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_SETTINGS)
+        }
         createToolBarForNumber()
-        saveButton.isHidden = true
-        cancelButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,15 +73,15 @@ class SettingsViewController: UIViewController{
             let tag = dataEntryNumbers[tagCollectionSequence].tag
             switch (tag ) {
             case 0:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0)
+                displayTextField.text = String(settingsNode[KeysForFirebase.LIMIT_PROTEIN_LOW] as? Double ?? 0)
             case 1:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FAT] as? Double ?? 0)
+                displayTextField.text = String(settingsNode[KeysForFirebase.LIMIT_FAT] as? Double ?? 0)
             case 2:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0)
+                displayTextField.text = String(settingsNode[KeysForFirebase.LIMIT_STARCH] as? Double ?? 0)
             case 3:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0)
+                displayTextField.text = String(settingsNode[KeysForFirebase.LIMIT_FRUIT] as? Double ?? 0)
             case 4:
-                displayTextField.text = String(tempSettings[KeysForFirebase.LIMIT_PROTEIN_HIGH] as? Double ?? 0)
+                displayTextField.text = String(settingsNode[KeysForFirebase.LIMIT_PROTEIN_HIGH] as? Double ?? 0)
                 if displayTextField.text == "0.0" {
                     displayTextField.text = ""
                 }
@@ -83,7 +94,7 @@ class SettingsViewController: UIViewController{
     func createToolBarForNumber() {
         toolBarNumber = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         let clearButton = UIBarButtonItem(title: "clear", style: .plain, target: self, action: #selector(clearButtonPressedForNumber(sender:)))
-        let doneButton = UIBarButtonItem(title: "return", style: .plain, target: self, action: #selector(doneNumber (sender:)))
+        let doneButton = UIBarButtonItem(title: "finished", style: .plain, target: self, action: #selector(doneNumber (sender:)))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width/3, height: 40))
         label.text = "Enter number"
         let labelButton = UIBarButtonItem(customView: label)
@@ -132,18 +143,19 @@ class SettingsViewController: UIViewController{
         switch (textField.tag) {
             // adjust numberFor... by - 1 offset to match the storyboard tag. Storyboard tags start with 0
         case SettingsDataEntryNumbers.numberForProteinLow.rawValue - 1:
-            newSettings[KeysForFirebase.LIMIT_PROTEIN_LOW] = keyedDouble
+            settingsNode[KeysForFirebase.LIMIT_PROTEIN_LOW] = keyedDouble
         case SettingsDataEntryNumbers.numberForFat.rawValue - 1:
-            newSettings[KeysForFirebase.LIMIT_FAT] = keyedDouble
+            settingsNode[KeysForFirebase.LIMIT_FAT] = keyedDouble
         case SettingsDataEntryNumbers.numberForStarch.rawValue - 1:
-            newSettings[KeysForFirebase.LIMIT_STARCH] = keyedDouble
+            settingsNode[KeysForFirebase.LIMIT_STARCH] = keyedDouble
         case SettingsDataEntryNumbers.numberForFruit.rawValue - 1:
-            newSettings[KeysForFirebase.LIMIT_FRUIT] = keyedDouble
+            settingsNode[KeysForFirebase.LIMIT_FRUIT] = keyedDouble
         case SettingsDataEntryNumbers.numberForProteinHigh.rawValue - 1:
-            newSettings[KeysForFirebase.LIMIT_PROTEIN_HIGH] = keyedDouble
+            settingsNode[KeysForFirebase.LIMIT_PROTEIN_HIGH] = keyedDouble
         default:
             NSLog("bad input to numberTextFieldEnd")
         }
+        UserDefaults.standard.set(settingsNode, forKey: KeysForFirebase.NODE_SETTINGS)
         saveButton.isHidden = false
         cancelButton.isHidden = false
     }
@@ -161,18 +173,32 @@ class SettingsViewController: UIViewController{
 //    }
 //
     @IBAction func saveSettings(_ sender: Any) {
-        for (settingsKey, settingsValue) in newSettings {
-            tempSettings[settingsKey] = settingsValue
+        userDataNode = modelController.signedinUserDataNode
+        userDataNode[KeysForFirebase.NODE_SETTINGS] = settingsNode
+        modelController.setNodeUserData(userDataNode: userDataNode, errorHandler: errorMessage, handler: updateUserSuccess)
+        if !modelController.isFirebaseConnected {
+            updateUserSuccess()
         }
-        modelController.updateSettings(newSettings: self.newSettings)
-        newSettings = [:]
-        saveButton.isHidden = true
-        cancelButton.isHidden = true
     }
     
+    func updateUserSuccess() {
+        keyingSettings = [:]
+        UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_SETTINGS)
+        saveButton.isHidden = true
+        cancelButton.isHidden = true
+        modelController.isSettingsNodeChanged = true
+    }
+
+    func errorMessage(message : String) {
+        print("Error in Settings", message)
+    }
+
+    
     @IBAction func cancelSettings(_ sender: Any) {
-        newSettings = [:]
-//        bindTargetDateToModel()
+        keyingSettings = [:]
+        UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_SETTINGS)
+        userDataNode = modelController.signedinUserDataNode
+        settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:]
         bindNumberFieldsToModel()
         saveButton.isHidden = true
         cancelButton.isHidden = true

@@ -113,7 +113,8 @@ MFMailComposeViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // assemble data for journal and meals
-        if isViewInNeedOfModelData {
+        if isViewInNeedOfModelData  || modelController.isSettingsNodeChanged{
+            modelController.isSettingsNodeChanged = false
             waiting.isHidden = false
             waiting.isUserInteractionEnabled = false
             waiting.startAnimating()
@@ -509,7 +510,22 @@ MFMailComposeViewControllerDelegate {
         var meal = mealContentsNode[mealSelected.rawValue] as? [String : Any?] ?? [:]
         switch (textField.tag) {
         case MealDataEntryTags.numberForWeight.rawValue:
-            journalNode[KeysForFirebase.WEIGHED] = amount
+            let remainder = amount!.truncatingRemainder(dividingBy: 1)
+            var weightHW : Double = amount! - remainder
+            // Healthy Way formula for round weight
+            if remainder >= 0.1 {
+                if remainder < 0.4 {
+                    weightHW += 0.25
+                } else {
+                    if remainder < 0.7 {
+                        weightHW += 0.5
+                    } else {
+                        weightHW += 0.75
+                    }
+                }
+            }
+            journalNode[KeysForFirebase.WEIGHED] = weightHW
+            textField.text = String(weightHW) // post rounded values
         case MealDataEntryTags.numberForProteinLow.rawValue:
             meal[QuantityTypeStrings.mealProteinQuantity.rawValue] = amount
             mealContentsNode[mealSelected.rawValue] = meal
@@ -824,6 +840,7 @@ MFMailComposeViewControllerDelegate {
         waiting.stopAnimating()
         messageBox.isHidden = true
     }
+    
     
     
     

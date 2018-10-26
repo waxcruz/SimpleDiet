@@ -35,6 +35,7 @@ class ModelController
     var nameOfDevice : String?
     // MARK: - state of Firebase
     var isFirebaseConnected : Bool = false
+    var isSettingsNodeChanged : Bool = false
     // MARK: - Firebase callbacks
     var closureForIsConnectedHandler : (()->Void)?
     var closureForIsConnectedError : ((String)->Void)?
@@ -77,10 +78,6 @@ class ModelController
     
     
     
-    
-    
-
-    
     func successfullStartOfFirebase() {
         if let uid = currentUID {
             signedinUID = uid
@@ -98,216 +95,199 @@ class ModelController
         return ref
     }
     
-    func getJournal(journalOnDateKey date: String) {
-        // date must be of the form YYYY-MM-DD or no match will be found
-        let consumeRef = self.ref.child(KeysForFirebase.NODE_JOURNAL)
-        self.refHandle = consumeRef.observe(DataEventType.value, with: { (snapshot) in
-            self.journalInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-        })
-    }
 
-    
-    func getMealContents(mealContentsKey meal : String) {
-        // meal key must be of the form YYYY-MM-DD-T or no match will be found
-        let mealContentsRef = self.ref.child("MealContents")
-        self.refHandle = mealContentsRef.observe(DataEventType.value, with: { (snapshot) in
-            self.mealContentsInFirebase = snapshot.value as? [String : AnyObject] ?? [:]
-        })
-    }
-    
-
-    var limitsProteinLow : Double? {
-        get {
-            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] {
-                return protein as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsProtein")
-            } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] = newValue
-            }
-        }
-    }
- 
-    var limitsProteinHigh : Double? {
-        get {
-            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] {
-                return protein as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsProtein")
-            } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] = newValue
-            }
-        }
-    }
-    
-    
-    var limitsFat : Double? {
-        get {
-            if let fat = settingsInFirebase?[KeysForFirebase.LIMIT_FAT] {
-                return fat as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsFat")
-            } else {
-                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_FAT, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_FAT] = newValue
-            }
-        }
-    }
-    
-    
-    var limitsFruit : Double? {
-        get {
-            if let fruit = settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] {
-                return fruit as? Double
-            } else {
-                return 0.0
-            }
-        }
-    
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsFruit")
-            } else {
-                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_FRUIT, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] = newValue
-            }
-        }
-    }
-    
-    var limitsStarch : Double? {
-        get {
-            if let starch = settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] {
-                return starch as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsStarch")
-            } else {
-                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_STARCH, value: newValue!)
-                settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] = newValue
-            }
-        }
-    }
-    
-    var limitsVeggies : Double? {
-        get {
-            if let veggies = settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] {
-                return veggies as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set limitsVeggies")
-            } else {
-                settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] = newValue
-            }
-        }
-    }
-    
-  
-    var journalWaterConsumed : Int? {
-        get {
-            if let water = journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] {
-                return water as? Int
-            } else {
-                return 0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set journalWaterConsumed")
-            } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
-                journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
-            }
-        }
-    }
-
-    var journalWeight : Double? {
-        get {
-            if let weight = settingsInFirebase?[KeysForFirebase.WEIGHED] {
-                return weight as? Double
-            } else {
-                return 0.0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set journalWeight")
-            } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
-            }
-        }
-    }
-
-    var journalExercise : Int? {
-        get {
-            if let exercise = settingsInFirebase?[KeysForFirebase.EXERCISED] {
-                return exercise as? Int
-            } else {
-                return 0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set journalExercise")
-            } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
-            }
-        }
-    }
-
-    var journalSupplements : Int? {
-        get {
-            if let exercise = settingsInFirebase?[KeysForFirebase.SUPPLEMENTS] {
-                return exercise as? Int
-            } else {
-                return 0
-            }
-        }
-        
-        set {
-            if settingsInFirebase == nil {
-                NSLog("settings doesn't exist in set journalExercise")
-            } else {
-                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
-                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
-            }
-        }
-    }
-    
+//    var limitsProteinLow : Double? {
+//        get {
+//            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] {
+//                return protein as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsProtein")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
+//                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] = newValue
+//            }
+//        }
+//    }
+//
+//    var limitsProteinHigh : Double? {
+//        get {
+//            if let protein = settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] {
+//                return protein as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsProtein")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
+//                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] = newValue
+//            }
+//        }
+//    }
+//
+//
+//    var limitsFat : Double? {
+//        get {
+//            if let fat = settingsInFirebase?[KeysForFirebase.LIMIT_FAT] {
+//                return fat as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsFat")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_FAT, value: newValue!)
+//                settingsInFirebase?[KeysForFirebase.LIMIT_FAT] = newValue
+//            }
+//        }
+//    }
+//
+//
+//    var limitsFruit : Double? {
+//        get {
+//            if let fruit = settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] {
+//                return fruit as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsFruit")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_FRUIT, value: newValue!)
+//                settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] = newValue
+//            }
+//        }
+//    }
+//
+//    var limitsStarch : Double? {
+//        get {
+//            if let starch = settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] {
+//                return starch as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsStarch")
+//            } else {
+//                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_STARCH, value: newValue!)
+//                settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] = newValue
+//            }
+//        }
+//    }
+//
+//    var limitsVeggies : Double? {
+//        get {
+//            if let veggies = settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] {
+//                return veggies as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set limitsVeggies")
+//            } else {
+//                settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] = newValue
+//            }
+//        }
+//    }
+//
+//
+//    var journalWaterConsumed : Int? {
+//        get {
+//            if let water = journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] {
+//                return water as? Int
+//            } else {
+//                return 0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set journalWaterConsumed")
+//            } else {
+//                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
+//                journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
+//            }
+//        }
+//    }
+//
+//    var journalWeight : Double? {
+//        get {
+//            if let weight = settingsInFirebase?[KeysForFirebase.WEIGHED] {
+//                return weight as? Double
+//            } else {
+//                return 0.0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set journalWeight")
+//            } else {
+//                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+//                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
+//            }
+//        }
+//    }
+//
+//    var journalExercise : Int? {
+//        get {
+//            if let exercise = settingsInFirebase?[KeysForFirebase.EXERCISED] {
+//                return exercise as? Int
+//            } else {
+//                return 0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set journalExercise")
+//            } else {
+//                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+//                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
+//            }
+//        }
+//    }
+//
+//    var journalSupplements : Int? {
+//        get {
+//            if let exercise = settingsInFirebase?[KeysForFirebase.SUPPLEMENTS] {
+//                return exercise as? Int
+//            } else {
+//                return 0
+//            }
+//        }
+//
+//        set {
+//            if settingsInFirebase == nil {
+//                NSLog("settings doesn't exist in set journalExercise")
+//            } else {
+//                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
+//                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
+//            }
+//        }
+//    }
+//
     // MARK: - inflight storage on UserDefaults
     var currentUID : String? {
         get {
@@ -362,27 +342,27 @@ class ModelController
         
     }
     
-    func updateSettings(newSettings settings : Dictionary<String, Any?>) {
-        for (newSettingsKey, newSettingsValue) in settings {
-            switch (newSettingsKey) {
-            case KeysForFirebase.LIMIT_PROTEIN_LOW:
-                limitsProteinLow = newSettingsValue as? Double
-            case  KeysForFirebase.LIMIT_FAT:
-                limitsFat = newSettingsValue as? Double
-            case KeysForFirebase.LIMIT_STARCH:
-                limitsStarch = newSettingsValue as? Double
-            case KeysForFirebase.LIMIT_FRUIT:
-                limitsFruit = newSettingsValue as? Double
-            case KeysForFirebase.LIMIT_VEGGIES:
-                limitsVeggies = newSettingsValue as? Double
-            case KeysForFirebase.LIMIT_PROTEIN_HIGH:
-                limitsProteinHigh = newSettingsValue as? Double
-            default:
-                NSLog("Bad key in updateSettings")
-            }
-        }
-    }
-    
+//    func updateSettings(newSettings settings : Dictionary<String, Any?>) {
+//        for (newSettingsKey, newSettingsValue) in settings {
+//            switch (newSettingsKey) {
+//            case KeysForFirebase.LIMIT_PROTEIN_LOW:
+//                limitsProteinLow = newSettingsValue as? Double
+//            case  KeysForFirebase.LIMIT_FAT:
+//                limitsFat = newSettingsValue as? Double
+//            case KeysForFirebase.LIMIT_STARCH:
+//                limitsStarch = newSettingsValue as? Double
+//            case KeysForFirebase.LIMIT_FRUIT:
+//                limitsFruit = newSettingsValue as? Double
+//            case KeysForFirebase.LIMIT_VEGGIES:
+//                limitsVeggies = newSettingsValue as? Double
+//            case KeysForFirebase.LIMIT_PROTEIN_HIGH:
+//                limitsProteinHigh = newSettingsValue as? Double
+//            default:
+//                NSLog("Bad key in updateSettings")
+//            }
+//        }
+//    }
+//    
     // MARK - Authentication
     
     func loginUser(email : String, password : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
@@ -561,18 +541,21 @@ class ModelController
 
     
     func getNodeUserData(errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
-        signedinUserDataNode = [:]
-        signedinUserErrorMessages = ""
-        let userDataRef = self.ref.child("userData").child(signedinUID!)
-        userDataRef.observeSingleEvent(of: .value, with:
-            { (snapshot)
-                in
-                self.signedinUserDataNode = snapshot.value as? [String : Any?] ?? [:]
-                handler()
-        }) { (error) in
-            self.signedinUserErrorMessages = "Encountered error, " + error.localizedDescription +
-            ", searching for client data"
-            errorHandler(self.clientErrorMessages)
+        if signedinUserDataNode.count == 0 {
+            let userDataRef = self.ref.child("userData").child(signedinUID!)
+            userDataRef.observeSingleEvent(of: .value, with:
+                { (snapshot)
+                    in
+                    self.signedinUserDataNode = snapshot.value as? [String : Any?] ?? [:]
+                    self.signedinUserErrorMessages = ""
+                    handler()
+            }) { (error) in
+                self.signedinUserErrorMessages = "Encountered error, " + error.localizedDescription +
+                ", searching for client data"
+                errorHandler(self.clientErrorMessages)
+            }
+        } else {
+            handler()
         }
     }
     
@@ -584,6 +567,7 @@ class ModelController
                 errorHandler(error.localizedDescription)
             } else {
                 self.signedinUserDataNode = node
+                self.signedinUserErrorMessages = ""
                 handler()
             }
         }
