@@ -367,7 +367,7 @@ MFMailComposeViewControllerDelegate {
             for tag in Constants.SUPPLEMENTS_CHECKS_START_TAG..<(Constants.SUPPLEMENTS_CHECKS_START_TAG + Int(countSupplementChecks)) {
                 mapTagsToButtons[tag].setTitle("✔︎", for: .normal)
             }
-            let maxSupplementCount = Constants.SUPPLEMENTS_CHECKS_END_TAG - Constants.SUPPLEMENTS_CHECKS_END_TAG + 1
+            let maxSupplementCount = Constants.SUPPLEMENTS_CHECKS_END_TAG - Constants.SUPPLEMENTS_CHECKS_START_TAG + 1
             if Int(countSupplementChecks) < maxSupplementCount {
                 for tag in (Constants.SUPPLEMENTS_CHECKS_START_TAG + Int(countSupplementChecks))...Constants.SUPPLEMENTS_CHECKS_END_TAG {
                     mapTagsToButtons[tag].setTitle(" ", for: .normal)
@@ -830,6 +830,16 @@ MFMailComposeViewControllerDelegate {
             updateUserSuccess()
         }
     }
+    
+    
+    @IBAction func clickedDeleteButton(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
     
     func updateUserSuccess() {
         clearInflightData()
