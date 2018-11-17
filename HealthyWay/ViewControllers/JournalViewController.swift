@@ -34,6 +34,7 @@ MFMailComposeViewControllerDelegate {
     @IBOutlet weak var waiting: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var messageBox: UITextView!
     
     // MARK: - date picker
@@ -104,6 +105,7 @@ MFMailComposeViewControllerDelegate {
         modelController.firebaseDateKey = recordDate.makeShortStringDate()
         saveButton.isHidden = true
         cancelButton.isHidden = true
+        deleteButton.isHidden = true
         // Observe keyboard change
         notes.delegate = self
         mealDescription.delegate = self
@@ -173,6 +175,11 @@ MFMailComposeViewControllerDelegate {
         bindMealDateToDatePicker()
         bindTextViewsToModel()
         bindChecksToModel()
+        if (journalNode.count > 0 || mealContentsNode.count > 0) {
+            deleteButton.isHidden = false
+        } else {
+            deleteButton.isHidden = true
+        }
         waiting.isHidden = true
         waiting.isUserInteractionEnabled = true
         waiting.stopAnimating()
@@ -310,19 +317,19 @@ MFMailComposeViewControllerDelegate {
                 displayTextField.text = String(journalNode[KeysForFirebase.WEIGHED] as? Double ?? 0.0)
             case 1:
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_PROTEIN_QUANTITY] as? Double ?? 0.0)
-                mealContentsNode[mealSelected.rawValue] = theMeal
+ //               mealContentsNode[mealSelected.rawValue] = theMeal
             case 2:
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_FAT_QUANTITY] as? Double ?? 0.0)
-                mealContentsNode[mealSelected.rawValue] = theMeal
+  //              mealContentsNode[mealSelected.rawValue] = theMeal
             case 3:
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_STARCH_QUANTITY] as? Double ?? 0.0)
-                mealContentsNode[mealSelected.rawValue] = theMeal
+//                mealContentsNode[mealSelected.rawValue] = theMeal
             case 4:
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_FRUIT_QUANTITY] as? Double ?? 0.0)
-                mealContentsNode[mealSelected.rawValue] = theMeal
+//                mealContentsNode[mealSelected.rawValue] = theMeal
             case 5:
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_VEGGIES_QUANTITY] as? Double ?? 0.0)
-                mealContentsNode[mealSelected.rawValue] = theMeal
+//                mealContentsNode[mealSelected.rawValue] = theMeal
             default:
                 NSLog("bad tag number in storyboard (JournalViewController:bindNumberFieldsToModel")
             }
@@ -833,6 +840,21 @@ MFMailComposeViewControllerDelegate {
     
     
     @IBAction func clickedDeleteButton(_ sender: Any) {
+        cancelButton.isHidden = true
+        saveButton.isHidden = true
+        deleteButton.isHidden = true
+        waiting.isHidden = false
+        waiting.isUserInteractionEnabled = false
+        waiting.startAnimating()
+        // delete data on record date
+        journalNode = [:]
+        mealContentsNode = [:]
+        updateJournalOnDate(journalDate: recordDate.makeShortStringDate(), node: journalNode)
+        updateMealOnDate(mealDate: recordDate.makeShortStringDate(), node: mealContentsNode)
+        modelController.setNodeUserData(userDataNode: userDataNode, errorHandler: errorMessage, handler: updateUserSuccess)
+        if !modelController.isFirebaseConnected {
+            updateUserSuccess()
+        }
     }
     
     
@@ -845,10 +867,12 @@ MFMailComposeViewControllerDelegate {
         clearInflightData()
         saveButton.isHidden = true
         cancelButton.isHidden = true
+        deleteButton.isHidden = true
         waiting.isHidden = true
         waiting.isUserInteractionEnabled = true
         waiting.stopAnimating()
         messageBox.isHidden = true
+        buildDataEntryFields()
     }
     
     

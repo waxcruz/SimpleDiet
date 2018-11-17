@@ -715,9 +715,12 @@
                                             <action selector="emailJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2IF-Wo-S1H"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqK-qa-l0K">
-                                        <rect key="frame" x="59" y="0.0" width="45" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqK-qa-l0K">
+                                        <rect key="frame" x="52" y="0.0" width="45" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="5Hq-k8-6Qv"/>
+                                            <constraint firstAttribute="height" constant="30" id="xtR-tz-7Qv"/>
+                                        </constraints>
                                         <state key="normal" title="Delete"/>
                                         <connections>
                                             <action selector="clickedDeleteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8js-IR-PaM"/>
@@ -728,10 +731,12 @@
                                     <constraint firstAttribute="bottom" secondItem="P8E-bY-cAX" secondAttribute="bottom" id="1ch-3K-Q5a"/>
                                     <constraint firstItem="P8E-bY-cAX" firstAttribute="leading" secondItem="knE-t3-acd" secondAttribute="trailing" constant="2" id="4ZQ-gB-cce"/>
                                     <constraint firstAttribute="trailing" secondItem="P8E-bY-cAX" secondAttribute="trailing" id="B4J-7f-ISV"/>
+                                    <constraint firstItem="LqK-qa-l0K" firstAttribute="leading" secondItem="1kB-Fj-5hl" secondAttribute="trailing" constant="2" id="BKa-W4-RMc"/>
                                     <constraint firstAttribute="bottom" secondItem="knE-t3-acd" secondAttribute="bottom" id="QYc-i4-moO"/>
                                     <constraint firstItem="few-nC-Xao" firstAttribute="centerY" secondItem="VXu-lz-H8N" secondAttribute="centerY" id="R3O-qO-b7L"/>
                                     <constraint firstItem="few-nC-Xao" firstAttribute="centerX" secondItem="VXu-lz-H8N" secondAttribute="centerX" id="TGQ-ur-NU6"/>
                                     <constraint firstItem="1kB-Fj-5hl" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="top" constant="3" id="YCl-OR-hdo"/>
+                                    <constraint firstAttribute="bottom" secondItem="LqK-qa-l0K" secondAttribute="bottom" id="cEC-te-PSU"/>
                                     <constraint firstAttribute="bottom" secondItem="1kB-Fj-5hl" secondAttribute="bottom" constant="2" id="h2H-K2-rwd"/>
                                     <constraint firstAttribute="height" constant="30" id="nh0-HO-KrO"/>
                                     <constraint firstItem="1kB-Fj-5hl" firstAttribute="leading" secondItem="VXu-lz-H8N" secondAttribute="leading" id="rez-Dw-Z60"/>
@@ -1585,6 +1590,7 @@
                         <outlet property="chooseMeal" destination="gyU-at-o00" id="QLg-LG-uIO"/>
                         <outlet property="constraintMealContentHeight" destination="5lQ-1A-IUw" id="Kxj-ku-fYY"/>
                         <outlet property="copyright" destination="wyG-CD-PG1" id="c6Z-3U-ths"/>
+                        <outlet property="deleteButton" destination="LqK-qa-l0K" id="2zD-Xd-aPx"/>
                         <outlet property="mealComments" destination="f3g-9h-rkV" id="D6d-BW-1Xp"/>
                         <outlet property="mealContent" destination="Muk-Dm-ga8" id="3Jk-vs-1QI"/>
                         <outlet property="mealDescription" destination="Qc8-nk-ztc" id="t4A-26-gFZ"/>
