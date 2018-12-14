@@ -37,7 +37,7 @@ public enum Constants {
     static let KEYING_DATE = "Keying Date"
     static let KEYING_MEAL_SELECTED = "Keying Meal Selected"
     // MARK - Message text
-    static let CHART_DESCRIPTION = "The Healthy Way Maintenance Chart"
+    static let CHART_DESCRIPTION = "The Healthy Way Weight Chart"
     static let CHART_DATA_DESCRIPTION = "Weight Loss/Gain"
     static let NOTICE_RESET_PASSWORD  = "Enter your account email address. You'll receive an email with instructions to reset your account password. Once you finish the reset of your password, login again"
     static let JOURNAL_DAY_HEADER = """
