@@ -309,6 +309,7 @@ MFMailComposeViewControllerDelegate {
             dataEntryNumbers[tagCollectionSequence].inputAccessoryView = toolBarNumber
             dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidEnd(_:)), for: UIControlEvents.editingDidEnd)
             dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidBeginEditing(textField:)), for: UIControlEvents.editingDidBegin)
+            dataEntryNumbers[tagCollectionSequence].addTarget(self, action: #selector(JournalViewController.numberTextFieldDidChangeEditing(textField:)), for: UIControlEvents.editingChanged)
             dataEntryNumbers[tagCollectionSequence].delegate = self as? UITextFieldDelegate
             let displayTextField = dataEntryNumbers[tagCollectionSequence]
             let tag = dataEntryNumbers[tagCollectionSequence].tag
@@ -512,13 +513,28 @@ MFMailComposeViewControllerDelegate {
         lastOffset = scrollContent.contentOffset
     }
     
+    @objc func numberTextFieldDidChangeEditing(textField: UITextField) {
+        let endIndex = textField.text?.endIndex
+        let decimalPointLocation = textField.text?.firstIndex(of: ".") ?? endIndex
+        if decimalPointLocation == endIndex {
+            // no decimal point
+            return
+        } else {
+            if decimalPointLocation == textField.text?.lastIndex(of:".") {
+                return
+            } else {
+                textField.text? = String(textField.text?.dropLast() ?? "")
+            }
+        }
+    }
+    
     @objc func numberTextFieldDidEnd(_ textField: UITextField) {
-        let amount = Double(textField.text ?? "0.0")
+        let amount = Double(textField.text ?? "0.0") ?? 0.0
         var meal = mealContentsNode[mealSelected.rawValue] as? [String : Any?] ?? [:]
         switch (textField.tag) {
         case MealDataEntryTags.numberForWeight.rawValue:
-            let remainder = amount!.truncatingRemainder(dividingBy: 1)
-            var weightHW : Double = amount! - remainder
+            let remainder = amount.truncatingRemainder(dividingBy: 1)
+            var weightHW : Double = amount - remainder
             // Healthy Way formula for round weight
             if remainder >= 0.1 {
                 if remainder < 0.4 {
@@ -876,11 +892,19 @@ MFMailComposeViewControllerDelegate {
     }
     
     
-    
+    /*
+     if ([MFMailComposeViewController canSendMail]) {
+     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+     picker.mailComposeDelegate = self;
+     [picker setSubject:@"Test mail"];
+     [picker setMessageBody:messageBody.text isHTML:YES];
+     [self presentViewController:picker animated:YES completion:NULL];
+ */
     
     @IBAction func emailJournal(_ sender: Any) {
         if !MFMailComposeViewController.canSendMail() {
-            NSLog("No email")
+            messageBox.text = "No mail configured."
+            return
         }
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
@@ -901,7 +925,6 @@ MFMailComposeViewControllerDelegate {
     //                               didFinishWithResult result: MFMailComposeResult, error: Error?) {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         // Check the result or perform other tasks.
-        NSLog("Done with email")
         // Dismiss the mail compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
