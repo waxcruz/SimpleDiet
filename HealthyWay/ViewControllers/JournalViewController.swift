@@ -36,6 +36,7 @@ MFMailComposeViewControllerDelegate {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var messageBox: UITextView!
+    @IBOutlet weak var closeMessageButton: UIButton!
     
     // MARK: - date picker
     var datePicker = UIDatePicker()
@@ -890,6 +891,11 @@ MFMailComposeViewControllerDelegate {
         messageBox.isHidden = true
         buildDataEntryFields()
     }
+    // close message
+    @IBAction func closeMessageDisplay(_ sender: Any) {
+        closeMessageButton.isHidden = true;
+        messageBox.isHidden = true;
+    }
     
     
     /*
@@ -904,6 +910,8 @@ MFMailComposeViewControllerDelegate {
     @IBAction func emailJournal(_ sender: Any) {
         if !MFMailComposeViewController.canSendMail() {
             messageBox.text = "No mail configured."
+            messageBox.isHidden = false;
+            closeMessageButton.isHidden = false;
             return
         }
         let composeVC = MFMailComposeViewController()

@@ -1534,14 +1534,28 @@
                                 </constraints>
                             </view>
                             <textView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RET-EC-AIY" userLabel="Message">
-                                <rect key="frame" x="2" y="568" width="371" height="40"/>
+                                <rect key="frame" x="2" y="568" width="303" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BCn-yT-81R"/>
                                 </constraints>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-EP-Oly">
+                                <rect key="frame" x="313" y="578" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="8uM-pA-eiN"/>
+                                    <constraint firstAttribute="height" constant="30" id="dGL-xB-b07"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMessageDisplay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Jb-fw-Xzc"/>
+                                </connections>
+                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="47g-We-CVT">
                                 <rect key="frame" x="62.5" y="194" width="250" height="250"/>
                                 <constraints>
@@ -1560,17 +1574,19 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JhX-7q-mtg" secondAttribute="trailing" constant="16" id="94T-4x-g0F"/>
                             <constraint firstItem="47g-We-CVT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9i5-FA-SFO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RET-EC-AIY" secondAttribute="bottom" constant="10" id="CcF-FT-pko"/>
+                            <constraint firstItem="gPh-EP-Oly" firstAttribute="leading" secondItem="RET-EC-AIY" secondAttribute="trailing" constant="8" id="GW6-TB-RaK"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.18" id="HCE-4r-oTw"/>
                             <constraint firstItem="wyG-CD-PG1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LRp-35-WoK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gPh-EP-Oly" secondAttribute="bottom" constant="10" id="LgZ-Jt-yEV"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="M1b-5R-G7B"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Nrn-Lc-1KE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wyG-CD-PG1" secondAttribute="trailing" constant="16" id="TLl-M4-4tY"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="16" id="UX8-5h-y35"/>
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="width" secondItem="VXu-lz-H8N" secondAttribute="width" id="YGz-tA-VHn"/>
                             <constraint firstItem="wyG-CD-PG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YbJ-8R-BuP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gPh-EP-Oly" secondAttribute="trailing" constant="2" id="a9E-3Q-mhK"/>
                             <constraint firstItem="VXu-lz-H8N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dXC-RZ-Gtp"/>
                             <constraint firstItem="lHj-pG-M2k" firstAttribute="top" secondItem="dPI-Kq-ynN" secondAttribute="bottom" constant="2" id="hQe-u3-UyX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RET-EC-AIY" secondAttribute="trailing" constant="2" id="hsq-gR-qUT"/>
                             <constraint firstItem="bIJ-m6-7gh" firstAttribute="top" secondItem="VXu-lz-H8N" secondAttribute="bottom" constant="2" id="jGp-GV-OQ5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dPI-Kq-ynN" secondAttribute="trailing" id="kcj-NI-muh"/>
                             <constraint firstItem="JhX-7q-mtg" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.2" id="maW-Lx-baz"/>
@@ -1588,6 +1604,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="knE-t3-acd" id="W3g-Sr-Umt"/>
                         <outlet property="chooseMeal" destination="gyU-at-o00" id="QLg-LG-uIO"/>
+                        <outlet property="closeMessageButton" destination="gPh-EP-Oly" id="47B-dX-2m7"/>
                         <outlet property="constraintMealContentHeight" destination="5lQ-1A-IUw" id="Kxj-ku-fYY"/>
                         <outlet property="copyright" destination="wyG-CD-PG1" id="c6Z-3U-ths"/>
                         <outlet property="deleteButton" destination="LqK-qa-l0K" id="2zD-Xd-aPx"/>
