@@ -32,7 +32,7 @@ class SocialMediaViewController: UIViewController {
         if let url = URL(string: "https://thehealthyway.us/") { // educational-library/
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
-            NSLog("Can't open https://thehealthyway.us/") // educational-library/
+            print("Can't open https://thehealthyway.us/") // educational-library/
         }
         
    }
@@ -44,7 +44,7 @@ class SocialMediaViewController: UIViewController {
         if let url = URL(string: "https://www.facebook.com/HealthyWaySantaCruz/") {
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
-            NSLog("Can't open https://www.facebook.com/HealthyWaySantaCruz/")
+            print("Can't open https://www.facebook.com/HealthyWaySantaCruz/")
         }
 
         
@@ -56,7 +56,7 @@ class SocialMediaViewController: UIViewController {
         if let url = URL(string: "https://www.instagram.com/healthywaysantacruz//") {
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
-            NSLog("Can't open https://www.instagram.com/healthywaysc/")
+            print("Can't open https://www.instagram.com/healthywaysc/")
         }
     }
     
@@ -66,7 +66,7 @@ class SocialMediaViewController: UIViewController {
         if let url = URL(string: "https://www.youtube.com/channel/UCa9DlxctvfyFrFcoaLB0tzA") {
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
-            NSLog("Can't open https://www.youtube.com/channel/UCa9DlxctvfyFrFcoaLB0tzA")
+            print("Can't open https://www.youtube.com/channel/UCa9DlxctvfyFrFcoaLB0tzA")
         }
    }
     
@@ -77,7 +77,7 @@ class SocialMediaViewController: UIViewController {
         if let url = URL(string: "https://www.pinterest.com/thhealthywaysc/?autologin=true") {
             UIApplication.shared.open(url, options: dict as Any as! [String : Any], completionHandler: nil)
         } else {
-            NSLog("Can't open https://www.pinterest.com/thhealthywaysc/?autologin=true")
+            print("Can't open https://www.pinterest.com/thhealthywaysc/?autologin=true")
         }
    }
     

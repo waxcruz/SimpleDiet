@@ -235,7 +235,7 @@ MFMailComposeViewControllerDelegate {
             case 4:
                 dailyConsumptionTotals[tag].text = "3.0"
             default:
-                NSLog("index error in initializeView")
+                print("index error in initializeView")
             }
         }
         
@@ -333,7 +333,7 @@ MFMailComposeViewControllerDelegate {
                 displayTextField.text = String(theMeal[KeysForFirebase.MEAL_VEGGIES_QUANTITY] as? Double ?? 0.0)
 //                mealContentsNode[mealSelected.rawValue] = theMeal
             default:
-                NSLog("bad tag number in storyboard (JournalViewController:bindNumberFieldsToModel")
+                print("bad tag number in storyboard (JournalViewController:bindNumberFieldsToModel")
             }
         }
     }
@@ -443,7 +443,7 @@ MFMailComposeViewControllerDelegate {
                 }
             }
         }
-        NSLog("mismatch in doneNumber")
+        print("mismatch in doneNumber")
     }
     
     @objc func clearButtonPressedForNumber(sender: UIBarButtonItem) {
@@ -455,7 +455,7 @@ MFMailComposeViewControllerDelegate {
                 }
             }
         }
-        NSLog("mismatch in clearButtonPressed")
+        print("mismatch in clearButtonPressed")
     }
     
     func createToolBarForText() {

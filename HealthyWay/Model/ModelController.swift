@@ -107,7 +107,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsProtein")
+//                print("settings doesn't exist in set limitsProtein")
 //            } else {
 //                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_LOW, value: newValue!)
 //                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_LOW] = newValue
@@ -126,7 +126,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsProtein")
+//                print("settings doesn't exist in set limitsProtein")
 //            } else {
 //                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_PROTEIN_HIGH, value: newValue!)
 //                settingsInFirebase?[KeysForFirebase.LIMIT_PROTEIN_HIGH] = newValue
@@ -146,7 +146,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsFat")
+//                print("settings doesn't exist in set limitsFat")
 //            } else {
 //                updateChildInFirebase(fireBaseTable: KeysForFirebase.NODE_SETTINGS, fireBaseChildPath: KeysForFirebase.LIMIT_FAT, value: newValue!)
 //                settingsInFirebase?[KeysForFirebase.LIMIT_FAT] = newValue
@@ -166,7 +166,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsFruit")
+//                print("settings doesn't exist in set limitsFruit")
 //            } else {
 //                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_FRUIT, value: newValue!)
 //                settingsInFirebase?[KeysForFirebase.LIMIT_FRUIT] = newValue
@@ -185,7 +185,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsStarch")
+//                print("settings doesn't exist in set limitsStarch")
 //            } else {
 //                updateChildInFirebase(fireBaseTable: "Settings", fireBaseChildPath: KeysForFirebase.LIMIT_STARCH, value: newValue!)
 //                settingsInFirebase?[KeysForFirebase.LIMIT_STARCH] = newValue
@@ -204,7 +204,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set limitsVeggies")
+//                print("settings doesn't exist in set limitsVeggies")
 //            } else {
 //                settingsInFirebase?[KeysForFirebase.LIMIT_VEGGIES] = newValue
 //            }
@@ -223,7 +223,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set journalWaterConsumed")
+//                print("settings doesn't exist in set journalWaterConsumed")
 //            } else {
 //                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.GLASSES_OF_WATER, value: newValue!)
 //                journalInFirebase?[KeysForFirebase.GLASSES_OF_WATER] = newValue
@@ -242,7 +242,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set journalWeight")
+//                print("settings doesn't exist in set journalWeight")
 //            } else {
 //                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
 //                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
@@ -261,7 +261,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set journalExercise")
+//                print("settings doesn't exist in set journalExercise")
 //            } else {
 //                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
 //                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
@@ -280,7 +280,7 @@ class ModelController
 //
 //        set {
 //            if settingsInFirebase == nil {
-//                NSLog("settings doesn't exist in set journalExercise")
+//                print("settings doesn't exist in set journalExercise")
 //            } else {
 //                updateChildOfRecordInFirebase(fireBaseTable: KeysForFirebase.NODE_JOURNAL, fireBaseRecordID: firebaseDateKey, fireBaseChildPath: KeysForFirebase.WEIGHED, value: newValue!)
 //                journalInFirebase?[KeysForFirebase.WEIGHED] = newValue
@@ -328,7 +328,7 @@ class ModelController
         if fullFirebasePath != nil {
             ref.child(fullFirebasePath!).setValue(value)
         } else {
-            NSLog("error in updateChildInFirebase")
+            print("error in updateChildInFirebase")
         }
     }
     
@@ -337,7 +337,7 @@ class ModelController
         if fullFirebasePath != nil {
             ref.child(fullFirebasePath!).setValue(value)
         } else {
-            NSLog("error in updateChildOfRecordInFirebase")
+            print("error in updateChildOfRecordInFirebase")
         }
         
     }
@@ -358,7 +358,7 @@ class ModelController
 //            case KeysForFirebase.LIMIT_PROTEIN_HIGH:
 //                limitsProteinHigh = newSettingsValue as? Double
 //            default:
-//                NSLog("Bad key in updateSettings")
+//                print("Bad key in updateSettings")
 //            }
 //        }
 //    }

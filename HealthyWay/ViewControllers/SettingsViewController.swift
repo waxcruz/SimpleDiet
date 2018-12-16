@@ -86,7 +86,7 @@ class SettingsViewController: UIViewController{
                     displayTextField.text = ""
                 }
             default :
-                NSLog("bad tag number in storyboard (SettingsViewController:bindNumberFieldsToModel)")
+                print("bad tag number in storyboard (SettingsViewController:bindNumberFieldsToModel)")
             }
        }
     }
@@ -112,7 +112,7 @@ class SettingsViewController: UIViewController{
                 }
             }
         }
-        NSLog("mismatch in doneNumber")
+        print("mismatch in doneNumber")
     }
 
     
@@ -125,7 +125,7 @@ class SettingsViewController: UIViewController{
                 }
             }
         }
-        NSLog("mismatch in clearButtonPressed")
+        print("mismatch in clearButtonPressed")
     }
 
     
@@ -153,7 +153,7 @@ class SettingsViewController: UIViewController{
         case SettingsDataEntryNumbers.numberForProteinHigh.rawValue - 1:
             settingsNode[KeysForFirebase.LIMIT_PROTEIN_HIGH] = keyedDouble
         default:
-            NSLog("bad input to numberTextFieldEnd")
+            print("bad input to numberTextFieldEnd")
         }
         UserDefaults.standard.set(settingsNode, forKey: KeysForFirebase.NODE_SETTINGS)
         saveButton.isHidden = false
