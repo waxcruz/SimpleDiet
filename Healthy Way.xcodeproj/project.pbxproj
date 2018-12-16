@@ -19,7 +19,6 @@
 		344B1C1420F9024A00BADBDA /* journalOutlinedTab2@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */; };
 		344B1C1520F9024A00BADBDA /* journalOutlinedTab3@X.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */; };
 		344B1C1720FA46F500BADBDA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B1C1620FA46F500BADBDA /* SettingsViewController.swift */; };
-		3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3460F688211F33780075DA50 /* HandoutsViewController.swift */; };
 		3479961F2114AB2200BDF6BF /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */; };
 		3479962221152B4F00BDF6BF /* GroceryList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3479962121152B4F00BDF6BF /* GroceryList.pdf */; };
 		347F851B20F7C15E00A9677B /* HealthyWayTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */; };
@@ -89,7 +88,6 @@
 		344B1C1120F9024A00BADBDA /* journalOutlinedTab2@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab2@X.png"; sourceTree = "<group>"; };
 		344B1C1220F9024A00BADBDA /* journalOutlinedTab3@X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "journalOutlinedTab3@X.png"; sourceTree = "<group>"; };
 		344B1C1620FA46F500BADBDA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		3460F688211F33780075DA50 /* HandoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandoutsViewController.swift; sourceTree = "<group>"; };
 		3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		3479962121152B4F00BDF6BF /* GroceryList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GroceryList.pdf; sourceTree = "<group>"; };
 		347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthyWayTabBarController.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				3493923321474365004D8ADD /* CreateNewAccountViewController.swift */,
 				349392352147436E004D8ADD /* ForgottenPasswordViewController.swift */,
 				3479961E2114AB2200BDF6BF /* GroceryListViewController.swift */,
-				3460F688211F33780075DA50 /* HandoutsViewController.swift */,
 				347F851A20F7C15E00A9677B /* HealthyWayTabBarController.swift */,
 				340F883320FCC788007F91B8 /* JournalViewController.swift */,
 				34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */,
@@ -461,7 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3460F689211F33780075DA50 /* HandoutsViewController.swift in Sources */,
 				34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */,
 				3493923421474366004D8ADD /* CreateNewAccountViewController.swift in Sources */,
 				34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */,
