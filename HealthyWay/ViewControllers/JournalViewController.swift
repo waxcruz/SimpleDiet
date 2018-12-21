@@ -658,16 +658,37 @@ MFMailComposeViewControllerDelegate {
     func updateJournalOnDate(journalDate date : String, node : [String : Any?]) {
         var userJournalContents = userDataNode[KeysForFirebase.NODE_JOURNAL] as? [String : Any?] ?? [:]
         var userJournalContentsOnDate = userJournalContents[date] as? [String : Any?] ?? [:]
-        userJournalContentsOnDate = node
-        userJournalContents[date] = userJournalContentsOnDate
+        // deletion checks
+        if node.count == 0 {
+            if userJournalContentsOnDate.count == 0 {
+                return // no node to remove
+            } else {
+                userJournalContents[date] = nil // remove node
+            }
+        } else {
+            userJournalContentsOnDate = node
+            userJournalContents[date] = userJournalContentsOnDate
+        }
+        // update node
         userDataNode[KeysForFirebase.NODE_JOURNAL] = userJournalContents
     }
     
     func updateMealOnDate(mealDate date : String, node : [String : Any?]) {
         var userMealContents = userDataNode[KeysForFirebase.NODE_MEAL_CONTENTS] as? [String : Any?] ?? [:]
         var userMealOnDate = userMealContents[date] as? [String : Any?] ?? [:]
-        userMealOnDate = node
-        userMealContents[date] = userMealOnDate
+        // deletion checks
+        if node.count == 0 {
+            if userMealOnDate.count == 0 {
+                return // no node to remove
+            } else {
+                userMealContents[date] = nil
+            }
+        } else {
+
+            userMealOnDate = node
+            userMealContents[date] = userMealOnDate
+        }
+        // update node
         userDataNode[KeysForFirebase.NODE_MEAL_CONTENTS] = userMealContents
     }
     
