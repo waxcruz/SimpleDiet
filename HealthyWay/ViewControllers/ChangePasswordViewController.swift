@@ -90,7 +90,9 @@ class ChangePasswordViewController: UIViewController {
     
     func changedPasswordSuccessfully() {
         self.message.text = "Password change succeeded"
-        performSegue(withIdentifier: Constants.UNWIND_TO_SETTINGS_FROM_CHANGE_PASSWORD, sender: self)
+        DispatchQueue.main.async(){
+            self.performSegue(withIdentifier: Constants.UNWIND_TO_SETTINGS_FROM_CHANGE_PASSWORD, sender: self)
+        }
     }
     
     

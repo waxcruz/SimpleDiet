@@ -48,6 +48,17 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        if let uid = Auth.auth().currentUser?.uid {
+//            noShowLogin.isHidden = true
+//            modelController.signedinUID = uid
+//            modelController.signedinEmail = Auth.auth().currentUser?.email
+//            modelController.currentUID = uid
+//            getUserData()
+//        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if let uid = Auth.auth().currentUser?.uid {
             noShowLogin.isHidden = true
             modelController.signedinUID = uid

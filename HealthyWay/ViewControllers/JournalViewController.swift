@@ -941,7 +941,7 @@ MFMailComposeViewControllerDelegate {
         
         
         // Configure the fields of the interface.
-        composeVC.setToRecipients(["waxcruz@yahoo.com"])
+        composeVC.setToRecipients([modelController.signedinEmail ?? "waxcruz@yahoo.com"])
         composeVC.setSubject("Journal")
         let myJournal = formatJournal(clientNode: userDataNode, isEmail: true)
         composeVC.setMessageBody(myJournal ?? " ", isHTML: true)

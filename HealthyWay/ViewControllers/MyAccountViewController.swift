@@ -36,7 +36,11 @@ class MyAccountViewController: UIViewController {
             }
         }
         modelController.currentUID = nil
-        performSegue(withIdentifier: Constants.UNWIND_TO_SIGNIN_FROM_MY_ACCOUNT, sender: self)
+        DispatchQueue.main.async(){
+            self.performSegue(withIdentifier: Constants.UNWIND_TO_SIGNIN_FROM_MY_ACCOUNT, sender: self)
+        }
+
+        
     }
     
     
@@ -65,8 +69,10 @@ class MyAccountViewController: UIViewController {
                 } else {
                     print("Unwinding to SignInViewController")
                 }
+            } else {
+                print("Unknown segue (", vc.debugDescription, ") in MyAccountViewController")
+
             }
-            print("Unknown segue (", vc.debugDescription, ") in ClientViewController")
         }
     }
     
