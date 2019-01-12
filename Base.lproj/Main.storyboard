@@ -1895,6 +1895,7 @@
                     <connections>
                         <outlet property="copyright" destination="IWB-l5-wBJ" id="ds4-m9-KA9"/>
                         <segue destination="8ye-MO-Zra" kind="unwind" identifier="unwindToSignInViewController" unwindAction="unwindToSignInViewControllerWithSegue:" id="A93-4e-pUc"/>
+                        <segue destination="TVV-qv-CpQ" kind="show" identifier="segueFromMyAccountToSignin" id="BlQ-6g-y6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUW-K6-8ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2292,4 +2293,7 @@
         <image name="weightChartTab" width="25" height="25"/>
         <image name="youtube" width="794" height="178"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BlQ-6g-y6S"/>
+    </inferredMetricsTieBreakers>
 </document>

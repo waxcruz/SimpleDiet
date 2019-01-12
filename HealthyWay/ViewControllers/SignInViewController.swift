@@ -93,6 +93,7 @@ class SignInViewController: UIViewController {
     
 
     @IBAction func unwindToSignInViewController(segue:UIStoryboardSegue) {
+        self.view.layoutIfNeeded()
     }
 
     
