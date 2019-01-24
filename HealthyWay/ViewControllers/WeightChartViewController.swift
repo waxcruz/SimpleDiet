@@ -73,14 +73,25 @@ class WeightChartViewController: UIViewController {
             return
         }
         var sortedKeysDates = Array(nodeJournal!.keys).sorted(by: <)
+        var sortedKeysDatesWithWeight = sortedKeysDates
+        sortedKeysDatesWithWeight.removeAll()
+        // filter dates with no weight
+        for weightIndex in 0..<sortedKeysDates.count {
+            let weightDate = sortedKeysDates[weightIndex]
+            let nodeDate = nodeJournal![weightDate] as? [String : Any?] ?? [:]
+            let weight = nodeDate[KeysForFirebase.WEIGHED] as? Double ?? 0.0
+            if weight > 0.0 {
+                sortedKeysDatesWithWeight.append(weightDate)
+            }
+        }
         // trim to 7 most recent weights
-        while sortedKeysDates.count > 7 {
-            sortedKeysDates.removeFirst()
+        while sortedKeysDatesWithWeight.count > 7 {
+            sortedKeysDatesWithWeight.removeFirst()
         }
         var startDate = ""
         var startWeight = 0.0
         var chartDataPoint = [String : Double]()
-        for weightDate in sortedKeysDates {
+        for weightDate in sortedKeysDatesWithWeight {
             let nodeDate = nodeJournal![weightDate] as? [String : Any?] ?? [:]
             if startDate == "" {
                 startDate = weightDate // earliest date
@@ -95,7 +106,7 @@ class WeightChartViewController: UIViewController {
         var chartSeries = [ChartDataEntry]()
         var chartLabels = [String]()
         var xValue = 0.0
-        for weightDate in sortedKeysDates {
+        for weightDate in sortedKeysDatesWithWeight {
             let weightDateAsDate = makeDateFromString(dateAsString: weightDate)
             let weightMonthSlashDayKey = weightDateAsDate.makeMonthSlashDayDisplayString()
             let point = ChartDataEntry(x: xValue, y:  chartDataPoint[weightDate]!)
