@@ -627,7 +627,10 @@ MFMailComposeViewControllerDelegate {
             let absoluteActiveTextViewOrigin = activeTextView?.convert(activeTextView!.bounds.origin, to: nil)
             let checkRect = CGRect.init(x: absoluteActiveTextViewOrigin?.x ?? 0.0, y: absoluteActiveTextViewOrigin?.y ?? 0.0, width: activeTextView?.frame.width ?? 0.0, height: activeTextView?.frame.height ?? 0.0)
             if !(aRect.contains(checkRect.origin)) {
-                let adjustActiveTextViewFrame = CGRect.init(x: activeTextView?.frame.origin.x ?? 0.0, y: (activeTextView?.frame.origin.y ?? 0.0) + checkRect.origin.y - kbSize.height + (activeTextView?.frame.size.height ?? 0.0) , width: activeTextView?.frame.width ?? 0.0, height: activeTextView?.frame.height ?? 0.0)
+                let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+                let scrollUp = (activeTextView?.frame.origin.y ?? 0.0) + checkRect.origin.y - kbSize.height  + (activeTextView?.frame.size.height ?? 0.0)
+                let adjustActiveTextViewFrame = CGRect.init(x: activeTextView?.frame.origin.x ?? 0.0, y: scrollUp + tabBarHeight, width: activeTextView?.frame.width ?? 0.0, height: activeTextView?.frame.height ?? 0.0)
+
                 scrollContent.scrollRectToVisible(adjustActiveTextViewFrame, animated: true) // adjustActiveTextViewFrame
                 return
             }
