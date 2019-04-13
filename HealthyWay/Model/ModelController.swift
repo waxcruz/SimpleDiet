@@ -323,7 +323,7 @@ class ModelController
     }
                 
     func createUserInUsersNode(userUID uid : String, userEmail email : String, errorHandler : @escaping (_ : String) -> Void,  handler : @escaping ()-> Void) {
-        self.ref.child("users").child(uid).setValue(["email": email, "isAdmin": true]) {
+        self.ref.child("users").child(uid).setValue(["email": email, "isAdmin": false]) {
             (error:Error?, ref:DatabaseReference) in
             if let checkError = error {
                 errorHandler("Account creation failed: \(checkError).")
