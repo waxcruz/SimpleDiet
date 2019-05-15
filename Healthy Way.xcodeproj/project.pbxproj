@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		340F883420FCC788007F91B8 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F883320FCC788007F91B8 /* JournalViewController.swift */; };
+		3422C2C9228A470C004E6BD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3422C2C8228A470B004E6BD8 /* GoogleService-Info.plist */; };
 		343CA9D5212880EF003F8207 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 343CA9D4212880EF003F8207 /* Default-568h@2x.png */; };
 		344B1C0A20F8EAC300BADBDA /* mealsOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0420F8EAC200BADBDA /* mealsOutlined.png */; };
 		344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */ = {isa = PBXBuildFile; fileRef = 344B1C0520F8EAC200BADBDA /* journalOutlined.png */; };
@@ -28,7 +29,6 @@
 		349392382147437C004D8ADD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349392372147437C004D8ADD /* SignInViewController.swift */; };
 		3493923A21474400004D8ADD /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493923921474400004D8ADD /* MyAccountViewController.swift */; };
 		3493923C21475B70004D8ADD /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493923B21475B70004D8ADD /* GlobalConstants.swift */; };
-		349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349A300220F291DB00037E08 /* GoogleService-Info.plist */; };
 		349CE865211F0D9B00F89710 /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */; };
 		34B35B762103A7CE00D3E90B /* WeightChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */; };
 		34BD4F1F20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */; };
@@ -77,6 +77,7 @@
 		022A85213A16187EB6529231 /* Pods-Healthy Way.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Healthy Way.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Healthy Way/Pods-Healthy Way.debug.xcconfig"; sourceTree = "<group>"; };
 		24CDE4ED9926CDAE47CF18B4 /* Pods_Healthy_Way.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Healthy_Way.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340F883320FCC788007F91B8 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		3422C2C8228A470B004E6BD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		343CA9D4212880EF003F8207 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		344B1C0420F8EAC200BADBDA /* mealsOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealsOutlined.png; sourceTree = "<group>"; };
 		344B1C0520F8EAC200BADBDA /* journalOutlined.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalOutlined.png; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		349392372147437C004D8ADD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3493923921474400004D8ADD /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		3493923B21475B70004D8ADD /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		349A300220F291DB00037E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		349CE864211F0D9B00F89710 /* SocialMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
 		34B35B752103A7CE00D3E90B /* WeightChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartViewController.swift; sourceTree = "<group>"; };
 		34BD4F1E20F7854500C76DC4 /* LoadingPleaseWaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPleaseWaitViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				34DFDBAB20F63BAB000B422B /* Model */,
 				34C3F0D220EDE134002DAF24 /* Supporting Files */,
 				34C3F0CB20EDDFED002DAF24 /* Info.plist */,
-				349A300220F291DB00037E08 /* GoogleService-Info.plist */,
+				3422C2C8228A470B004E6BD8 /* GoogleService-Info.plist */,
 				3479962021152B2C00BDF6BF /* Documents */,
 			);
 			path = HealthyWay;
@@ -388,10 +388,10 @@
 			files = (
 				344B1C1420F9024A00BADBDA /* journalOutlinedTab2@X.png in Resources */,
 				344B1C0A20F8EAC300BADBDA /* mealsOutlined.png in Resources */,
+				3422C2C9228A470C004E6BD8 /* GoogleService-Info.plist in Resources */,
 				34C3F0CA20EDDFED002DAF24 /* LaunchScreen.storyboard in Resources */,
 				344B1C1320F9024A00BADBDA /* journalOutlinedTab.png in Resources */,
 				344B1C1520F9024A00BADBDA /* journalOutlinedTab3@X.png in Resources */,
-				349A300320F291DC00037E08 /* GoogleService-Info.plist in Resources */,
 				344B1C0B20F8EAC300BADBDA /* journalOutlined.png in Resources */,
 				344B1C0F20F8EAC300BADBDA /* resultsOutlined.png in Resources */,
 				343CA9D5212880EF003F8207 /* Default-568h@2x.png in Resources */,

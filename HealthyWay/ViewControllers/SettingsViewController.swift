@@ -198,7 +198,7 @@ class SettingsViewController: UIViewController{
         keyingSettings = [:]
         UserDefaults.standard.set(nil, forKey: KeysForFirebase.NODE_SETTINGS)
         userDataNode = modelController.signedinUserDataNode
-        settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:]
+        settingsNode = userDataNode[KeysForFirebase.NODE_SETTINGS] as? [String : Any?] ?? [:] 
         bindNumberFieldsToModel()
         saveButton.isHidden = true
         cancelButton.isHidden = true
